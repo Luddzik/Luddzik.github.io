@@ -1,8 +1,8 @@
 "use client"
 
+import type React from "react"
 import { useEffect, useRef } from "react"
 import styles from "./BackgroundPaths.module.css"
-import type React from "react" // Added import for React
 
 const BackgroundPaths: React.FC = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null)
