@@ -4,6 +4,8 @@ const nextConfig = {
   images: {
     unoptimized: true,
   },
+  // Ensure that the base path is set correctly for GitHub Pages
+  basePath: "/red-bear-studios",
 }
 
 module.exports = nextConfig
