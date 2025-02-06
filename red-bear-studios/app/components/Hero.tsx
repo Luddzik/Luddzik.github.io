@@ -72,17 +72,17 @@ export default function Hero() {
             <h1 className={styles.title}>RedBear</h1>
             <span className={styles.subtitle}>Studios</span>
           </motion.div>
-          <motion.a
-            href="#games"
+          <motion.button
             className={styles.cta}
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.8 }}
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
+            onClick={() => document.getElementById("games")?.scrollIntoView({ behavior: "smooth" })}
           >
             Explore Our Games
-          </motion.a>
+          </motion.button>
         </motion.div>
       </div>
       <motion.div
