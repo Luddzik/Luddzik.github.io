@@ -42,19 +42,19 @@ jobs:
           cd red-bear-studios
           npm run build
         
-      - name: Check for out directory
+      - name: Debug build output
         run: |
           cd red-bear-studios
-          if [ -d "out" ]; then
-            echo "out directory exists"
-            ls -la out
-          else
-            echo "out directory does not exist"
-            echo "Current directory contents:"
-            ls -la
-            echo "Build output:"
-            cat .next/build-manifest.json
-          fi
+          echo "Current directory contents:"
+          ls -la
+          echo "Next.js build output:"
+          ls -la .next || echo ".next directory not found"
+          echo "Out directory contents:"
+          ls -la out || echo "out directory not found"
+          echo "Package.json contents:"
+          cat package.json
+          echo "Next.config.js contents:"
+          cat next.config.js
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
