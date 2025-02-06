@@ -28,6 +28,11 @@ const BackgroundPaths: React.FC = () => {
       color: string
 
       constructor() {
+        this.x = 0
+        this.y = 0
+        this.length = 0
+        this.speed = 0
+        this.color = ""
         this.reset()
       }
 
@@ -40,12 +45,13 @@ const BackgroundPaths: React.FC = () => {
       }
 
       draw() {
-        ctx!.beginPath()
-        ctx!.moveTo(this.x, this.y)
-        ctx!.lineTo(this.x, this.y + this.length)
-        ctx!.strokeStyle = this.color
-        ctx!.lineWidth = 1
-        ctx!.stroke()
+        if (!ctx) return
+        ctx.beginPath()
+        ctx.moveTo(this.x, this.y)
+        ctx.lineTo(this.x, this.y + this.length)
+        ctx.strokeStyle = this.color
+        ctx.lineWidth = 1
+        ctx.stroke()
       }
 
       update() {

@@ -27,34 +27,15 @@ jobs:
         with:
           node-version: "20"
 
-      - name: Print Node and npm versions
-        run: |
-          node --version
-          npm --version
-
       - name: Install dependencies
         run: |
           cd red-bear-studios
-          npm ci --legacy-peer-deps
-        
+          npm ci
+
       - name: Build Next.js
         run: |
           cd red-bear-studios
           npm run build
-        
-      - name: Debug build output
-        run: |
-          cd red-bear-studios
-          echo "Current directory contents:"
-          ls -la
-          echo "Next.js build output:"
-          ls -la .next || echo ".next directory not found"
-          echo "Out directory contents:"
-          ls -la out || echo "out directory not found"
-          echo "Package.json contents:"
-          cat package.json
-          echo "Next.config.js contents:"
-          cat next.config.js
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3

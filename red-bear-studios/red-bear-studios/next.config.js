@@ -5,6 +5,7 @@ const nextConfig = {
     unoptimized: true,
   },
   basePath: "/red-bear-studios",
+  assetPrefix: "/red-bear-studios/",
 }
 
 module.exports = nextConfig
