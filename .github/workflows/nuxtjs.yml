@@ -27,31 +27,35 @@ jobs:
         run: |
           cd red-bear-studios
           if [ -f "yarn.lock" ]; then
-            echo "manager=yarn" >> $GITHUB_ENV
+            echo "manager=yarn" >> $GITHUB_OUTPUT
+            echo "command=install" >> $GITHUB_OUTPUT
+            echo "runner=yarn" >> $GITHUB_OUTPUT
           elif [ -f "package-lock.json" ]; then
-            echo "manager=npm" >> $GITHUB_ENV
+            echo "manager=npm" >> $GITHUB_OUTPUT
+            echo "command=ci" >> $GITHUB_OUTPUT
+            echo "runner=npx --no-install" >> $GITHUB_OUTPUT
           else
-            echo "manager=npm" >> $GITHUB_ENV
+            echo "manager=npm" >> $GITHUB_OUTPUT
+            echo "command=install" >> $GITHUB_OUTPUT
+            echo "runner=npx --no-install" >> $GITHUB_OUTPUT
           fi
-          
+
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
           node-version: "20"
           cache: ${{ steps.detect-package-manager.outputs.manager }}
-          # Tell setup-node where the lock file is (if using npm):
           cache-dependency-path: "red-bear-studios/package-lock.json"
 
-      - name: Install dependencies (ignoring peer deps)
+      - name: Install dependencies
         run: |
           cd red-bear-studios
-          npm install --legacy-peer-deps
-          
+          ${{ steps.detect-package-manager.outputs.manager }} ${{ steps.detect-package-manager.outputs.command }} --legacy-peer-deps
+
       - name: Build Next.js
         run: |
           cd red-bear-studios
-          npm run build
-          npm run export
+          ${{ steps.detect-package-manager.outputs.runner }} next build
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
@@ -68,3 +72,4 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
+
