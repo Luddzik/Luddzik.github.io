@@ -81,7 +81,7 @@ export default function Header({ showNavLinks = true }: HeaderProps) {
       transition={{ duration: 0.5 }}
     >
       <div className={styles.container}>
-        <Link href="/" className={styles.logoContainer} onClick={() => window.scrollTo(0, 0)}>
+        <Link href="/" className={styles.logoContainer} onClick={() => scrollToSection("top")}>
           <Logo />
           <div className={styles.logoText}>
             <span className={styles.logoMainText}>RedBear</span>

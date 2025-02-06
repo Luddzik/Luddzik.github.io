@@ -24,13 +24,17 @@
   gap: 20px;
 }
 
-.footer nav a {
+.link {
   font-size: 0.9rem;
   color: var(--secondary);
   transition: color 0.3s ease;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
 }
 
-.footer nav a:hover {
+.link:hover {
   color: var(--accent);
 }
 
