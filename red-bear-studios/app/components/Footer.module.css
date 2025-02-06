@@ -1,0 +1,44 @@
+.footer {
+  background-color: white;
+  padding: 40px 0;
+  position: relative;
+  z-index: 1;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.footer p {
+  font-size: 0.9rem;
+  color: var(--secondary);
+}
+
+.footer nav {
+  display: flex;
+  gap: 20px;
+}
+
+.footer nav a {
+  font-size: 0.9rem;
+  color: var(--secondary);
+  transition: color 0.3s ease;
+}
+
+.footer nav a:hover {
+  color: var(--accent);
+}
+
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column;
+    gap: 20px;
+    text-align: center;
+  }
+}
+
