@@ -45,8 +45,8 @@ jobs:
       - name: Install dependencies (ignoring peer deps)
         run: |
           cd red-bear-studios
-          npm ci --legacy-peer-deps
-
+          npm install --legacy-peer-deps
+          
       - name: Build Next.js
         run: |
           cd red-bear-studios
