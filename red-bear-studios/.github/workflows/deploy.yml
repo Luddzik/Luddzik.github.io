@@ -41,11 +41,20 @@ jobs:
         run: |
           cd red-bear-studios
           npm run build
-
-      - name: List output directory
+        
+      - name: Check for out directory
         run: |
           cd red-bear-studios
-          ls -la out
+          if [ -d "out" ]; then
+            echo "out directory exists"
+            ls -la out
+          else
+            echo "out directory does not exist"
+            echo "Current directory contents:"
+            ls -la
+            echo "Build output:"
+            cat .next/build-manifest.json
+          fi
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
