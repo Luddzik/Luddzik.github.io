@@ -1,5 +1,6 @@
 "use client"
 
+import type React from "react"
 import Link from "next/link"
 import { useState, useEffect } from "react"
 import { motion } from "framer-motion"
@@ -9,7 +10,7 @@ interface HeaderProps {
   showNavLinks?: boolean
 }
 
-const Logo = () => (
+const Logo: React.FC = () => (
   <svg
     className={styles.logoIcon}
     width="100%"
@@ -50,7 +51,7 @@ const Logo = () => (
   </svg>
 )
 
-export default function Header({ showNavLinks = true }: HeaderProps) {
+const Header: React.FC<HeaderProps> = ({ showNavLinks = true }) => {
   const [isScrolled, setIsScrolled] = useState(false)
 
   useEffect(() => {
@@ -105,4 +106,6 @@ export default function Header({ showNavLinks = true }: HeaderProps) {
     </motion.header>
   )
 }
+
+export default Header
 

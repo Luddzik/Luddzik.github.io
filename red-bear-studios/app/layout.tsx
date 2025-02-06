@@ -1,7 +1,7 @@
+import type React from "react"
 import type { Metadata } from "next"
 import { Poppins, Lato, Bungee } from "next/font/google"
 import "./globals.css"
-import type React from "react"
 import BackgroundPaths from "./components/BackgroundPaths"
 
 const poppins = Poppins({ subsets: ["latin"], weight: ["400", "600", "700"], variable: "--font-poppins" })
@@ -11,30 +11,22 @@ const bungee = Bungee({ subsets: ["latin"], weight: ["400"], variable: "--font-b
 export const metadata: Metadata = {
   title: "RedBear Studios",
   description: "Discover innovative and engaging games by RedBear Studios",
-  icons: [
-    {
-      rel: "icon",
-      type: "image/svg+xml",
-      url: "/favicon.svg",
-    },
-  ],
 }
 
-export default function RootLayout({
-  children,
-}: {
+interface RootLayoutProps {
   children: React.ReactNode
-}) {
+}
+
+const RootLayout: React.FC<RootLayoutProps> = ({ children }) => {
   return (
     <html lang="en">
-      <head>
-        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-      </head>
       <body className={`${poppins.variable} ${lato.variable} ${bungee.variable}`}>
         <BackgroundPaths />
-        <main id="top">{children}</main>
+        <main>{children}</main>
       </body>
     </html>
   )
 }
+
+export default RootLayout
 

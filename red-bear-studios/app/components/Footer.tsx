@@ -1,8 +1,10 @@
 "use client"
+
+import type React from "react"
 import { useRouter } from "next/navigation"
 import styles from "./Footer.module.css"
 
-export default function Footer() {
+const Footer: React.FC = () => {
   const router = useRouter()
 
   const handleNavigation = (path: string) => {
@@ -26,4 +28,6 @@ export default function Footer() {
     </footer>
   )
 }
+
+export default Footer
 

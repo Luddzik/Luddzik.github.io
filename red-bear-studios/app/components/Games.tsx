@@ -1,5 +1,6 @@
 "use client"
 
+import type React from "react"
 import { motion } from "framer-motion"
 import { FaApple, FaAndroid } from "react-icons/fa"
 import styles from "./Games.module.css"
@@ -28,7 +29,7 @@ const games: Game[] = [
   },
 ]
 
-export default function Games() {
+const Games: React.FC = () => {
   return (
     <section id="games" className={styles.games}>
       <div className={styles.container}>
@@ -60,4 +61,6 @@ export default function Games() {
     </section>
   )
 }
+
+export default Games
 

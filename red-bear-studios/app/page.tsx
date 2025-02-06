@@ -1,10 +1,11 @@
+import type React from "react"
 import Header from "./components/Header"
 import Hero from "./components/Hero"
 import Games from "./components/Games"
 import Contact from "./components/Contact"
 import Footer from "./components/Footer"
 
-export default function Home() {
+const Home: React.FC = () => {
   return (
     <>
       <Header />
@@ -15,4 +16,6 @@ export default function Home() {
     </>
   )
 }
+
+export default Home
 

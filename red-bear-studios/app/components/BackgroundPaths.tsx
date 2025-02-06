@@ -2,6 +2,7 @@
 
 import { useEffect, useRef } from "react"
 import styles from "./BackgroundPaths.module.css"
+import type React from "react" // Added import for React
 
 const BackgroundPaths: React.FC = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null)
@@ -67,6 +68,8 @@ const BackgroundPaths: React.FC = () => {
     }
 
     function animate() {
+      if (!canvas || !ctx) return
+
       ctx.clearRect(0, 0, canvas.width, canvas.height)
       ctx.save()
       ctx.translate(0, -scrollY % canvas.height)
@@ -81,6 +84,8 @@ const BackgroundPaths: React.FC = () => {
     }
 
     function handleResize() {
+      if (!canvas) return
+
       canvas.width = window.innerWidth
       canvas.height = window.innerHeight
       paths.forEach((path) => path.reset(canvas.width, canvas.height))

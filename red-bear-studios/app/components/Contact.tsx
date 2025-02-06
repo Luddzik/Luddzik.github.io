@@ -1,10 +1,11 @@
 "use client"
 
+import type React from "react"
 import { motion } from "framer-motion"
 import { FaEnvelope, FaDiscord } from "react-icons/fa"
 import styles from "./Contact.module.css"
 
-export default function Contact() {
+const Contact: React.FC = () => {
   return (
     <section id="contact" className={styles.contact}>
       <div className={styles.container}>
@@ -59,4 +60,6 @@ export default function Contact() {
     </section>
   )
 }
+
+export default Contact
 

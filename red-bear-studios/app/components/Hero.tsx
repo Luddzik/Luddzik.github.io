@@ -1,10 +1,11 @@
 "use client"
 
+import type React from "react"
 import { motion } from "framer-motion"
 import { FaChevronDown } from "react-icons/fa"
 import styles from "./Hero.module.css"
 
-const Logo = () => (
+const Logo: React.FC = () => (
   <svg
     className={styles.logo}
     width="100%"
@@ -45,7 +46,7 @@ const Logo = () => (
   </svg>
 )
 
-export default function Hero() {
+const Hero: React.FC = () => {
   const scrollToNextSection = () => {
     const nextSection = document.getElementById("games")
     if (nextSection) {
@@ -79,7 +80,12 @@ export default function Hero() {
             transition={{ duration: 0.8, delay: 0.8 }}
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            onClick={() => document.getElementById("games")?.scrollIntoView({ behavior: "smooth" })}
+            onClick={() => {
+              const gamesSection = document.getElementById("games")
+              if (gamesSection) {
+                gamesSection.scrollIntoView({ behavior: "smooth" })
+              }
+            }}
           >
             Explore Our Games
           </motion.button>
@@ -102,4 +108,6 @@ export default function Hero() {
     </section>
   )
 }
+
+export default Hero
 
