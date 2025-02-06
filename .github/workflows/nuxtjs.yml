@@ -25,11 +25,11 @@ jobs:
       - name: Detect package manager
         id: detect-package-manager
         run: |
-          if [ -f "${{ github.workspace }}/codelka/yarn.lock" ]; then
+          if [ -f "${{ github.workspace }}/red-bear-studios/yarn.lock" ]; then
             echo "manager=yarn" >> $GITHUB_OUTPUT
             echo "command=install" >> $GITHUB_OUTPUT
             exit 0
-          elif [ -f "${{ github.workspace }}/codelka/package-lock.json" ]; then
+          elif [ -f "${{ github.workspace }}/red-bear-studios/package-lock.json" ]; then
             echo "manager=npm" >> $GITHUB_OUTPUT
             echo "command=ci" >> $GITHUB_OUTPUT
             exit 0
@@ -45,22 +45,22 @@ jobs:
           node-version: "20"
           cache: ${{ steps.detect-package-manager.outputs.manager }}
           # Tell setup-node where the lock file is (if using npm):
-          cache-dependency-path: "codelka/package-lock.json"
+          cache-dependency-path: "red-bear-studios/package-lock.json"
 
       - name: Install dependencies (ignoring peer deps)
         run: |
-          cd codelka
+          cd red-bear-studios
           npm ci --legacy-peer-deps
 
       - name: Build Next.js
         run: |
-          cd codelka
+          cd red-bear-studios
           npm run build
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: codelka/out
+          path: red-bear-studios/out
 
   deploy:
     environment:
