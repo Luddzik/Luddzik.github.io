@@ -1,6 +1,5 @@
 "use client"
 
-import type React from "react"
 import { useEffect, useRef } from "react"
 import styles from "./BackgroundPaths.module.css"
 
@@ -17,9 +16,6 @@ const BackgroundPaths: React.FC = () => {
     let animationFrameId: number
     let scrollY = 0
 
-    const paths: Path[] = []
-    const pathCount = 75 // Increased number of lines
-
     class Path {
       x: number
       y: number
@@ -28,18 +24,17 @@ const BackgroundPaths: React.FC = () => {
       color: string
 
       constructor(canvasWidth: number, canvasHeight: number) {
-        this.x = 0
-        this.y = 0
-        this.length = 0
-        this.speed = 0
-        this.color = ""
-        this.reset(canvasWidth, canvasHeight)
+        this.x = Math.random() * canvasWidth
+        this.y = Math.random() * canvasHeight * 2 - canvasHeight
+        this.length = Math.random() * 400 + 200
+        this.speed = Math.random() * 2 + 1
+        this.color = `rgba(255, 0, 0, ${Math.random() * 0.1 + 0.05})`
       }
 
       reset(canvasWidth: number, canvasHeight: number) {
         this.x = Math.random() * canvasWidth
         this.y = Math.random() * canvasHeight * 2 - canvasHeight
-        this.length = Math.random() * 400 + 200 // Increased length range (200-600px)
+        this.length = Math.random() * 400 + 200
         this.speed = Math.random() * 2 + 1
         this.color = `rgba(255, 0, 0, ${Math.random() * 0.1 + 0.05})`
       }
@@ -53,18 +48,21 @@ const BackgroundPaths: React.FC = () => {
         ctx.stroke()
       }
 
-      update(canvasWidth: number, canvasHeight: number) {
+      update(canvasWidth: number, canvasHeight: number, currentScrollY: number) {
         this.y += this.speed
 
-        if (this.y - scrollY > canvasHeight) {
+        if (this.y - currentScrollY > canvasHeight) {
           this.reset(canvasWidth, canvasHeight)
         }
       }
     }
 
-    function createPaths() {
+    const paths: Path[] = []
+    const pathCount = 75
+
+    function createPaths(canvasWidth: number, canvasHeight: number) {
       for (let i = 0; i < pathCount; i++) {
-        paths.push(new Path(canvas.width, canvas.height))
+        paths.push(new Path(canvasWidth, canvasHeight))
       }
     }
 
@@ -74,7 +72,7 @@ const BackgroundPaths: React.FC = () => {
       ctx.translate(0, -scrollY % canvas.height)
 
       paths.forEach((path) => {
-        path.update(canvas.width, canvas.height)
+        path.update(canvas.width, canvas.height, scrollY)
         path.draw(ctx)
       })
 
@@ -93,7 +91,7 @@ const BackgroundPaths: React.FC = () => {
     }
 
     handleResize()
-    createPaths()
+    createPaths(canvas.width, canvas.height)
     window.addEventListener("resize", handleResize)
     window.addEventListener("scroll", handleScroll)
 
