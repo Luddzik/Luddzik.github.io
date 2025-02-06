@@ -22,22 +22,36 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      - name: Detect package manager
+        id: detect-package-manager
+        run: |
+          cd red-bear-studios
+          if [ -f "yarn.lock" ]; then
+            echo "manager=yarn" >> $GITHUB_ENV
+          elif [ -f "package-lock.json" ]; then
+            echo "manager=npm" >> $GITHUB_ENV
+          else
+            echo "manager=npm" >> $GITHUB_ENV
+          fi
+          
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
           node-version: "20"
-          cache: 'npm'
-          cache-dependency-path: 'red-bear-studios/package-lock.json'
+          cache: ${{ steps.detect-package-manager.outputs.manager }}
+          # Tell setup-node where the lock file is (if using npm):
+          cache-dependency-path: "red-bear-studios/package-lock.json"
 
-      - name: Install dependencies
+      - name: Install dependencies (ignoring peer deps)
         run: |
           cd red-bear-studios
-          npm ci --legacy-peer-deps
-
+          npm install --legacy-peer-deps
+          
       - name: Build Next.js
         run: |
           cd red-bear-studios
           npm run build
+          npm run export
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
@@ -54,4 +68,3 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
-
