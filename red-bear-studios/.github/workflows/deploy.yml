@@ -19,43 +19,33 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout
+      - name: Checkout repository
         uses: actions/checkout@v4
-
-      - name: Detect package manager
-        id: detect-package-manager
-        run: |
-          cd red-bear-studios
-          if [ -f "yarn.lock" ]; then
-            echo "manager=yarn" >> $GITHUB_OUTPUT
-            echo "command=install" >> $GITHUB_OUTPUT
-            echo "runner=yarn" >> $GITHUB_OUTPUT
-          elif [ -f "package-lock.json" ]; then
-            echo "manager=npm" >> $GITHUB_OUTPUT
-            echo "command=ci" >> $GITHUB_OUTPUT
-            echo "runner=npx --no-install" >> $GITHUB_OUTPUT
-          else
-            echo "manager=npm" >> $GITHUB_OUTPUT
-            echo "command=install" >> $GITHUB_OUTPUT
-            echo "runner=npx --no-install" >> $GITHUB_OUTPUT
-          fi
 
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
           node-version: "20"
-          cache: ${{ steps.detect-package-manager.outputs.manager }}
-          cache-dependency-path: "red-bear-studios/package-lock.json"
+
+      - name: Print Node and npm versions
+        run: |
+          node --version
+          npm --version
 
       - name: Install dependencies
         run: |
           cd red-bear-studios
-          ${{ steps.detect-package-manager.outputs.manager }} ${{ steps.detect-package-manager.outputs.command }} --legacy-peer-deps
-
+          npm ci --legacy-peer-deps
+        
       - name: Build Next.js
         run: |
           cd red-bear-studios
-          ${{ steps.detect-package-manager.outputs.runner }} next build
+          npm run build
+
+      - name: List output directory
+        run: |
+          cd red-bear-studios
+          ls -la out
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
