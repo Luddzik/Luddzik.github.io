@@ -53,11 +53,11 @@ const BackgroundPaths: React.FC = () => {
         ctx.stroke()
       }
 
-      update(canvasHeight: number) {
+      update(canvasWidth: number, canvasHeight: number) {
         this.y += this.speed
 
         if (this.y - scrollY > canvasHeight) {
-          this.reset(canvas.width, canvasHeight)
+          this.reset(canvasWidth, canvasHeight)
         }
       }
     }
@@ -74,7 +74,7 @@ const BackgroundPaths: React.FC = () => {
       ctx.translate(0, -scrollY % canvas.height)
 
       paths.forEach((path) => {
-        path.update(canvas.height)
+        path.update(canvas.width, canvas.height)
         path.draw(ctx)
       })
 
