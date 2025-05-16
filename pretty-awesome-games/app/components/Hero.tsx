@@ -4,13 +4,7 @@ import type React from "react"
 import { motion } from "framer-motion"
 import { FaChevronDown } from "react-icons/fa"
 import styles from "./Hero.module.css"
-import logo from '../favicon.svg';
-
-const Logo = () => {
-  return (
-    <img src={logo} alt="Logo" />
-  );
-}
+import { ReactComponent as Logo } from '../favicon.svg';
 
 const Hero: React.FC = () => {
   const scrollToNextSection = () => {
