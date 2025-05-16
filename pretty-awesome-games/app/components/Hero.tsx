@@ -6,8 +6,10 @@ import { FaChevronDown } from "react-icons/fa"
 import styles from "./Hero.module.css"
 import logo from '../favicon.svg';
 
-const Logo: React.FC = () => {
-  <img src={logo} alt="Logo" />
+const Logo = () => {
+  return (
+    <img src={logo} alt="Logo" />
+  );
 }
 
 const Hero: React.FC = () => {
