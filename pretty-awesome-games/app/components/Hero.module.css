@@ -14,10 +14,6 @@
   margin: 0 auto;
   padding: 1rem;
   text-align: center;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
 }
 
 .content {
@@ -32,9 +28,9 @@
 }
 
 .logo {
-  width: 512px;
-  height: 512px;
-  margin-bottom: 2rem;
+  width: 256px;
+  height: 256px;
+  margin-bottom: 1rem;
 }
 
 .titleContainer {
