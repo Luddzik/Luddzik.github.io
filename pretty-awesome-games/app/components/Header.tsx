@@ -44,7 +44,7 @@ const Header: React.FC<HeaderProps> = ({ showNavLinks = true }) => {
       <div className={styles.container}>
         <Link href="/" className={styles.logoContainer} onClick={() => scrollToSection("top")}>
           <div>
-            <Image src="../favicon.svg" alt="Logo" width={64} height={64} />
+            <Image src="../favicon.svg" alt="Logo" width={96} height={96} />
           </div>
           <div className={styles.logoText}>
             <span className={styles.logoMainText}></span>
