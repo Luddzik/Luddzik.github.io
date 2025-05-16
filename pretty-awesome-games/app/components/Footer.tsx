@@ -3,6 +3,7 @@
 import type React from "react"
 import { useRouter } from "next/navigation"
 import styles from "./Footer.module.css"
+import Link from "next/link"
 import Image from "next/image"
 
 const Footer: React.FC = () => {
