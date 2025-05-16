@@ -4,11 +4,11 @@
 
 :root {
   --text: #2C2C2C;      
-  --accent: #F97316;      
+  --accent: #333333;     
   --secondary: #555555;   
   --tertiary: #FAFAFA;     
-  --button-bg: #F97316;   
-  --button-hover: #C2410C;  
+  --button-bg: #4A4A4A;   
+  --button-hover: #2C2C2C;  
   --button-text: #FFFFFF;  
 }
 
