@@ -5,7 +5,6 @@ import styles from "./privacy-policy.module.css"
 
 export default function PrivacyPolicy() {
   return (
-    <>
       <Header showNavLinks={false} />
       <BackgroundPaths />
       <main className={styles.privacyPolicy} id="top">
