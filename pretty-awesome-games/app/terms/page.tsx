@@ -1,7 +1,7 @@
-import Header from "../components/Header";
-import Footer from "../components/Footer";
-import BackgroundPaths from "../components/BackgroundPaths";
-import styles from "./terms.module.css";
+import Header from "../components/Header"
+import Footer from "../components/Footer"
+import BackgroundPaths from "../components/BackgroundPaths"
+import styles from "./terms.module.css"
 
 export default function Terms() {
   return (

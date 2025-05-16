@@ -1,7 +1,7 @@
-import Header from "../components/Header";
-import Footer from "../components/Footer";
-import BackgroundPaths from "../components/BackgroundPaths";
-import styles from "./privacy-policy.module.css";
+import Header from "../components/Header"
+import Footer from "../components/Footer"
+import BackgroundPaths from "../components/BackgroundPaths"
+import styles from "./privacy-policy.module.css"
 
 export default function PrivacyPolicy() {
   return (
@@ -13,7 +13,7 @@ export default function PrivacyPolicy() {
           <h1>Privacy Policy</h1>
           <p className={styles.lastUpdated}>Last Updated: 16 May, 2025</p>
 
-          <p>Thank you for playing our games!</p>
+          <p className={styles.intro}>Thank you for playing our games!</p>
 
           <p>
             This Privacy Policy applies to all of Pretty Awesome Games, websites, stores, and related services (collectively referred to as the "Service"). We may occasionally update this Privacy Policy by posting a revised version on prettyawesomegames.com. If we make any significant changes, we will notify you in accordance with applicable laws, which may include placing a notice within the Service before the update becomes effective. Your continued use of the Service after the effective date signifies your agreement to the updated Privacy Policy.
