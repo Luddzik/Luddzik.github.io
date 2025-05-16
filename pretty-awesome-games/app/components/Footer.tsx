@@ -17,9 +17,11 @@ const Footer: React.FC = () => {
     <footer className={styles.footer}>
       <div className={styles.container}>
         <p>&copy; 2025 PrettyAwesomeGames. All rights reserved.</p>
-        <div>
-          <Image src="../favicon.svg" alt="Logo" width={64} height={64} />
-        </div>
+        <Link href="/" className={styles.logoContainer} onClick={() => scrollToSection("top")}>
+          <div>
+            <Image src="../favicon.svg" alt="Logo" width={64} height={64} />
+          </div>
+        </Link>
         <nav>
           <button onClick={() => handleNavigation("/privacy-policy")} className={styles.link}>
             Privacy Policy
