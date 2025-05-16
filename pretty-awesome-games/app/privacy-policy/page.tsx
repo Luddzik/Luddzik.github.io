@@ -23,16 +23,16 @@ export default function PrivacyPolicy() {
             <h2>1. Information We Collect</h2>
             <p>We collect information to provide and enhance our Service. The types of information we may collect include:</p>
 
-            <h3>a) Device and Usage Information</h3>
+            <h3>a. Device and Usage Information</h3>
             <ul>
               <li>Details about the device or platform you use to access our games (e.g., device type, operating system, unique device identifiers, IP address).</li>
               <li>Gameplay activity, session duration, in-game interactions, and other usage data.</li>
             </ul>
 
-            <h3>b) Analytics Data</h3>
+            <h3>b. Analytics Data</h3>
             <p>We use analytics tools (e.g., Google Analytics, Google Analytics for Firebase, or similar services) to collect data on Service usage, crash reports, and other user interactions.</p>
 
-            <h3>c) Contact Information</h3>
+            <h3>c. Contact Information</h3>
             <p>If you contact us via email or through any in-game feedback/contact forms, we may collect your name, email address, and any additional information you choose to provide.</p>
 
             <div className={styles.note}>
@@ -66,13 +66,13 @@ export default function PrivacyPolicy() {
             <h2>4. Sharing and Disclosure of Information</h2>
             <p>We only share your information under the following limited circumstances:</p>
 
-            <h3>a) Service Providers</h3>
+            <h3>a. Service Providers</h3>
             <p>We may share information with third-party service providers who assist in tasks such as hosting, analytics, and customer support. These providers are obligated to handle your data securely and only for the purposes we specify.</p>
 
-            <h3>b) Legal Compliance</h3>
+            <h3>b. Legal Compliance</h3>
             <p>We may disclose your information if required to do so by law or in response to valid legal requests by public authorities.</p>
 
-            <h3>c) Business Transfers</h3>
+            <h3>c. Business Transfers</h3>
             <p>If Pretty Awesome Games undergoes a merger, acquisition, or asset sale, your information may be transferred as part of that transaction. You will be notified of any such change.</p>
           </section>
 
@@ -133,5 +133,5 @@ export default function PrivacyPolicy() {
       </main>
       <Footer />
     </>
-  );
+  )
 }
