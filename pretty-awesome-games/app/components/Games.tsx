@@ -19,12 +19,12 @@ interface Game {
 const games: Game[] = [
   {
     id: 1,
-    title: "ECIO Mobile",
-    description: "A groundbreaking mobile strategy game set in a vast cosmic universe.",
+    title: "ECIO Reborn",
+    description: "Build. Battle. Conquer. Dive into the next era of strategic battles.",
     image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/ecio_thumbnail-WPjBbwxN2MWWH9prqqx0KKYLMhmjY0.png",
     platforms: {
-      ios: "https://apps.apple.com/us/app/ecio-mobile",
-      android: "https://play.google.com/store/apps/details?id=com.redbearstudios.eciomobile",
+      ios: "https://apps.apple.com/us/app/ecio-reborn",
+      android: "https://play.google.com/store/apps/details?id=com.prettyawesomegames.ecioreborn",
     },
   },
 ]
