@@ -7,7 +7,7 @@ import styles from "./Hero.module.css"
 import LogoSVG from "../favicon.svg"
 
 const Logo: React.FC = () => {
-  return <img src={LogoSVG} alt="Pretty Awesome Games Logo" className={styles.logo} />;
+  return <img src={LogoSVG} alt="Pretty Awesome Games Logo" className={styles.logoContainer} />;
 };
 
 const Hero: React.FC = () => {
