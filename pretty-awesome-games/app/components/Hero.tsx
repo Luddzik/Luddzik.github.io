@@ -6,11 +6,9 @@ import { FaChevronDown } from "react-icons/fa"
 import styles from "./Hero.module.css"
 import LogoSVG from "../favicon.svg"
 
-const Logo: React.FC = () => (
-  return (
-    <img src={LogoSVG} alt="Pretty Awesome Games Logo" className={styles.logo} />
-  );
-)
+const Logo: React.FC = () => {
+  return <img src={LogoSVG} alt="Pretty Awesome Games Logo" className={styles.logo} />;
+};
 
 const Hero: React.FC = () => {
   const scrollToNextSection = () => {
