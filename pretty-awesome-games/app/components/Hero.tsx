@@ -23,8 +23,8 @@ const Hero: React.FC = () => {
           transition={{ duration: 0.8, delay: 0.2 }}
           className={styles.content}
         >
-          <div className="relative w-128 h-128">
-            <Image src="../favicon.svg" alt="Logo" width={256} height={256} className="object-contain" />
+          <div className="styles.logo">
+            <Image src="../favicon.svg" alt="Logo" width={512} height={512} />
           </div>
         
           <motion.button
