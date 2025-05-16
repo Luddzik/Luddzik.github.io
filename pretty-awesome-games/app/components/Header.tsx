@@ -5,6 +5,7 @@ import Link from "next/link"
 import { useState, useEffect } from "react"
 import { motion } from "framer-motion"
 import styles from "./Header.module.css"
+import Image from "next/image"
 
 interface HeaderProps {
   showNavLinks?: boolean

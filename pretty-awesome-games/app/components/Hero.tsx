@@ -4,7 +4,6 @@ import type React from "react"
 import { motion } from "framer-motion"
 import { FaChevronDown } from "react-icons/fa"
 import styles from "./Hero.module.css"
-import logo from '../favicon.svg';
 import Image from "next/image"
 
 const Hero: React.FC = () => {
