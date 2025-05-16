@@ -4,7 +4,8 @@ import type React from "react"
 import { motion } from "framer-motion"
 import { FaChevronDown } from "react-icons/fa"
 import styles from "./Hero.module.css"
-import { ReactComponent as Logo } from '../favicon.svg';
+import logo from '../favicon.svg';
+import Image from "next/image"
 
 const Hero: React.FC = () => {
   const scrollToNextSection = () => {
@@ -23,7 +24,9 @@ const Hero: React.FC = () => {
           transition={{ duration: 0.8, delay: 0.2 }}
           className={styles.content}
         >
-          <Logo />
+          <div className="relative w-32 h-32">
+            <Image src="../favicon.svg" alt="Logo" width={128} height={128} className="object-contain" />
+          </div>
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
