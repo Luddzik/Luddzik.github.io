@@ -1,9 +1,9 @@
 "use client"
 
 import type React from "react"
+import Link from "next/link"
 import { useRouter } from "next/navigation"
 import styles from "./Footer.module.css"
-import Link from "next/link"
 import Image from "next/image"
 
 const Footer: React.FC = () => {
@@ -12,6 +12,17 @@ const Footer: React.FC = () => {
   const handleNavigation = (path: string) => {
     router.push(path)
     window.scrollTo(0, 0)
+  }
+  
+  const scrollToSection = (sectionId: string) => {
+    if (sectionId === "top") {
+      window.scrollTo({ top: 0, behavior: "smooth" })
+      return
+    }
+    const section = document.getElementById(sectionId)
+    if (section) {
+      section.scrollIntoView({ behavior: "smooth" })
+    }
   }
 
   return (
