@@ -15,7 +15,7 @@ const Footer: React.FC = () => {
   return (
     <footer className={styles.footer}>
       <div className={styles.container}>
-        <p>&copy; 2024 RedBear Studios. All rights reserved.</p>
+        <p>&copy; 2025 PrettyAwesomeGames. All rights reserved.</p>
         <nav>
           <button onClick={() => handleNavigation("/privacy-policy")} className={styles.link}>
             Privacy Policy

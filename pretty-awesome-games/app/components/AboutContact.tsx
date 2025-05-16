@@ -9,7 +9,7 @@ export default function AboutContact() {
           <h2>About Us</h2>
           <div className={styles.aboutContent}>
             <div className={styles.aboutImage}>
-              <img src="/images/team.jpg" alt="RedBear Studios Team" />
+              <img src="/images/team.jpg" alt="Pretty Awesome Games Team" />
             </div>
             <div className={styles.aboutText}>
               <p>
@@ -19,7 +19,7 @@ export default function AboutContact() {
               </p>
               <p>
                 Initially focusing on mobile platforms, we are excited to expand our projects across various platforms
-                in the near future. At RedBear Studios, we believe in the power of gaming to connect people and foster
+                in the near future. At Pretty Awesome Games, we believe in the power of gaming to connect people and foster
                 community.
               </p>
             </div>
@@ -28,12 +28,12 @@ export default function AboutContact() {
         <div className={styles.contact}>
           <h2>Contact Us</h2>
           <div className={styles.contactLinks}>
-            <a href="mailto:contact@redbearstudios.com" className={styles.contactLink}>
+            <a href="mailto:contact@prettyawesomegames.com" className={styles.contactLink}>
               <FaEnvelope />
-              <span>contact@redbearstudios.com</span>
+              <span>contact@prettyawesomegames.com</span>
             </a>
             <a
-              href="https://discord.gg/redbearstudios"
+              href="https://discord.gg/prettyawesomegames"
               target="_blank"
               rel="noopener noreferrer"
               className={styles.contactLink}

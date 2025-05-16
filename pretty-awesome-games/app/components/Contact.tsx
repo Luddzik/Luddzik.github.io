@@ -23,7 +23,7 @@ const Contact: React.FC = () => {
 
           <div className={styles.cards}>
             <motion.a
-              href="mailto:contact@redbearstudios.com"
+              href="mailto:contact@prettyawesomegames.com"
               className={styles.card}
               whileHover={{ y: -5, scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
@@ -33,13 +33,13 @@ const Contact: React.FC = () => {
               </div>
               <div className={styles.cardContent}>
                 <h3>Email Us</h3>
-                <p>contact@redbearstudios.com</p>
+                <p>contact@prettyawesomegames.com</p>
                 <span className={styles.link}>Send an email →</span>
               </div>
             </motion.a>
 
             <motion.a
-              href="https://discord.gg/redbearstudios"
+              href="https://discord.gg/prettyawesomegames"
               target="_blank"
               rel="noopener noreferrer"
               className={styles.card}
