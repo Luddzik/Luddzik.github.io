@@ -210,11 +210,13 @@ export default function Terms() {
             <p>
               If you have any questions or concerns about these Terms, please contact us at:
             </p>
-            <p>
-              Pretty Awesome Games<br />
-              Email: <a href="mailto:contact@prettyawesomegames.com">contact@prettyawesomegames.com</a><br />
-              Website: <a href="https://prettyawesomegames.com">https://prettyawesomegames.com</a>
-            </p>
+            <div className={styles.note}>
+                <p>
+                  Pretty Awesome Games<br />
+                  Email: <a href="mailto:contact@prettyawesomegames.com">contact@prettyawesomegames.com</a><br />
+                  Website: <a href="https://prettyawesomegames.com">https://prettyawesomegames.com</a>
+                </p>
+            </div>
           </section>
         </div>
       </main>

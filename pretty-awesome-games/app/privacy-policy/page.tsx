@@ -124,9 +124,11 @@ export default function PrivacyPolicy() {
           <section>
             <h2>12. Contact Us</h2>
             <p>If you have any questions, concerns, or requests regarding this Privacy Policy, you can reach us at:</p>
-            <p>Pretty Awesome Games</p>
-            <p>Email: <a href="mailto:contact@prettyawesomegames.com">contact@prettyawesomegames.com</a></p>
-            <p>Website: <a href="https://prettyawesomegames.com">https://prettyawesomegames.com</a></p>
+            <div className={styles.note}>
+                <p>Pretty Awesome Games</p>
+                <p>Email: <a href="mailto:contact@prettyawesomegames.com">contact@prettyawesomegames.com</a></p>
+                <p>Website: <a href="https://prettyawesomegames.com">https://prettyawesomegames.com</a></p>
+            </div>
             <p>Thank you for playing our games and trusting Pretty Awesome Games!</p>
           </section>
         </div>
