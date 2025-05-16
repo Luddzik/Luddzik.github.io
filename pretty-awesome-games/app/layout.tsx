@@ -11,6 +11,9 @@ const bungee = Bungee({ subsets: ["latin"], weight: ["400"], variable: "--font-b
 export const metadata: Metadata = {
   title: "Pretty Awesome Games",
   description: "Discover innovative and engaging games by Pretty Awesome Games",
+  icons: {
+    icon: "/favicon.svg",
+  },
 }
 
 interface RootLayoutProps {
