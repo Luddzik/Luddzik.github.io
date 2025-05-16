@@ -9,8 +9,8 @@ const lato = Lato({ subsets: ["latin"], weight: ["400", "700"], variable: "--fon
 const bungee = Bungee({ subsets: ["latin"], weight: ["400"], variable: "--font-bungee" })
 
 export const metadata: Metadata = {
-  title: "RedBear Studios",
-  description: "Discover innovative and engaging games by RedBear Studios",
+  title: "Pretty Awesome Games",
+  description: "Discover innovative and engaging games by Pretty Awesome Games",
 }
 
 interface RootLayoutProps {
