@@ -98,7 +98,7 @@ export default function PrivacyPolicy() {
               <li>Portability: Request the transfer of your data to another service.</li>
               <li>Withdraw Consent: Withdraw consent for processing where applicable.</li>
             </ul>
-            <p>To exercise these rights, please contact us at <a href="mailto:contact@prettyawesomegames.com">contact@prettyawesomegames.com/a>. We will respond in accordance with applicable laws.</p>
+            <p>To exercise these rights, please contact us at <a href="mailto:contact@prettyawesomegames.com">contact@prettyawesomegames.com</a>. We will respond in accordance with applicable laws.</p>
           </section>
 
           <section>
