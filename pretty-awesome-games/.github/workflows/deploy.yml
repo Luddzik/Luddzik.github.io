@@ -29,18 +29,18 @@ jobs:
 
       - name: Install dependencies
         run: |
-          cd red-bear-studios
+          cd pretty-awesome-games
           npm ci
 
       - name: Build Next.js
         run: |
-          cd red-bear-studios
+          cd pretty-awesome-games
           npm run build
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: red-bear-studios/out
+          path: pretty-awesome-games/out
 
   deploy:
     environment:

@@ -25,7 +25,7 @@ jobs:
       - name: Detect package manager
         id: detect-package-manager
         run: |
-          cd red-bear-studios
+          cd pretty-awesome-games
           if [ -f "yarn.lock" ]; then
             echo "manager=yarn" >> $GITHUB_ENV
           elif [ -f "package-lock.json" ]; then
@@ -40,22 +40,22 @@ jobs:
           node-version: "20"
           cache: ${{ steps.detect-package-manager.outputs.manager }}
           # Tell setup-node where the lock file is (if using npm):
-          cache-dependency-path: "red-bear-studios/package-lock.json"
+          cache-dependency-path: "pretty-awesome-games/package-lock.json"
 
       - name: Install dependencies (ignoring peer deps)
         run: |
-          cd red-bear-studios
+          cd pretty-awesome-games
           npm install --legacy-peer-deps
           
       - name: Build Next.js
         run: |
-          cd red-bear-studios
+          cd pretty-awesome-games
           npm run build
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: red-bear-studios/out
+          path: pretty-awesome-games/out
 
   deploy:
     environment:
