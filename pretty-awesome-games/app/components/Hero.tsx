@@ -24,18 +24,10 @@ const Hero: React.FC = () => {
           transition={{ duration: 0.8, delay: 0.2 }}
           className={styles.content}
         >
-          <div className="relative w-32 h-32">
+          <div className="relative w-128 h-128">
             <Image src="../favicon.svg" alt="Logo" width={128} height={128} className="object-contain" />
           </div>
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
-            className={styles.titleContainer}
-          >
-            <h1 className={styles.title}>Pretty Awesome</h1>
-            <span className={styles.subtitle}>Games</span>
-          </motion.div>
+        
           <motion.button
             className={styles.cta}
             initial={{ opacity: 0, y: 20 }}
