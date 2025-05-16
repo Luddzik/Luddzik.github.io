@@ -24,7 +24,7 @@ const Hero: React.FC = () => {
           className={styles.content}
         >
           <div className="relative w-128 h-128">
-            <Image src="../favicon.svg" alt="Logo" width={128} height={128} className="object-contain" />
+            <Image src="../favicon.svg" alt="Logo" width={256} height={256} className="object-contain" />
           </div>
         
           <motion.button
