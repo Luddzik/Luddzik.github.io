@@ -212,8 +212,8 @@ export default function Terms() {
             </p>
             <div className={styles.note}>
                 <p>
-                  <b>Pretty Awesome Games</b></br>
-                  <b>Email:</b> <a href="mailto:contact@prettyawesomegames.com">contact@prettyawesomegames.com</a></br>
+                  <b>Pretty Awesome Games</b><br />
+                  <b>Email:</b> <a href="mailto:contact@prettyawesomegames.com">contact@prettyawesomegames.com</a><br />
                   <b>Website:</b> <a href="https://prettyawesomegames.com">https://prettyawesomegames.com</a>
                 </p>
             </div>

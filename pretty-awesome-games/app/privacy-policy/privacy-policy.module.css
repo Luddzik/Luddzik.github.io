@@ -54,12 +54,14 @@
 .privacyPolicy ul {
   margin-bottom: 1.5rem;
   padding-left: 1.5rem;
+  list-style-type: circle;
 }
 
 .privacyPolicy li {
   margin-bottom: 0.5rem;
   line-height: 1.6;
   color: var(--secondary);
+  list-style-type: circle;
 }
 
 .note {

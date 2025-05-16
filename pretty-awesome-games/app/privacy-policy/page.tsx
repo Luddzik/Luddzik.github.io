@@ -126,8 +126,8 @@ export default function PrivacyPolicy() {
             <p>If you have any questions, concerns, or requests regarding this Privacy Policy, you can reach us at:</p>
             <div className={styles.note}>
               <p>
-                <b>Pretty Awesome Games</b></br>
-                <b>Email:</b> <a href="mailto:contact@prettyawesomegames.com">contact@prettyawesomegames.com</a></br>
+                <b>Pretty Awesome Games</b><br />
+                <b>Email:</b> <a href="mailto:contact@prettyawesomegames.com">contact@prettyawesomegames.com</a><br />
                 <b>Website:</b> <a href="https://prettyawesomegames.com">https://prettyawesomegames.com</a>
               </p>
             </div>
