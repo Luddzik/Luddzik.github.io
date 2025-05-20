@@ -21,7 +21,7 @@ const games: Game[] = [
     id: 1,
     title: "ECIO Reborn",
     description: "Build. Battle. Conquer. Dive into the next era of strategic battles.",
-    image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/ecio_thumbnail-WPjBbwxN2MWWH9prqqx0KKYLMhmjY0.png",
+    image: "ecio_screenshot.png",
     platforms: {
       ios: "https://apps.apple.com/us/app/ecio-reborn",
       android: "https://play.google.com/store/apps/details?id=com.prettyawesomegames.ecioreborn",
