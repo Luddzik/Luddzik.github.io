@@ -32,15 +32,6 @@ export default function AboutContact() {
               <FaEnvelope />
               <span>contact@prettyawesomegames.com</span>
             </a>
-            //<a
-            //  href="https://discord.gg/prettyawesomegames"
-            //  target="_blank"
-            //  rel="noopener noreferrer"
-            //  className={styles.contactLink}
-            //>
-            //  <FaDiscord />
-            //  <span>Join our Discord</span>
-            //</a>
           </div>
         </div>
       </div>
