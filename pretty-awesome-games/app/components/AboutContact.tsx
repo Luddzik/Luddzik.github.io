@@ -32,7 +32,7 @@ export default function AboutContact() {
               <FaEnvelope />
               <span>contact@prettyawesomegames.com</span>
             </a>
-            <a
+            /*<a
               href="https://discord.gg/prettyawesomegames"
               target="_blank"
               rel="noopener noreferrer"
@@ -40,7 +40,7 @@ export default function AboutContact() {
             >
               <FaDiscord />
               <span>Join our Discord</span>
-            </a>
+            </a>*/
           </div>
         </div>
       </div>
