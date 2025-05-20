@@ -37,23 +37,6 @@ const Contact: React.FC = () => {
                 <span className={styles.link}>Send an email →</span>
               </div>
             </motion.a>
-
-            <!-- <motion.a
-              href="https://discord.gg/prettyawesomegames"
-              target="_blank"
-              rel="noopener noreferrer"
-              className={styles.card}
-              whileHover={{ y: -5, scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
-            >
-              <div className={styles.iconWrapper}>
-                <FaDiscord className={styles.icon} />
-              </div>
-              <div className={styles.cardContent}>
-                <h3>Join Our Community</h3>
-                <span className={styles.link}>Join Discord →</span>
-              </div>
-            </motion.a> -->
           </div>
         </motion.div>
       </div>
