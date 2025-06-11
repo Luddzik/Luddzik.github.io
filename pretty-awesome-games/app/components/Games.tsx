@@ -23,8 +23,8 @@ const games: Game[] = [
     description: "Build. Battle. Conquer. Dive into the next era of strategic battles.",
     image: "ecio_screenshot.png",
     platforms: {
-      ios: "https://apps.apple.com/us/app/ecio-reborn",
-      android: "https://play.google.com/store/apps/details?id=com.prettyawesomegames.ecioreborn",
+      ios: "https://apps.apple.com/us/app/ecio-reborn/id6746190261",
+      android: "https://play.google.com/store/apps/details?id=com.pag.ecioreborn",
     },
   },
 ]
