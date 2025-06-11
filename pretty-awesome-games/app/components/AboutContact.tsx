@@ -13,7 +13,7 @@ export default function AboutContact() {
             </div>
             <div className={styles.aboutText}>
               <p>
-                RedBear Studios is an indie game development studio dedicated to creating challenging, fun, and engaging
+                Pretty Awesome Games is an indie game development studio dedicated to creating challenging, fun, and engaging
                 gaming experiences. Our passion lies in crafting games that not only entertain but also build lasting
                 connections with players.
               </p>
