@@ -3,13 +3,13 @@
 @tailwind utilities;
 
 :root {
-  --text: #2c2c2c;
-  --accent: #333333;
-  --secondary: #555555;
-  --tertiary: #fafafa;
-  --button-bg: #ff6f3c;
-  --button-hover: #d15829;
-  --button-text: #ffffff;
+  --text: #2C2C2C;      
+  --accent: #333333;     
+  --secondary: #555555;   
+  --tertiary: #FAFAFA;     
+  --button-bg: #FF6F3C;   
+  --button-hover: #D15829;  
+  --button-text: #FFFFFF;  
 }
 
 * {
@@ -29,9 +29,7 @@ body {
   font-family: var(--font-lato), sans-serif;
   color: var(--text);
   line-height: 1.5;
-  /* Updated to uniform dark background that flows with the website design */
-  background: #1a1a1a;
-  background-attachment: fixed;
+  background-color: #ffffff;
 }
 
 a {
@@ -69,3 +67,4 @@ footer {
     font-size: 14px;
   }
 }
+

@@ -1,6 +1,5 @@
 .footer {
-  /* Updated footer background to match dark theme */
-  background-color: rgba(26, 26, 26, 0.95);
+  background-color: white;
   padding: 40px 0;
   position: relative;
   z-index: 1;
@@ -17,8 +16,7 @@
 
 .footer p {
   font-size: 0.9rem;
-  /* Updated footer text color to white for dark theme */
-  color: white;
+  color: var(--secondary);
 }
 
 .footer nav {
@@ -28,8 +26,7 @@
 
 .link {
   font-size: 0.9rem;
-  /* Updated link color to white for dark theme */
-  color: white;
+  color: var(--secondary);
   transition: color 0.3s ease;
   background: none;
   border: none;
@@ -38,8 +35,7 @@
 }
 
 .link:hover {
-  /* Updated hover color to match site accent */
-  color: #00d4ff;
+  color: var(--accent);
 }
 
 @media (max-width: 768px) {
@@ -49,3 +45,4 @@
     text-align: center;
   }
 }
+

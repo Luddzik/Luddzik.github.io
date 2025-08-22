@@ -22,19 +22,18 @@
 }
 
 .header h2 {
-  font-family: var(--font-poppins), sans-serif;
   font-size: 3.5rem;
   font-weight: 700;
   margin-bottom: 16px;
-  color: #ffffff;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
+  background: linear-gradient(135deg, var(--text) 0%, #666 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
 .subtitle {
   font-size: 1.25rem;
-  /* Updated subtitle color to off-white for better visual hierarchy */
-  color: #e0e0e0;
+  color: var(--secondary);
   max-width: 600px;
   margin: 0 auto;
 }
@@ -145,3 +144,4 @@
     padding: 20px;
   }
 }
+
