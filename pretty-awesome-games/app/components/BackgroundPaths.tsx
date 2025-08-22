@@ -113,4 +113,3 @@ const BackgroundPaths: React.FC = () => {
 }
 
 export default BackgroundPaths
-

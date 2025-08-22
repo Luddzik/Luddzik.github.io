@@ -11,10 +11,11 @@
 
 .games h2 {
   font-family: var(--font-poppins), sans-serif;
-  font-size: 2.5rem;
+  font-size: 3.5rem;
+  font-weight: 700;
   text-align: center;
   margin-bottom: 60px;
-  color: var(--text);
+  color: #ffffff;
   text-transform: uppercase;
   letter-spacing: 0.1em;
 }
@@ -34,6 +35,25 @@
   width: 100%;
   max-width: 500px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  /* Added relative positioning for tag placement */
+  position: relative;
+}
+
+/* Added styles for game development tag */
+.gameTag {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background-color: #ff6f3c;
+  color: white;
+  padding: 5px 12px;
+  border-radius: 15px;
+  font-family: var(--font-poppins), sans-serif;
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  z-index: 2;
 }
 
 .imageContainer {
@@ -99,13 +119,26 @@
   transform: translateY(-2px);
 }
 
+/* Added styles for coming soon message */
+.comingSoon {
+  font-family: var(--font-poppins), sans-serif;
+  color: var(--secondary);
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  text-align: center;
+  padding: 10px 15px;
+}
+
 @media (max-width: 768px) {
   .games {
     padding: 60px 0;
   }
 
+  /* Updated mobile h2 styling for consistency */
   .games h2 {
-    font-size: 2rem;
+    font-size: 2.5rem;
     margin-bottom: 40px;
   }
 
@@ -121,5 +154,10 @@
     font-size: 0.8rem;
     padding: 8px 12px;
   }
-}
 
+  /* Added responsive styles for game tag */
+  .gameTag {
+    font-size: 0.7rem;
+    padding: 4px 10px;
+  }
+}

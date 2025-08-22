@@ -70,4 +70,3 @@ const Header: React.FC<HeaderProps> = ({ showNavLinks = true }) => {
 }
 
 export default Header
-

@@ -9,14 +9,17 @@
   max-width: 800px;
   margin: 2rem auto;
   padding: 2rem;
-  background-color: rgba(255, 255, 255, 0.9);
+  /* Updated container background to match dark theme */
+  background-color: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(10px);
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
   border-radius: 20px;
 }
 
 .lastUpdated {
-  color: var(--secondary);
+  /* Updated text color to white for dark theme */
+  color: #cccccc;
   margin-bottom: 2rem;
 }
 
@@ -28,27 +31,31 @@
 .privacyPolicy h1 {
   font-size: 2.5rem;
   margin-bottom: 1rem;
-  color: var(--text);
+  /* Updated heading color to white for dark theme */
+  color: white;
 }
 
 .privacyPolicy h2 {
   font-size: 1.8rem;
   margin-top: 3rem;
   margin-bottom: 1.5rem;
-  color: var(--text);
+  /* Updated heading color to white for dark theme */
+  color: white;
 }
 
 .privacyPolicy h3 {
   font-size: 1.3rem;
   margin-top: 2rem;
   margin-bottom: 1rem;
-  color: var(--text);
+  /* Updated heading color to white for dark theme */
+  color: white;
 }
 
 .privacyPolicy p {
   margin-bottom: 1.5rem;
   line-height: 1.6;
-  color: var(--secondary);
+  /* Updated paragraph color to white for dark theme */
+  color: white;
 }
 
 .privacyPolicy ul {
@@ -60,20 +67,25 @@
 .privacyPolicy li {
   margin-bottom: 0.5rem;
   line-height: 1.6;
-  color: var(--secondary);
+  /* Updated list item color to white for dark theme */
+  color: white;
   list-style-type: circle;
 }
 
 .note {
-  background-color: rgba(245, 245, 247, 0.7);
+  /* Updated note background for dark theme */
+  background-color: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
   padding: 1.5rem;
   border-radius: 0.5rem;
   margin: 2rem 0;
-  color: var(--secondary);
+  /* Updated note text color to white for dark theme */
+  color: white;
 }
 
 .privacyPolicy a {
-  color: var(--accent);
+  /* Updated link color to match site accent */
+  color: #00d4ff;
   text-decoration: none;
 }
 
@@ -103,4 +115,3 @@
     font-size: 1.2rem;
   }
 }
-
