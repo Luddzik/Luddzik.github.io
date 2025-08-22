@@ -104,7 +104,7 @@
   font-weight: 600;
   font-size: 1.1rem;
   transition: all 0.3s ease;
-  box-shadow: 0 4px 6px rgba(255, 0, 0, 0.1);
+  box-shadow: 0 4px 6px rgba(0, 0, 255, 0.1);
   text-transform: uppercase;
   letter-spacing: 0.05em;
 }
@@ -112,7 +112,7 @@
 .cta:hover {
   background: #d10000;
   transform: translateY(-2px);
-  box-shadow: 0 6px 8px rgba(255, 0, 0, 0.2);
+  box-shadow: 0 6px 8px rgba(0, 0, 255, 0.2);
 }
 
 .scrollIndicator {
