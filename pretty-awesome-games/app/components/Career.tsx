@@ -17,7 +17,7 @@ const Career: React.FC = () => {
           <h2>Career</h2>
           <div className={styles.content}>
             <div className={styles.hiringStatus}>
-              <span className={styles.statusBadge}>🚀 Not Hiring Currently</span>
+              <span className={styles.statusBadge}>Not Hiring Currently</span>
               <p className={styles.statusMessage}>Building something amazing - stay tuned!</p>
             </div>
             <div className={styles.description}>
