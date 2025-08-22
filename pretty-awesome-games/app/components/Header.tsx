@@ -4,8 +4,8 @@ import type React from "react"
 import Link from "next/link"
 import { useState, useEffect } from "react"
 import { motion } from "framer-motion"
-import styles from "./Header.module.css"
 import Image from "next/image"
+import { Button } from "@/components/ui/button"
 
 interface HeaderProps {
   showNavLinks?: boolean
@@ -36,38 +36,60 @@ const Header: React.FC<HeaderProps> = ({ showNavLinks = true }) => {
 
   return (
     <motion.header
-      className={`${styles.header} ${isScrolled ? styles.scrolled : ""}`}
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+        isScrolled ? "bg-background/95 backdrop-blur-sm border-b border-border shadow-sm" : "bg-transparent"
+      }`}
       initial={{ opacity: 0, y: -50 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5 }}
     >
-      <div className={styles.container}>
-        <Link href="/" className={styles.logoContainer} onClick={() => scrollToSection("top")}>
-          <div>
-            <Image src="../logo_long.svg" alt="Logo" width={50} height={50} />
-          </div>
-          <div className={styles.logoText}>
-            <span className={styles.logoMainText}></span>
-          </div>
-        </Link>
-        <nav>
-          <ul className={styles.navList}>
+      <div className="container mx-auto px-6 py-4">
+        <div className="flex items-center justify-between">
+          <Link
+            href="/"
+            className="flex items-center gap-3 hover:opacity-80 transition-opacity"
+            onClick={() => scrollToSection("top")}
+          >
+            <Image src="/logo_long.png" alt="Pretty Awesome Games Logo" width={50} height={50} className="rounded-lg" />
+            <span className="font-playfair font-bold text-xl text-foreground">Pretty Awesome Games</span>
+          </Link>
+
+          <nav className="hidden md:flex items-center gap-8">
             {showNavLinks && (
               <>
-                <motion.li whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-                  <button onClick={() => scrollToSection("games")}>Games</button>
-                </motion.li>
-                <motion.li whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-                  <button onClick={() => scrollToSection("contact")}>Contact</button>
-                </motion.li>
+                <Button
+                  variant="ghost"
+                  onClick={() => scrollToSection("games")}
+                  className="text-foreground hover:text-primary font-medium"
+                >
+                  Games
+                </Button>
+                <Button
+                  variant="ghost"
+                  onClick={() => scrollToSection("about")}
+                  className="text-foreground hover:text-primary font-medium"
+                >
+                  About
+                </Button>
+                <Button
+                  variant="ghost"
+                  onClick={() => scrollToSection("contact")}
+                  className="text-foreground hover:text-primary font-medium"
+                >
+                  Contact
+                </Button>
+                <Link href="/careers">
+                  <Button variant="ghost" className="text-foreground hover:text-primary font-medium">
+                    Careers
+                  </Button>
+                </Link>
               </>
             )}
-          </ul>
-        </nav>
+          </nav>
+        </div>
       </div>
     </motion.header>
   )
 }
 
 export default Header
-
