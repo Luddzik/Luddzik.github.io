@@ -115,7 +115,7 @@
 }
 
 .button:hover {
-  background-color: #d10000;
+  background-color: linear-gradient(135deg, #00d4ff, #0099cc);
   transform: translateY(-2px);
 }
 
