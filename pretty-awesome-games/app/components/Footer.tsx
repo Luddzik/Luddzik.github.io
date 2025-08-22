@@ -31,7 +31,7 @@ const Footer: React.FC = () => {
         <p>&copy; 2025 PrettyAwesomeGames. All rights reserved.</p>
         <Link href="/" className={styles.logoContainer} onClick={() => scrollToSection("top")}>
           <div>
-            <Image src="../logo_long.svg" alt="Logo" width={64} height={64} />
+            <Image src="../logo_long.png" alt="Logo" width={64} height={64} />
           </div>
         </Link>
         <nav>
