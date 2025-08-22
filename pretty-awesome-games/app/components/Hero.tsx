@@ -1,10 +1,11 @@
 "use client"
 
-import type React from "react"
+import React from "react"
 import { motion } from "framer-motion"
 import { FaChevronDown } from "react-icons/fa"
 import styles from "./Hero.module.css"
 import Image from "next/image"
+import Link from "next/link"
 
 const Hero: React.FC = () => {
   const scrollToNextSection = () => {
