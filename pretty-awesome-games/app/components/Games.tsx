@@ -10,6 +10,7 @@ interface Game {
   title: string
   description: string
   image: string
+  tag?: string
   platforms: {
     ios?: string
     android?: string
@@ -27,6 +28,14 @@ const games: Game[] = [
       android: "https://play.google.com/store/apps/details?id=com.pag.ecioreborn",
     },
   },
+  {
+    id: 2,
+    title: "Hollow Brawls",
+    description: "An intense multiplayer brawler with unique characters and dynamic combat.",
+    image: "/hollow-brawls-icon.png",
+    tag: "In Development",
+    platforms: {},
+  },
 ]
 
 const Games: React.FC = () => {
@@ -37,6 +46,7 @@ const Games: React.FC = () => {
         <div className={styles.gameList}>
           {games.map((game) => (
             <motion.div key={game.id} className={styles.gameCard} whileHover={{ y: -10 }}>
+              {game.tag && <div className={styles.gameTag}>{game.tag}</div>}
               <div className={styles.imageContainer}>
                 <img src={game.image || "/placeholder.svg"} alt={game.title} />
               </div>
@@ -53,6 +63,7 @@ const Games: React.FC = () => {
                     <FaAndroid /> Play Store
                   </a>
                 )}
+                {!game.platforms.ios && !game.platforms.android && <div className={styles.comingSoon}>Coming Soon</div>}
               </div>
             </motion.div>
           ))}
@@ -63,4 +74,3 @@ const Games: React.FC = () => {
 }
 
 export default Games
-
