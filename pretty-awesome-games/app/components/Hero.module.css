@@ -99,7 +99,8 @@
   font-family: var(--font-poppins), sans-serif;
   display: inline-block;
   padding: 1rem 2rem;
-  background: linear-gradient(135deg, #00d4ff, #0099cc);
+/*  background: linear-gradient(135deg, #00d4ff, #0099cc);*/
+  background-color: var(--accent);
   color: white;
   border: none;
   border-radius: 50px;
