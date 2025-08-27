@@ -28,6 +28,15 @@ const Hero: React.FC = () => {
           <div className="styles.logo">
             <Image src="../logo_long.png" alt="Logo" width={400} height={312} />
           </div>
+          
+          <motion.h2
+            className={styles.subtitle}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.5 }}
+          >
+            "Play it. Share it. Love it."
+          </motion.h2>
         
           <motion.button
             className={styles.cta}
