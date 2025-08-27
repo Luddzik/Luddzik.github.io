@@ -35,7 +35,7 @@ const Hero: React.FC = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.5 }}
           >
-            "Play it. Share it. Love it."
+            Making Games We Want to Play!
           </motion.h2>
         
           <motion.button
