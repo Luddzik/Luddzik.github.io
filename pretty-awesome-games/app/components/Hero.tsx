@@ -26,7 +26,7 @@ const Hero: React.FC = () => {
           className={styles.content}
         >
           <div className="styles.logo">
-            <Image src="../logo_long.png" alt="Logo" width={275} height={275} />
+            <Image src="../logo_long.png" alt="Logo" width={350} height={350} />
           </div>
           
           <motion.h2
