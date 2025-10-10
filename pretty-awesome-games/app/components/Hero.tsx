@@ -25,7 +25,7 @@ const Hero: React.FC = () => {
           transition={{ duration: 0.8, delay: 0.2 }}
           className={styles.content}
         >
-          <div className="styles.logo">
+          <div className={styles.logo}>
             <Image src="../logo_long.png" alt="Logo" width={350} height={350} />
           </div>
           
