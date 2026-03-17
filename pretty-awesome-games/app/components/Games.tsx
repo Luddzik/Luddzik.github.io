@@ -20,6 +20,16 @@ interface Game {
 const games: Game[] = [
   {
     id: 1,
+    title: "ศึกนักตอบ",
+    description: "คิดเร็ว ตอบไว คว้าชัยชนะ",
+    image: "tt_screenshot.png",
+    platforms: {
+      ios: "https://apps.apple.com/us/app/%E0%B8%A8-%E0%B8%81%E0%B8%99-%E0%B8%81%E0%B8%95%E0%B8%AD%E0%B8%9A/id6748660944",
+      android: "https://play.google.com/store/apps/details?id=com.pag.tt",
+    },
+  },
+  {
+    id: 2,
     title: "ECIO Reborn",
     description: "Build. Battle. Conquer. Dive into the next era of strategic battles.",
     image: "ecio_screenshot.png",
@@ -29,9 +39,9 @@ const games: Game[] = [
     },
   },
   {
-    id: 2,
-    title: "Hollow Brawls",
-    description: "An intense multiplayer brawler with unique characters and dynamic combat.",
+    id: 3,
+    title: "Cozy Ruins",
+    description: "More information coming soon.",
     image: "/hollow-brawls-icon.png",
     tag: "In Development",
     platforms: {},
