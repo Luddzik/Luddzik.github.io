@@ -101,7 +101,7 @@ export default function PrivacyPolicy() {
               For <strong>Most Said</strong>, this happens <em>only</em> when you join a Private Room.
               Solo play and Quick Match run entirely inside your browser against simulated opponents
               and send nothing anywhere. The server is{" "}
-              <code>hive-mind-rooms.ludwik-bacmaga.workers.dev</code>, running on Cloudflare Workers
+              <code>most-said-rooms.ludwik-bacmaga.workers.dev</code>, running on Cloudflare Workers
               and Durable Objects, reached over an encrypted connection. While you are in a room it
               relays your display name and character choice, your score and how many answers you have
               found, how many questions you have finished, and the four-character room code.
