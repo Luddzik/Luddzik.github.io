@@ -222,3 +222,10 @@
 [INFO] 2026-08-04T09:31:48.562Z [session=0182e44f-71b8-4b20-aa35-2d70efcbeab9] Resolved stateDir: /Users/ludi/.a5c/state
 [INFO] 2026-08-04T09:31:48.562Z [session=0182e44f-71b8-4b20-aa35-2d70efcbeab9] Checking session file at: /Users/ludi/.a5c/state/0182e44f-71b8-4b20-aa35-2d70efcbeab9.md
 [INFO] 2026-08-04T09:31:48.563Z [session=0182e44f-71b8-4b20-aa35-2d70efcbeab9] No active loop found for session 0182e44f-71b8-4b20-aa35-2d70efcbeab9 — allowing exit
+[INFO] 2026-08-04T09:58:03.126Z handleHookRunStop started
+[INFO] 2026-08-04T09:58:03.128Z Hook input received
+[INFO] 2026-08-04T09:58:03.129Z [session=0182e44f-71b8-4b20-aa35-2d70efcbeab9] Session ID: 0182e44f-71b8-4b20-aa35-2d70efcbeab9
+[INFO] 2026-08-04T09:58:03.129Z [session=0182e44f-71b8-4b20-aa35-2d70efcbeab9] Resolved pluginRoot: /Users/ludi/.claude/plugins/cache/a5c-ai/babysitter/4.0.157
+[INFO] 2026-08-04T09:58:03.129Z [session=0182e44f-71b8-4b20-aa35-2d70efcbeab9] Resolved stateDir: /Users/ludi/.a5c/state
+[INFO] 2026-08-04T09:58:03.129Z [session=0182e44f-71b8-4b20-aa35-2d70efcbeab9] Checking session file at: /Users/ludi/.a5c/state/0182e44f-71b8-4b20-aa35-2d70efcbeab9.md
+[INFO] 2026-08-04T09:58:03.129Z [session=0182e44f-71b8-4b20-aa35-2d70efcbeab9] No active loop found for session 0182e44f-71b8-4b20-aa35-2d70efcbeab9 — allowing exit

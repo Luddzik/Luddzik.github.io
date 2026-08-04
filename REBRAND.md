@@ -721,3 +721,65 @@ intent rather than the mechanism — if it should actually be served, move it to
 Email on the new domain (§ the Porkbun-vs-Workspace decision), then update
 `CONTACT_EMAIL` in `brand.ts` if the address ends up as anything other than
 `contact@`.
+
+---
+
+## 15. Performance fix and Games redesign — 2026-08-04
+
+### The page was janky, and it was my fault
+
+Founder reported it as "extremely laggy". Profiled the **production** build (dev
+mode overstates everything) with frame-time sampling rather than guessing.
+
+| Scenario | Before | After |
+|---|---|---|
+| Idle | 10.9 ms avg | 8.33 ms |
+| **Scrolling** | 12.6 ms avg, p95 **25.1 ms**, worst 34 ms, **19% of frames over budget** | 8.33 ms avg, p95 9.3 ms, **0 frames over budget** |
+| Pointer moving | 11.1 ms avg | 8.34 ms |
+
+Isolation test settled it immediately: hiding the ember canvas restored a locked
+120 fps with zero dropped frames, and disabling the header's `backdrop-filter`
+changed nothing. The canvas was the entire problem.
+
+**Root cause: `ctx.shadowBlur` set per particle.** Canvas shadow blur runs a full
+gaussian per draw call — with ~40 particles that is 40 blurs every frame.
+
+Fixes, in order of impact:
+
+1. **Pre-rendered glow sprites** blitted with `drawImage`, replacing `shadowBlur`
+   entirely. Same look, a fraction of the work.
+2. **The heat pool is a sprite too** — no more `createRadialGradient` per frame.
+3. **CSS `mask-image` removed from the canvas.** Masking a full-viewport layer
+   every frame is a compositing cost; the vertical fade is folded into each
+   particle's alpha in JS instead.
+4. **Backing store capped at 1.5× DPR.** It's a soft glow, not type — full retina
+   density doubled fill cost for no visible gain (2732×1514 → 2049×1136).
+5. **Particle count scales with viewport area** (one per ~26 000 px²), so phones
+   get a handful rather than 38.
+6. **Canvas rect cached**, refreshed on scroll/resize — `pointermove` no longer
+   forces a layout on every event.
+
+These are now written into `CLAUDE.md` as rules, because every one of them is easy
+to reintroduce by accident.
+
+### Games section: ruled index, not cards
+
+Founder: *"show it horizontally with attractive separator, make it somewhat unique
+and modern and not traditional square boxes."*
+
+The bordered cards are gone. Each game is now a full-width row —
+**icon · copy · metadata** — divided by a hairline that is **already partly burnt
+through** in ignition orange, with an ember sitting on the burn. Hovering a row
+burns the rest of that rule across and the ember rides to the end.
+
+This is the header's fuse applied to a list, so the section reuses the site's own
+vocabulary rather than importing a new effect. The separator carries the
+interaction, which is what replaces the card lifting off the page.
+
+Metadata moved to a right-hand column (label left, value right, hairline between)
+so the row genuinely reads across the full width. Below 1000px the metadata drops
+under the copy; below 620px everything stacks. Verified at 390px: single column,
+no horizontal overflow, icon → copy → metadata order.
+
+The burn uses `transform: scaleX` so it never touches layout; only the 6px ember
+animates `left`, and only on hover.

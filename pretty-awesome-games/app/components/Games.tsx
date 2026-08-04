@@ -7,13 +7,13 @@ import section from "./Section.module.css"
 import styles from "./Games.module.css"
 
 /**
- * Both cards lead with the game's own app icon, staged the way a store listing
- * shows one. The blurred copy behind it is the icon's own colour bleeding onto
- * the panel — each game's palette, not the site's, and no CSS gradient involved.
+ * Each entry leads with the game's own app icon, lit by a blurred copy of itself
+ * so the game's palette bleeds onto the page — its colour, not the site's, and
+ * no CSS gradient involved.
  *
- * Icons rather than screenshots because key art varies wildly in shape from
- * game to game; icons are square, so the lineup reads as one system however
- * many titles end up here.
+ * Icons rather than screenshots because key art varies wildly in shape from game
+ * to game; icons are square, so the lineup reads as one system however many
+ * titles end up here.
  */
 const IconArt: React.FC<{ src: string; alt: string }> = ({ src, alt }) => (
   <div className={styles.iconStage}>
@@ -71,27 +71,40 @@ const Games: React.FC = () => {
           What we&rsquo;re building
         </SectionHeading>
 
+        {/*
+          A ruled index, not a stack of boxes. Each entry is a full-width row
+          divided by a hairline that is already partly burnt through in ignition
+          orange — the header's fuse, applied to a list. Hovering a row burns the
+          rest of its rule across, so the separator is the interaction rather
+          than a card lifting off the page.
+        */}
         <div className={styles.list}>
           {games.map((game, i) => (
             <motion.article
               key={game.id}
-              className={styles.card}
-              initial={reduceMotion ? false : { opacity: 0, y: 26 }}
+              className={styles.row}
+              initial={reduceMotion ? false : { opacity: 0, y: 24 }}
               whileInView={{ opacity: 1, y: 0 }}
-              whileHover={reduceMotion ? undefined : { y: -5 }}
               viewport={{ once: true, margin: "-60px" }}
               transition={{ duration: 0.6, delay: i * 0.1, ease: [0.16, 1, 0.3, 1] }}
             >
-              <div className={styles.art}>{game.art}</div>
+              <div className={styles.rule} aria-hidden="true">
+                <span className={styles.ruleBurn} />
+                <span className={styles.ruleEmber} />
+              </div>
 
-              <div className={styles.body}>
-                <h3 className={styles.title}>{game.title}</h3>
-                <p className={styles.tagline}>{game.tagline}</p>
-                <p className={styles.description}>{game.description}</p>
+              <div className={styles.entry}>
+                <div className={styles.art}>{game.art}</div>
+
+                <div className={styles.body}>
+                  <h3 className={styles.title}>{game.title}</h3>
+                  <p className={styles.tagline}>{game.tagline}</p>
+                  <p className={styles.description}>{game.description}</p>
+                </div>
 
                 <dl className={styles.meta}>
                   {game.meta.map((item) => (
-                    <div key={item.label}>
+                    <div key={item.label} className={styles.metaItem}>
                       <dt>{item.label}</dt>
                       <dd>{item.value}</dd>
                     </div>
@@ -100,6 +113,12 @@ const Games: React.FC = () => {
               </div>
             </motion.article>
           ))}
+
+          {/* Closes the list, so the last entry sits inside the ruling too. */}
+          <div className={styles.rule} aria-hidden="true">
+            <span className={styles.ruleBurn} />
+            <span className={styles.ruleEmber} />
+          </div>
         </div>
       </div>
     </section>

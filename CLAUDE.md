@@ -59,6 +59,14 @@ Case is deliberate: the hero claim and card titles are uppercase (short enough t
 
 **Signature element:** `app/components/SparkDot.tsx` reuses that ember as punctuation — before every section eyebrow, as the full stop after every section heading. It's what carries the brand past the header.
 
+**Games section** is a **ruled index, not cards.** No boxes, borders or panel backgrounds — full-width rows (icon · copy · metadata) divided by hairlines that are already partly burnt through in ignition orange, with an ember sitting on the burn. Hovering a row burns the rest of its rule across, so the separator *is* the interaction. This is the header's fuse applied to a list; keep it that way rather than reintroducing card chrome.
+
+**Canvas performance rules** (`Embers.tsx`) — all measured, not guessed. Breaking any of these took the page from a locked 120fps to dropping 20% of frames during scroll:
+- **Never use `ctx.shadowBlur`.** It runs a full gaussian per draw call. Glow comes from pre-rendered sprites blitted with `drawImage`.
+- **Never call `createRadialGradient` per frame.** The heat pool is a sprite too.
+- **No CSS `mask-image` on the canvas.** Masking a full-viewport layer costs a compositing pass every frame; fold fades into particle alpha instead.
+- Backing store is capped at 1.5× DPR, and particle count scales with viewport area.
+
 **Section headings:** `app/components/SectionHeading.tsx` renders eyebrow + heading + ember full stop for Games, Studio and Contact. Reveal timing lives there, not in the sections — change it once and every section stays in rhythm.
 
 **Motion.** Framer Motion for anything scroll- or state-driven; plain CSS keyframes for anything that only needs to run on mount (they need no client boundary and cost no JS). Every animation has a `prefers-reduced-motion: reduce` escape.

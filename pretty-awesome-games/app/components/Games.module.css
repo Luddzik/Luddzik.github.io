@@ -4,54 +4,70 @@
 }
 
 .heading {
-  margin-bottom: 64px;
+  margin-bottom: 56px;
 }
 
 .list {
   display: flex;
   flex-direction: column;
-  gap: 28px;
 }
 
-/* Wide horizontal cards — two projects don't need a grid pretending to be many. */
-.card {
+/* --- the separator: the header's fuse, applied to a list --- */
+.rule {
+  position: relative;
+  height: 1px;
+  background-color: var(--rule);
+}
+
+/*
+ * Every rule starts already burnt through a little way, so the ember reads as
+ * mid-travel rather than parked. Hovering the row burns the rest of it across.
+ * scaleX so the burn itself never touches layout.
+ */
+.ruleBurn {
+  position: absolute;
+  inset: 0;
+  background-color: var(--spark);
+  transform: scaleX(0.055);
+  transform-origin: left center;
+  transition: transform 0.65s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.ruleEmber {
+  position: absolute;
+  top: 50%;
+  left: 5.5%;
+  width: 6px;
+  height: 6px;
+  margin: -3px 0 0 -3px;
+  border-radius: 50%;
+  background-color: var(--spark-warm);
+  box-shadow: 0 0 10px 1px rgba(255, 90, 31, 0.85);
+  transition: left 0.65s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.row:hover .ruleBurn {
+  transform: scaleX(1);
+}
+
+.row:hover .ruleEmber {
+  left: 100%;
+}
+
+/* --- the entry itself: no box, no border, just the ruling --- */
+.entry {
   display: grid;
-  grid-template-columns: 1.05fr 1fr;
-  background-color: var(--raised);
-  border: 1px solid var(--rule);
-  border-radius: var(--r-md);
-  overflow: hidden;
-  transition: border-color 0.35s ease, background-color 0.35s ease;
-}
-
-/* Alternate which side the art sits on, so two cards read as a spread. */
-.card:nth-child(even) {
-  grid-template-columns: 1fr 1.05fr;
-}
-
-.card:nth-child(even) .art {
-  grid-column: 2;
-  grid-row: 1;
-}
-
-.card:nth-child(even) .body {
-  grid-column: 1;
-  grid-row: 1;
-}
-
-.card:hover {
-  border-color: rgba(255, 90, 31, 0.42);
-  background-color: #191920;
+  grid-template-columns: 168px minmax(0, 1fr) minmax(190px, 230px);
+  align-items: center;
+  gap: 56px;
+  padding: 44px 0 48px;
 }
 
 .art {
   position: relative;
-  aspect-ratio: 16 / 10;
-  overflow: hidden;
-  background-color: var(--sunken);
+  aspect-ratio: 1;
 }
 
-/* --- app icon staged on the panel, shared by both cards --- */
 .iconStage {
   position: relative;
   width: 100%;
@@ -59,145 +75,165 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: var(--sunken);
 }
 
-/* Blurred copy of the icon — its own colour lighting the panel it sits on. */
+/* The icon's own colour bleeding onto the page — no bounding panel. */
 .iconBloom {
   position: absolute;
   top: 50%;
   left: 50%;
-  width: 62%;
+  width: 100%;
   aspect-ratio: 1;
-  transform: translate(-50%, -50%) scale(1.45);
-  filter: blur(52px);
-  opacity: 0.36;
-  /* Fade the bleed out well before the panel edges, so the corners stay
-     near-black instead of going muddy. */
-  mask-image: radial-gradient(circle at 50% 50%, #000 24%, transparent 64%);
-  -webkit-mask-image: radial-gradient(circle at 50% 50%, #000 24%, transparent 64%);
+  transform: translate(-50%, -50%) scale(1.5);
+  filter: blur(38px);
+  opacity: 0.42;
+  mask-image: radial-gradient(circle at 50% 50%, #000 22%, transparent 68%);
+  -webkit-mask-image: radial-gradient(circle at 50% 50%, #000 22%, transparent 68%);
   pointer-events: none;
-  transition: opacity 0.6s ease, transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+  transition: opacity 0.5s ease;
 }
 
 .icon {
   position: relative;
-  width: 43%;
-  max-width: 190px;
+  width: 100%;
   height: auto;
   aspect-ratio: 1;
   border-radius: 23%;
-  box-shadow: 0 18px 44px -14px rgba(0, 0, 0, 0.75);
-  transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+  box-shadow: 0 18px 44px -16px rgba(0, 0, 0, 0.8);
+  transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-.card:hover .icon {
+.row:hover .icon {
   transform: scale(1.05) rotate(-1.5deg);
 }
 
-.card:hover .iconBloom {
-  opacity: 0.58;
-  transform: translate(-50%, -50%) scale(1.62);
+.row:hover .iconBloom {
+  opacity: 0.6;
 }
 
-/* --- card body --- */
-.body {
-  padding: 42px 44px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-
+/* --- copy --- */
 .title {
-  font-size: clamp(1.5rem, 2.4vw, 1.95rem);
+  font-size: clamp(1.5rem, 2.6vw, 2.1rem);
   text-transform: uppercase;
-  letter-spacing: -0.012em;
+  letter-spacing: -0.014em;
   margin-bottom: 12px;
 }
 
 /* Accent line — weight and colour, no italic serif. */
 .tagline {
   font-family: var(--font-ui);
-  font-size: 0.86rem;
+  font-size: 0.84rem;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.14em;
   color: var(--spark);
-  margin-bottom: 20px;
+  margin-bottom: 18px;
 }
 
 .description {
   color: var(--ink-dim);
   font-size: 1rem;
   line-height: 1.65;
-  margin-bottom: 30px;
-  max-width: 46ch;
+  max-width: 44ch;
 }
 
+/* --- metadata, held to the right so the row reads across the full width --- */
 .meta {
   display: flex;
-  gap: 48px;
-  padding-top: 22px;
-  border-top: 1px solid var(--rule);
+  flex-direction: column;
+  gap: 16px;
+}
+
+.metaItem {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 16px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid var(--rule-soft);
+}
+
+.metaItem:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
 }
 
 .meta dt {
   font-family: var(--font-ui);
-  font-size: 0.68rem;
+  font-size: 0.64rem;
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.2em;
   color: var(--ink-faint);
-  margin-bottom: 6px;
 }
 
 .meta dd {
-  font-size: 0.95rem;
+  font-size: 0.92rem;
+  font-weight: 500;
   color: var(--ink);
+  text-align: right;
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .card,
+  .ruleBurn,
+  .ruleEmber,
   .icon,
   .iconBloom {
     transition: none;
   }
 
-  .card:hover .icon {
+  .row:hover .icon {
     transform: none;
   }
 }
 
-@media (max-width: 900px) {
+@media (max-width: 1000px) {
+  .entry {
+    grid-template-columns: 132px minmax(0, 1fr);
+    gap: 36px;
+    padding: 36px 0 40px;
+  }
+
+  .meta {
+    grid-column: 1 / -1;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 0 40px;
+  }
+
+  .metaItem {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 5px;
+    border-bottom: none;
+    padding-bottom: 0;
+  }
+
+  .meta dd {
+    text-align: left;
+  }
+}
+
+@media (max-width: 620px) {
   .games {
     padding: 88px 0;
   }
 
-  .card,
-  .card:nth-child(even) {
-    grid-template-columns: 1fr;
-  }
-
-  /* Single column — art always leads, so drop the alternating placement. */
-  .card:nth-child(even) .art,
-  .card:nth-child(even) .body {
-    grid-column: auto;
-    grid-row: auto;
-  }
-
-  .body {
-    padding: 30px 26px 34px;
-  }
-
   .heading {
-    margin-bottom: 44px;
+    margin-bottom: 40px;
   }
 
-  .icon {
-    width: 40%;
+  .entry {
+    grid-template-columns: 1fr;
+    gap: 26px;
+    padding: 32px 0 36px;
   }
 
-  .meta {
-    gap: 32px;
+  .art {
+    width: 108px;
+  }
+
+  .description {
+    max-width: 100%;
   }
 }
