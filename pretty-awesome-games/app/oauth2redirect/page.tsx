@@ -1,13 +1,11 @@
 import Header from "../components/Header"
 import Footer from "../components/Footer"
-import BackgroundPaths from "../components/BackgroundPaths"
 import styles from "./oauth2redirect.module.css"
 
 export default function Oauth2Redirect() {
   return (
     <>
       <Header showNavLinks={false} />
-      <BackgroundPaths />
       <main className={styles.privacyPolicy} id="top">
         <div className={styles.container}>
           <h1>Privacy Policy</h1>
@@ -16,7 +14,7 @@ export default function Oauth2Redirect() {
           <p className={styles.intro}>Thank you for playing our games!</p>
 
           <p>
-            This Privacy Policy applies to all of Pretty Awesome Games, websites, stores, and related services (collectively referred to as the "Service"). We may occasionally update this Privacy Policy by posting a revised version on prettyawesomegames.com. If we make any significant changes, we will notify you in accordance with applicable laws, which may include placing a notice within the Service before the update becomes effective. Your continued use of the Service after the effective date signifies your agreement to the updated Privacy Policy.
+            This Privacy Policy applies to all of Iskra Games, websites, stores, and related services (collectively referred to as the &ldquo;Service&rdquo;). We may occasionally update this Privacy Policy by posting a revised version on iskragames.com. If we make any significant changes, we will notify you in accordance with applicable laws, which may include placing a notice within the Service before the update becomes effective. Your continued use of the Service after the effective date signifies your agreement to the updated Privacy Policy.
           </p>
 
           <section>
@@ -73,7 +71,7 @@ export default function Oauth2Redirect() {
             <p>We may disclose your information if required to do so by law or in response to valid legal requests by public authorities.</p>
 
             <h3>c. Business Transfers</h3>
-            <p>If Pretty Awesome Games undergoes a merger, acquisition, or asset sale, your information may be transferred as part of that transaction. You will be notified of any such change.</p>
+            <p>If Iskra Games undergoes a merger, acquisition, or asset sale, your information may be transferred as part of that transaction. You will be notified of any such change.</p>
           </section>
 
           <section>
@@ -98,12 +96,12 @@ export default function Oauth2Redirect() {
               <li>Portability: Request the transfer of your data to another service.</li>
               <li>Withdraw Consent: Withdraw consent for processing where applicable.</li>
             </ul>
-            <p>To exercise these rights, please contact us at <a href="mailto:contact@prettyawesomegames.com">contact@prettyawesomegames.com</a>. We will respond in accordance with applicable laws.</p>
+            <p>To exercise these rights, please contact us at <a href="mailto:contact@iskragames.com">contact@iskragames.com</a>. We will respond in accordance with applicable laws.</p>
           </section>
 
           <section>
-            <h2>8. Children's Privacy</h2>
-            <p>Our Service is not intended for children under 13 years old (or the minimum age in your jurisdiction). We do not knowingly collect personal data from children. If you believe we have collected data from a child under this age, please contact us at <a href="mailto:contact@prettyawesomegames.com">contact@prettyawesomegames.com</a>, and we will take steps to delete it.</p>
+            <h2>8. Children&rsquo;s Privacy</h2>
+            <p>Our Service is not intended for children under 13 years old (or the minimum age in your jurisdiction). We do not knowingly collect personal data from children. If you believe we have collected data from a child under this age, please contact us at <a href="mailto:contact@iskragames.com">contact@iskragames.com</a>, and we will take steps to delete it.</p>
           </section>
 
           <section>
@@ -126,12 +124,12 @@ export default function Oauth2Redirect() {
             <p>If you have any questions, concerns, or requests regarding this Privacy Policy, you can reach us at:</p>
             <div className={styles.note}>
               <p>
-                <b>Pretty Awesome Games</b><br />
-                <b>Email:</b> <a href="mailto:contact@prettyawesomegames.com">contact@prettyawesomegames.com</a><br />
-                <b>Website:</b> <a href="https://prettyawesomegames.com">https://prettyawesomegames.com</a>
+                <b>Iskra Games</b><br />
+                <b>Email:</b> <a href="mailto:contact@iskragames.com">contact@iskragames.com</a><br />
+                <b>Website:</b> <a href="https://iskragames.com">https://iskragames.com</a>
               </p>
             </div>
-            <p>Thank you for playing our games and trusting Pretty Awesome Games!</p>
+            <p>Thank you for playing our games and trusting Iskra Games!</p>
           </section>
         </div>
       </main>

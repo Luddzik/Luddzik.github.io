@@ -1,0 +1,5 @@
+/* The ember as a full stop after the section heading. */
+.stop {
+  margin-left: 0.12em;
+  vertical-align: baseline;
+}

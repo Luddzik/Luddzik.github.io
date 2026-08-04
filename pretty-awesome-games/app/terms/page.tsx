@@ -14,8 +14,8 @@ export default function Terms() {
           <section>
             <h2>1. Acceptance of Terms</h2>
             <p>
-              By accessing or using the games, websites, stores, and related services provided by Pretty Awesome Games
-              (collectively, the "Service"), you agree to be bound by these Terms of Service ("Terms"). If you do not
+              By accessing or using the games, websites, stores, and related services provided by Iskra Games
+              (collectively, the &ldquo;Service&rdquo;), you agree to be bound by these Terms of Service (&ldquo;Terms&rdquo;). If you do not
               agree to these Terms, you must discontinue your use of the Service immediately. We reserve the right to
               modify these Terms at any time by posting updated Terms on our website or within the Service. Your
               continued use of the Service after the effective date of any changes constitutes your acceptance of those
@@ -42,7 +42,7 @@ export default function Terms() {
             <h2>3. License Grant</h2>
             <h3>3.1 Limited License</h3>
             <p>
-              Subject to your compliance with these Terms, Pretty Awesome Games grants you a non-exclusive,
+              Subject to your compliance with these Terms, Iskra Games grants you a non-exclusive,
               non-transferable, revocable, limited license to access and use the Service solely for your personal,
               non-commercial entertainment purposes.
             </p>
@@ -67,13 +67,13 @@ export default function Terms() {
             <h3>4.1 Ownership</h3>
             <p>
               All content, features, and functionality of the Service—including but not limited to software, text,
-              graphics, logos, and trademarks—are owned by Pretty Awesome Games or its licensors and are protected by
+              graphics, logos, and trademarks—are owned by Iskra Games or its licensors and are protected by
               intellectual property laws.
             </p>
             <h3>4.2 User-Generated Content</h3>
             <p>
-              Any content you create, upload, or share through the Service ("User Content") remains your property.
-              However, by providing User Content, you grant Pretty Awesome Games a worldwide, non-exclusive,
+              Any content you create, upload, or share through the Service (&ldquo;User Content&rdquo;) remains your property.
+              However, by providing User Content, you grant Iskra Games a worldwide, non-exclusive,
               royalty-free, irrevocable, transferable, and sub-licensable license to use, display, reproduce, modify,
               distribute, and otherwise exploit your User Content in connection with the Service. You represent and
               warrant that you have all necessary rights to grant this license and that your User Content does not
@@ -104,7 +104,7 @@ export default function Terms() {
             <h3>6.1 Virtual Items</h3>
             <p>
               The Service may allow the purchase of virtual currency, goods, or other in-game items (collectively
-              "Virtual Items"). These Virtual Items have no real-world monetary value and cannot be sold, transferred,
+              &ldquo;Virtual Items&rdquo;). These Virtual Items have no real-world monetary value and cannot be sold, transferred,
               or exchanged for cash or any other goods or services outside the Service.
             </p>
             <h3>6.2 Payment and Refunds</h3>
@@ -133,13 +133,13 @@ export default function Terms() {
             <p>
               You are responsible for maintaining the confidentiality of your account credentials and for any activity
               that occurs under your account. If you suspect any unauthorized use of your account, you must notify us
-              immediately at <a href="mailto:contact@prettyawesomegames.com">contact@prettyawesomegames.com</a>.
+              immediately at <a href="mailto:contact@iskragames.com">contact@iskragames.com</a>.
             </p>
           </section>
 
           <section>
             <h2>8. Termination</h2>
-            <h3>8.1 Termination by Pretty Awesome Games</h3>
+            <h3>8.1 Termination by Iskra Games</h3>
             <p>
               We reserve the right to suspend or terminate your access to the Service at any time and for any reason,
               including but not limited to your violation of these Terms or any other policies.
@@ -153,10 +153,10 @@ export default function Terms() {
 
           <section>
             <h2>9. Disclaimer of Warranties</h2>
-            <h3>9.1 "As Is" Basis</h3>
+            <h3>9.1 &ldquo;As Is&rdquo; Basis</h3>
             <p>
-              The Service is provided on an "AS IS" and "AS AVAILABLE" basis without warranties of any kind. To the
-              fullest extent permitted by law, Pretty Awesome Games disclaims all warranties, express or implied,
+              The Service is provided on an &ldquo;AS IS&rdquo; and &ldquo;AS AVAILABLE&rdquo; basis without warranties of any kind. To the
+              fullest extent permitted by law, Iskra Games disclaims all warranties, express or implied,
               including but not limited to implied warranties of merchantability, fitness for a particular purpose, and
               non-infringement.
             </p>
@@ -170,10 +170,10 @@ export default function Terms() {
           <section>
             <h2>10. Limitation of Liability</h2>
             <p>
-              To the fullest extent permitted by law, Pretty Awesome Games shall not be liable for any indirect,
+              To the fullest extent permitted by law, Iskra Games shall not be liable for any indirect,
               incidental, special, consequential, or punitive damages arising out of or related to your use of the
               Service, including but not limited to loss of revenue, loss of data, or loss of goodwill. In no event
-              shall Pretty Awesome Games's total liability to you exceed the amounts paid by you (if any) for the
+              shall Iskra Games&rsquo; total liability to you exceed the amounts paid by you (if any) for the
               Service in the six (6) months preceding the event giving rise to such liability.
             </p>
           </section>
@@ -181,9 +181,9 @@ export default function Terms() {
           <section>
             <h2>11. Indemnification</h2>
             <p>
-              You agree to indemnify, defend, and hold harmless Pretty Awesome Games and its affiliates, officers,
+              You agree to indemnify, defend, and hold harmless Iskra Games and its affiliates, officers,
               employees, agents, and licensors from and against any claims, liabilities, damages, judgments, awards,
-              losses, costs, or expenses (including reasonable attorneys' fees) arising out of or relating to your
+              losses, costs, or expenses (including reasonable attorneys&rsquo; fees) arising out of or relating to your
               violation of these Terms or your use of the Service.
             </p>
           </section>
@@ -193,7 +193,7 @@ export default function Terms() {
             <h3>12.1 Governing Law</h3>
             <p>
               These Terms and any dispute arising hereunder shall be governed by and construed in accordance with the
-              laws of the jurisdiction in which Pretty Awesome Games is registered, without regard to its conflict of
+              laws of the jurisdiction in which Iskra Games is registered, without regard to its conflict of
               law provisions.
             </p>
             <h3>12.2 Arbitration</h3>
@@ -216,8 +216,8 @@ export default function Terms() {
             <p>
               Certain U.S. states (e.g., California) may grant you additional rights under state-specific consumer
               protection, privacy, or other laws. For example, residents of California may be entitled to certain
-              disclosures about data collection or usage under the California Consumer Privacy Act ("CCPA") or
-              California Privacy Rights Act ("CPRA"). We comply with these state-level legal requirements to the extent
+              disclosures about data collection or usage under the California Consumer Privacy Act (&ldquo;CCPA&rdquo;) or
+              California Privacy Rights Act (&ldquo;CPRA&rdquo;). We comply with these state-level legal requirements to the extent
               they apply to our operations.
             </p>
             <h3>13.2 EU Consumer Protections</h3>
@@ -229,7 +229,7 @@ export default function Terms() {
               <li>
                 Additionally, if you access the Service from within the European Economic Area (EEA), Switzerland, or
                 the United Kingdom, you may have rights under data protection regulations like the General Data
-                Protection Regulation ("GDPR"). We will respect these rights in accordance with applicable law.
+                Protection Regulation (&ldquo;GDPR&rdquo;). We will respect these rights in accordance with applicable law.
               </li>
             </ul>
             <h3>13.3 Other Territories</h3>
@@ -278,7 +278,7 @@ export default function Terms() {
             <h3>15.4 Entire Agreement</h3>
             <p>
               These Terms and any additional policies or guidelines we provide regarding the Service constitute the
-              entire agreement between you and Pretty Awesome Games and supersede all prior agreements, whether written
+              entire agreement between you and Iskra Games and supersede all prior agreements, whether written
               or oral, with respect to the Service.
             </p>
           </section>
@@ -288,11 +288,11 @@ export default function Terms() {
             <p>If you have any questions or concerns about these Terms, please contact us at:</p>
             <div className={styles.note}>
               <p>
-                <b>Pretty Awesome Games</b>
+                <b>Iskra Games</b>
                 <br />
-                <b>Email:</b> <a href="mailto:contact@prettyawesomegames.com">contact@prettyawesomegames.com</a>
+                <b>Email:</b> <a href="mailto:contact@iskragames.com">contact@iskragames.com</a>
                 <br />
-                <b>Website:</b> <a href="https://prettyawesomegames.com">https://prettyawesomegames.com</a>
+                <b>Website:</b> <a href="https://iskragames.com">https://iskragames.com</a>
               </p>
             </div>
           </section>

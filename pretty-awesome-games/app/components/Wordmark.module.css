@@ -1,0 +1,215 @@
+.wordmark {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: calc(var(--mark-size) * 0.06);
+  user-select: none;
+  line-height: 1;
+}
+
+/* font-size lives here so every em offset below resolves against the mark. */
+.markRow {
+  position: relative;
+  display: inline-block;
+  font-size: var(--mark-size);
+}
+
+.letters,
+.tittle {
+  font-family: var(--font-kaushan), cursive;
+  font-size: 1em;
+  font-weight: 400;
+  line-height: 1.25;
+  display: inline-block;
+  white-space: nowrap;
+}
+
+.letters {
+  color: var(--ink);
+}
+
+/*
+ * Second copy of the word, painted with the ember and clipped to the tittle.
+ * The clip box was measured against Kaushan Script's dot; the gradient is
+ * centred on it so the glow reads hottest at the core.
+ */
+.tittle {
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: transparent;
+  background: radial-gradient(
+    circle 0.15em at 0.31em 0.3em,
+    #ffce85 0%,
+    #ff8f3c 45%,
+    var(--spark) 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  clip-path: inset(0.16em calc(100% - 0.45em) calc(100% - 0.5em) 0.2em);
+  pointer-events: none;
+}
+
+/* Glow sits on its own layer — drop-shadow on a background-clip:text element
+   leaves a visible box artifact in WebKit. */
+.glow {
+  position: absolute;
+  left: 0.235em;
+  top: 0.235em;
+  width: 0.2em;
+  height: 0.2em;
+  border-radius: 50%;
+  background-color: rgb(255, 90, 31);
+  filter: blur(0.1em);
+  transform-origin: center;
+  pointer-events: none;
+  opacity: 0.4;
+  animation: emberBreathe 3.6s ease-in-out infinite;
+}
+
+/*
+ * The ember is the only thing in the mark that moves on its own. Slow enough
+ * to read as heat rather than as a blinking UI element.
+ */
+@keyframes emberBreathe {
+  0%,
+  100% {
+    opacity: 0.38;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.7;
+    transform: scale(1.16);
+  }
+}
+
+/*
+ * Ignition — hero only. The word is laid down as a single brush stroke, then the
+ * tittle is struck last, the way the dot (点) is tapped in after the stroke is
+ * finished.
+ *
+ * The reveal edge is a soft, tilted ramp rather than a hard wipe: a brush leaves
+ * a feathered, angled edge, not a guillotine line. The mask is oversized on both
+ * axes so the brush's ascender and descender overshoot is never clipped, and it
+ * is positioned rather than scaled so only `mask-position` animates.
+ *
+ * Two things sell it as ink rather than as a CSS wipe: the stroke eases fast
+ * through the middle and settles at the end (how a loaded brush actually moves),
+ * and the letters resolve from soft to sharp — ink bleeding into the paper
+ * (にじみ) and then drying.
+ */
+.igniting .letters {
+  --brush-edge: linear-gradient(
+    96deg,
+    #000 0%,
+    #000 43%,
+    rgba(0, 0, 0, 0.88) 45.5%,
+    rgba(0, 0, 0, 0.45) 48%,
+    rgba(0, 0, 0, 0.14) 50%,
+    transparent 52.5%
+  );
+  -webkit-mask-image: var(--brush-edge);
+  mask-image: var(--brush-edge);
+  -webkit-mask-size: 280% 200%;
+  mask-size: 280% 200%;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  animation:
+    brushStroke 1.15s cubic-bezier(0.55, 0.06, 0.28, 1) both,
+    inkSettle 1.5s cubic-bezier(0.2, 0.8, 0.3, 1) both;
+}
+
+.igniting .tittle {
+  animation: emberStrike 0.55s ease-out 1.02s both;
+}
+
+.igniting .glow {
+  animation:
+    emberFlare 0.8s ease-out 1.02s both,
+    emberBreathe 3.6s ease-in-out 1.82s infinite;
+}
+
+@keyframes brushStroke {
+  from {
+    -webkit-mask-position: 100% center;
+    mask-position: 100% center;
+  }
+  to {
+    -webkit-mask-position: 0% center;
+    mask-position: 0% center;
+  }
+}
+
+/* Wet ink soaking in, then drying sharp. */
+@keyframes inkSettle {
+  0% {
+    filter: blur(0.05em);
+  }
+  55% {
+    filter: blur(0.02em);
+  }
+  100% {
+    filter: blur(0);
+  }
+}
+
+@keyframes emberStrike {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes emberFlare {
+  0% {
+    opacity: 0;
+    transform: scale(0.25);
+  }
+  32% {
+    opacity: 1;
+    transform: scale(2.2);
+  }
+  100% {
+    opacity: 0.38;
+    transform: scale(1);
+  }
+}
+
+.sub {
+  font-family: var(--font-ui);
+  font-size: calc(var(--mark-size) * 0.26);
+  font-weight: 500;
+  line-height: 1;
+  text-transform: uppercase;
+  letter-spacing: 0.38em;
+  color: var(--ink-faint);
+  margin-right: -0.38em;
+  padding-left: 0.2em;
+}
+
+.igniting .sub {
+  animation: subFade 0.7s ease-out 1.15s both;
+}
+
+@keyframes subFade {
+  from {
+    opacity: 0;
+    letter-spacing: 0.28em;
+  }
+  to {
+    opacity: 1;
+    letter-spacing: 0.38em;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .glow,
+  .igniting .letters,
+  .igniting .tittle,
+  .igniting .glow,
+  .igniting .sub {
+    animation: none;
+  }
+}

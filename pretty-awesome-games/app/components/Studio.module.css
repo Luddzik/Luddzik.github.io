@@ -1,0 +1,68 @@
+.studio {
+  padding: 120px 0;
+  border-top: 1px solid var(--rule);
+}
+
+.layout {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 88px;
+  align-items: start;
+}
+
+.copy p {
+  color: var(--ink-dim);
+  font-size: 1.05rem;
+  max-width: 52ch;
+}
+
+.copy p:first-of-type {
+  margin-top: 26px;
+}
+
+.copy p + p {
+  margin-top: 18px;
+}
+
+/* Ruled list — the same guide-line logic as the hero, doing real work. */
+.facts {
+  display: flex;
+  flex-direction: column;
+  border-top: 1px solid var(--rule);
+}
+
+.fact {
+  display: grid;
+  grid-template-columns: 1fr 1.35fr;
+  gap: 20px;
+  align-items: baseline;
+  padding: 20px 2px;
+  border-bottom: 1px solid var(--rule);
+}
+
+.fact dt {
+  font-family: var(--font-ui);
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: var(--ink-faint);
+}
+
+.fact dd {
+  font-family: var(--font-ui);
+  font-size: 1.02rem;
+  font-weight: 500;
+  color: var(--ink);
+}
+
+@media (max-width: 900px) {
+  .studio {
+    padding: 88px 0;
+  }
+
+  .layout {
+    grid-template-columns: 1fr;
+    gap: 48px;
+  }
+}

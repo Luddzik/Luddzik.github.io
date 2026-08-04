@@ -1,129 +1,125 @@
 .header {
   position: fixed;
-  width: 100%;
   top: 0;
-  z-index: 1000;
-  /* Updated header background to match dark theme */
-  background-color: rgba(26, 26, 26, 0.95);
-  backdrop-filter: blur(10px);
-  transition: all 0.3s ease;
+  left: 0;
+  right: 0;
+  z-index: 50;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+  border-bottom: 1px solid transparent;
 }
 
 .scrolled {
-  /* Updated scrolled state to maintain dark theme */
-  background-color: rgba(26, 26, 26, 0.98);
+  background-color: rgba(14, 14, 18, 0.82);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom-color: var(--rule);
 }
 
-.container {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  max-width: 1200px;
+.inner {
+  max-width: var(--shell);
   margin: 0 auto;
-  padding: 0.5rem 2rem;
-}
-
-.logoContainer {
+  padding: 14px 28px;
   display: flex;
   align-items: center;
-  vertical-align: middle;
-  gap: 0.5rem;
-  text-decoration: none;
-  transition: color 0.3s ease;
-  background: none;
-  border: none;
-  cursor: pointer;
-  padding: 0;
+  justify-content: space-between;
+  gap: 24px;
 }
 
-.logoIcon {
-  width: 2.5rem;
-  height: 2.5rem;
+.brand {
+  display: inline-flex;
+  align-items: center;
+  transition: opacity 0.2s ease;
 }
 
-.logoText {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-}
-
-.logoMainText {
-  font-family: var(--font-bungee), sans-serif;
-  font-size: 1.5rem;
-  font-weight: 400;
-  /* restored gradient text for logo */
-  background: linear-gradient(135deg, #ffffff, #00d4ff);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  letter-spacing: 0.02em;
-  text-transform: uppercase;
-  line-height: 1;
-}
-
-.logoSubText {
-  font-family: var(--font-poppins), sans-serif;
-  font-size: 0.8rem;
-  font-weight: 600;
-  /* added subtle gradient to subtitle */
-  background: linear-gradient(135deg, #cccccc, #00d4ff);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
-}
-
-.logoContainer:hover .logoMainText {
-  /* updated hover to enhance gradient */
-  background: linear-gradient(135deg, #00d4ff, #ffffff);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+.brand:hover {
+  opacity: 0.7;
 }
 
 .navList {
-  list-style: none;
   display: flex;
-  gap: 2rem;
+  align-items: center;
+  gap: 30px;
+  list-style: none;
 }
 
-.navList button {
-  font-family: var(--font-lato), sans-serif;
-  /* Updated nav button text color to white */
-  color: white;
-  font-weight: 700;
-  transition: color 0.3s ease;
-  background: none;
-  border: none;
-  cursor: pointer;
-  font-size: 1rem;
-  padding: 0.5rem 1rem;
-  border-radius: 0.25rem;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
+.navLink {
+  position: relative;
+  padding: 4px 0;
+  font-family: var(--font-ui);
+  font-size: 0.92rem;
+  font-weight: 500;
+  color: var(--ink-dim);
+  transition: color 0.2s ease;
 }
 
-.navList button:hover {
-  /* Updated hover colors for dark theme */
-  color: #00d4ff;
-  background-color: rgba(255, 255, 255, 0.1);
+.navLink:hover {
+  color: var(--ink);
 }
 
-@media (max-width: 768px) {
-  .container {
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0rem;
+.navLinkActive {
+  color: var(--ink);
+}
+
+/* Slides between items rather than fading — the ember travels with you. */
+.navUnderline {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 1px;
+  background-color: var(--spark);
+  box-shadow: 0 0 6px rgba(255, 90, 31, 0.65);
+}
+
+/* --- the fuse: scroll progress burning along the header's bottom rule --- */
+.fuseTrack {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -1px;
+  height: 1px;
+  pointer-events: none;
+}
+
+.fuseBurn {
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  background-color: var(--spark);
+  will-change: width;
+}
+
+/* The ember rides the leading edge of the burn. */
+.fuseBurn::after {
+  content: "";
+  position: absolute;
+  right: -2px;
+  top: 50%;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  transform: translateY(-50%);
+  background-color: var(--spark-warm);
+  box-shadow: 0 0 9px 1px rgba(255, 90, 31, 0.9);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .navLink {
+    transition: none;
   }
+}
 
-  .logoContainer {
-    margin-bottom: 0rem;
+@media (max-width: 560px) {
+  .inner {
+    padding: 12px 18px;
   }
 
   .navList {
-    margin-top: 0.5rem;
-    gap: 1rem;
+    gap: 18px;
+  }
+
+  .navLink {
+    font-size: 0.86rem;
   }
 }

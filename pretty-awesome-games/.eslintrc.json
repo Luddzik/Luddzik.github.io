@@ -1,0 +1,8 @@
+{
+  "extends": ["next/core-web-vitals"],
+  "rules": {
+    // Static export with images.unoptimized set, so next/image performs no
+    // optimisation and only adds runtime weight. Plain <img> is correct here.
+    "@next/next/no-img-element": "off"
+  }
+}

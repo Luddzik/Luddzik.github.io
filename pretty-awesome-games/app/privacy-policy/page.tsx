@@ -14,9 +14,9 @@ export default function PrivacyPolicy() {
           <p className={styles.intro}>Thank you for playing our games!</p>
 
           <p>
-            This Privacy Policy applies to all of Pretty Awesome Games, websites, stores, and related services
-            (collectively referred to as the "Service"). We may occasionally update this Privacy Policy by posting a
-            revised version on prettyawesomegames.com. If we make any significant changes, we will notify you in
+            This Privacy Policy applies to all of Iskra Games, websites, stores, and related services
+            (collectively referred to as the &ldquo;Service&rdquo;). We may occasionally update this Privacy Policy by posting a
+            revised version on iskragames.com. If we make any significant changes, we will notify you in
             accordance with applicable laws, which may include placing a notice within the Service before the update
             becomes effective. Your continued use of the Service after the effective date signifies your agreement to
             the updated Privacy Policy.
@@ -102,7 +102,7 @@ export default function PrivacyPolicy() {
 
             <h3>c. Business Transfers</h3>
             <p>
-              If Pretty Awesome Games undergoes a merger, acquisition, or asset sale, your information may be
+              If Iskra Games undergoes a merger, acquisition, or asset sale, your information may be
               transferred as part of that transaction. You will be notified of any such change.
             </p>
           </section>
@@ -138,18 +138,18 @@ export default function PrivacyPolicy() {
             </ul>
             <p>
               To exercise these rights, please contact us at{" "}
-              <a href="mailto:contact@prettyawesomegames.com">contact@prettyawesomegames.com</a>. We will respond in
+              <a href="mailto:contact@iskragames.com">contact@iskragames.com</a>. We will respond in
               accordance with applicable laws.
             </p>
           </section>
 
           <section>
-            <h2>8. Children's Privacy</h2>
+            <h2>8. Children&rsquo;s Privacy</h2>
             <p>
               Our Service is not intended for children under 13 years old (or the minimum age in your jurisdiction). We
               do not knowingly collect personal data from children. If you believe we have collected data from a child
               under this age, please contact us at{" "}
-              <a href="mailto:contact@prettyawesomegames.com">contact@prettyawesomegames.com</a>, and we will take steps
+              <a href="mailto:contact@iskragames.com">contact@iskragames.com</a>, and we will take steps
               to delete it.
             </p>
           </section>
@@ -184,14 +184,14 @@ export default function PrivacyPolicy() {
             <p>If you have any questions, concerns, or requests regarding this Privacy Policy, you can reach us at:</p>
             <div className={styles.note}>
               <p>
-                <b>Pretty Awesome Games</b>
+                <b>Iskra Games</b>
                 <br />
-                <b>Email:</b> <a href="mailto:contact@prettyawesomegames.com">contact@prettyawesomegames.com</a>
+                <b>Email:</b> <a href="mailto:contact@iskragames.com">contact@iskragames.com</a>
                 <br />
-                <b>Website:</b> <a href="https://prettyawesomegames.com">https://prettyawesomegames.com</a>
+                <b>Website:</b> <a href="https://iskragames.com">https://iskragames.com</a>
               </p>
             </div>
-            <p>Thank you for playing our games and trusting Pretty Awesome Games!</p>
+            <p>Thank you for playing our games and trusting Iskra Games!</p>
           </section>
         </div>
       </main>

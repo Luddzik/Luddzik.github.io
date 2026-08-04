@@ -1,163 +1,203 @@
 .games {
-  padding: 100px 0;
-  background-color: var(--background);
+  padding: 120px 0;
+  border-top: 1px solid var(--rule);
 }
 
-.container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 20px;
+.heading {
+  margin-bottom: 64px;
 }
 
-.games h2 {
-  font-family: var(--font-poppins), sans-serif;
-  font-size: 3.5rem;
-  font-weight: 700;
-  text-align: center;
-  margin-bottom: 60px;
-  color: #ffffff;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-}
-
-.gameList {
-  display: flex;
-  justify-content: center;
-  gap: 40px;
-}
-
-.gameCard {
-  background-color: white;
-  border-radius: 20px;
-  overflow: hidden;
+.list {
   display: flex;
   flex-direction: column;
-  width: 100%;
-  max-width: 500px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  /* Added relative positioning for tag placement */
-  position: relative;
+  gap: 28px;
 }
 
-/* Added styles for game development tag */
-.gameTag {
-  position: absolute;
-  top: 15px;
-  right: 15px;
-  background-color: #ff6f3c;
-  color: white;
-  padding: 5px 12px;
-  border-radius: 15px;
-  font-family: var(--font-poppins), sans-serif;
-  font-size: 0.8rem;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  z-index: 2;
-}
-
-.imageContainer {
-  width: 100%;
-  height: 300px;
+/* Wide horizontal cards — two projects don't need a grid pretending to be many. */
+.card {
+  display: grid;
+  grid-template-columns: 1.05fr 1fr;
+  background-color: var(--raised);
+  border: 1px solid var(--rule);
+  border-radius: var(--r-md);
   overflow: hidden;
-  position: relative;
+  transition: border-color 0.35s ease, background-color 0.35s ease;
 }
 
-.imageContainer img {
+/* Alternate which side the art sits on, so two cards read as a spread. */
+.card:nth-child(even) {
+  grid-template-columns: 1fr 1.05fr;
+}
+
+.card:nth-child(even) .art {
+  grid-column: 2;
+  grid-row: 1;
+}
+
+.card:nth-child(even) .body {
+  grid-column: 1;
+  grid-row: 1;
+}
+
+.card:hover {
+  border-color: rgba(255, 90, 31, 0.42);
+  background-color: #191920;
+}
+
+.art {
+  position: relative;
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+  background-color: var(--sunken);
+}
+
+/* --- app icon staged on the panel, shared by both cards --- */
+.iconStage {
+  position: relative;
   width: 100%;
   height: 100%;
-  object-fit: cover;
-  object-position: center;
-}
-
-.gameCard h3 {
-  font-family: var(--font-poppins), sans-serif;
-  font-size: 1.5rem;
-  margin: 20px 20px 10px;
-  color: var(--text);
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-}
-
-.gameCard p {
-  font-family: var(--font-lato), sans-serif;
-  font-size: 1rem;
-  color: var(--secondary);
-  margin: 0 20px 20px;
-  flex-grow: 1;
-}
-
-.platforms {
   display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  padding: 0 20px 20px;
-}
-
-.button {
-  font-family: var(--font-poppins), sans-serif;
-  display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 10px;
-  padding: 10px 15px;
-  background-color: var(--accent);
-  color: white;
-  border: none;
-  border-radius: 30px;
-  font-size: 0.9rem;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  text-decoration: none;
+  background-color: var(--sunken);
+}
+
+/* Blurred copy of the icon — its own colour lighting the panel it sits on. */
+.iconBloom {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 62%;
+  aspect-ratio: 1;
+  transform: translate(-50%, -50%) scale(1.45);
+  filter: blur(52px);
+  opacity: 0.36;
+  /* Fade the bleed out well before the panel edges, so the corners stay
+     near-black instead of going muddy. */
+  mask-image: radial-gradient(circle at 50% 50%, #000 24%, transparent 64%);
+  -webkit-mask-image: radial-gradient(circle at 50% 50%, #000 24%, transparent 64%);
+  pointer-events: none;
+  transition: opacity 0.6s ease, transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.icon {
+  position: relative;
+  width: 43%;
+  max-width: 190px;
+  height: auto;
+  aspect-ratio: 1;
+  border-radius: 23%;
+  box-shadow: 0 18px 44px -14px rgba(0, 0, 0, 0.75);
+  transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.card:hover .icon {
+  transform: scale(1.05) rotate(-1.5deg);
+}
+
+.card:hover .iconBloom {
+  opacity: 0.58;
+  transform: translate(-50%, -50%) scale(1.62);
+}
+
+/* --- card body --- */
+.body {
+  padding: 42px 44px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.title {
+  font-size: clamp(1.5rem, 2.4vw, 1.95rem);
   text-transform: uppercase;
-  letter-spacing: 0.05em;
+  letter-spacing: -0.012em;
+  margin-bottom: 12px;
 }
 
-.button:hover {
-  background-color: #0099cc;
-  transform: translateY(-2px);
+/* Accent line — weight and colour, no italic serif. */
+.tagline {
+  font-family: var(--font-ui);
+  font-size: 0.86rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--spark);
+  margin-bottom: 20px;
 }
 
-/* Added styles for coming soon message */
-.comingSoon {
-  font-family: var(--font-poppins), sans-serif;
-  color: var(--secondary);
-  font-size: 0.9rem;
+.description {
+  color: var(--ink-dim);
+  font-size: 1rem;
+  line-height: 1.65;
+  margin-bottom: 30px;
+  max-width: 46ch;
+}
+
+.meta {
+  display: flex;
+  gap: 48px;
+  padding-top: 22px;
+  border-top: 1px solid var(--rule);
+}
+
+.meta dt {
+  font-family: var(--font-ui);
+  font-size: 0.68rem;
   font-weight: 600;
   text-transform: uppercase;
-  letter-spacing: 0.05em;
-  text-align: center;
-  padding: 10px 15px;
+  letter-spacing: 0.2em;
+  color: var(--ink-faint);
+  margin-bottom: 6px;
 }
 
-@media (max-width: 768px) {
+.meta dd {
+  font-size: 0.95rem;
+  color: var(--ink);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .card,
+  .icon,
+  .iconBloom {
+    transition: none;
+  }
+
+  .card:hover .icon {
+    transform: none;
+  }
+}
+
+@media (max-width: 900px) {
   .games {
-    padding: 60px 0;
+    padding: 88px 0;
   }
 
-  /* Updated mobile h2 styling for consistency */
-  .games h2 {
-    font-size: 2.5rem;
-    margin-bottom: 40px;
+  .card,
+  .card:nth-child(even) {
+    grid-template-columns: 1fr;
   }
 
-  .gameCard h3 {
-    font-size: 1.3rem;
+  /* Single column — art always leads, so drop the alternating placement. */
+  .card:nth-child(even) .art,
+  .card:nth-child(even) .body {
+    grid-column: auto;
+    grid-row: auto;
   }
 
-  .gameCard p {
-    font-size: 0.9rem;
+  .body {
+    padding: 30px 26px 34px;
   }
 
-  .button {
-    font-size: 0.8rem;
-    padding: 8px 12px;
+  .heading {
+    margin-bottom: 44px;
   }
 
-  /* Added responsive styles for game tag */
-  .gameTag {
-    font-size: 0.7rem;
-    padding: 4px 10px;
+  .icon {
+    width: 40%;
+  }
+
+  .meta {
+    gap: 32px;
   }
 }

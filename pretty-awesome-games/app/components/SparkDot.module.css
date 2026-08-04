@@ -1,0 +1,10 @@
+.dot {
+  display: inline-block;
+  width: var(--dot-size);
+  height: var(--dot-size);
+  border-radius: 50%;
+  background: radial-gradient(circle at 38% 34%, #ffd08a 0%, var(--spark-warm) 42%, var(--spark) 100%);
+  box-shadow: 0 0 calc(var(--dot-size) * 0.9) rgba(255, 90, 31, 0.5);
+  flex-shrink: 0;
+  vertical-align: baseline;
+}

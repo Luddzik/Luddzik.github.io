@@ -1,0 +1,49 @@
+/* Shared section furniture — imported by Games, Studio and Contact. */
+
+.inner {
+  max-width: var(--shell);
+  margin: 0 auto;
+  padding: 0 28px;
+}
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font-ui);
+  font-size: 0.74rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.24em;
+  color: var(--ink-dim);
+  margin-bottom: 20px;
+}
+
+/* Sentence case, not caps — these run too long for uppercase to stay readable. */
+.heading {
+  font-size: clamp(1.95rem, 4.2vw, 3rem);
+  max-width: 19ch;
+}
+
+.lede {
+  color: var(--ink-dim);
+  font-size: 1.05rem;
+  max-width: 56ch;
+  margin-top: 18px;
+}
+
+/* Ruled divider with the ember sitting on the line. */
+.rule {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin: 0 auto;
+  max-width: var(--shell);
+  padding: 0 28px;
+}
+
+.ruleLine {
+  height: 1px;
+  background-color: var(--rule);
+  flex-grow: 1;
+}

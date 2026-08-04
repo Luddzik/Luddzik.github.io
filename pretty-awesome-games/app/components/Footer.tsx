@@ -3,8 +3,9 @@
 import type React from "react"
 import Link from "next/link"
 import { useRouter } from "next/navigation"
+import Wordmark from "./Wordmark"
+import { STUDIO_NAME } from "../lib/brand"
 import styles from "./Footer.module.css"
-import Image from "next/image"
 
 const Footer: React.FC = () => {
   const router = useRouter()
@@ -13,35 +14,30 @@ const Footer: React.FC = () => {
     router.push(path)
     window.scrollTo(0, 0)
   }
-  
-  const scrollToSection = (sectionId: string) => {
-    if (sectionId === "top") {
-      window.scrollTo({ top: 0, behavior: "smooth" })
-      return
-    }
-    const section = document.getElementById(sectionId)
-    if (section) {
-      section.scrollIntoView({ behavior: "smooth" })
-    }
-  }
 
   return (
     <footer className={styles.footer}>
-      <div className={styles.container}>
-        <p>&copy; 2025 PrettyAwesomeGames. All rights reserved.</p>
-        <Link href="/" className={styles.logoContainer} onClick={() => scrollToSection("top")}>
-          <div>
-            <Image src="../logo_long.png" alt="Logo" width={64} height={64} />
-          </div>
+      <div className={styles.inner}>
+        <Link
+          href="/"
+          className={styles.brand}
+          onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+        >
+          <Wordmark size={30} stacked />
         </Link>
-        <nav>
+
+        <nav className={styles.links} aria-label="Legal">
           <button onClick={() => handleNavigation("/privacy-policy")} className={styles.link}>
             Privacy Policy
           </button>
           <button onClick={() => handleNavigation("/terms")} className={styles.link}>
-            Terms & Conditions
+            Terms &amp; Conditions
           </button>
         </nav>
+
+        <p className={styles.copyright}>
+          &copy; {new Date().getFullYear()} {STUDIO_NAME}. All rights reserved.
+        </p>
       </div>
     </footer>
   )

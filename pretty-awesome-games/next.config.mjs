@@ -1,48 +1,38 @@
-let userConfig = undefined
-try {
-  userConfig = await import('./v0-user-next.config')
-} catch (e) {
-  // ignore error
-}
-
-/** @type {import('next').NextConfig} */
+/**
+ * Single source of Next config.
+ *
+ * There used to be two files — `next.config.js` and `next.config.mjs`. Next
+ * loads `.js` first and silently ignores the rest, so everything in the `.mjs`
+ * one was inert: `output: "export"` happened to live in the `.js` file, which is
+ * why builds worked, while both "ignore errors" escape hatches did nothing.
+ * They are merged here and `next.config.js` is deleted. Do not add a second one.
+ *
+ * @type {import('next').NextConfig}
+ */
 const nextConfig = {
-  eslint: {
-    ignoreDuringBuilds: true,
-  },
-  typescript: {
-    ignoreBuildErrors: true,
-  },
+  /* GitHub Pages serves the statically exported /out directory. */
+  output: "export",
+
   images: {
+    /* No image optimisation server exists in a static export. */
     unoptimized: true,
   },
-  experimental: {
-    webpackBuildWorker: true,
-    parallelServerBuildTraces: true,
-    parallelServerCompiles: true,
+
+  /*
+   * Type and lint errors fail the build on purpose.
+   *
+   * The old `.mjs` file set `ignoreBuildErrors` and `ignoreDuringBuilds` to
+   * true, but since that file was never loaded, errors have always failed the
+   * build in practice — and the repo is clean under both today. Keeping it
+   * strict means a broken push fails in CI rather than silently deploying a
+   * broken site. If a deadline ever needs the escape hatch, flip these to true.
+   */
+  typescript: {
+    ignoreBuildErrors: false,
   },
-}
-
-mergeConfig(nextConfig, userConfig)
-
-function mergeConfig(nextConfig, userConfig) {
-  if (!userConfig) {
-    return
-  }
-
-  for (const key in userConfig) {
-    if (
-      typeof nextConfig[key] === 'object' &&
-      !Array.isArray(nextConfig[key])
-    ) {
-      nextConfig[key] = {
-        ...nextConfig[key],
-        ...userConfig[key],
-      }
-    } else {
-      nextConfig[key] = userConfig[key]
-    }
-  }
+  eslint: {
+    ignoreDuringBuilds: false,
+  },
 }
 
 export default nextConfig
