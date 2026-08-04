@@ -9,7 +9,7 @@ export default function PrivacyPolicy() {
       <main className={styles.privacyPolicy} id="top">
         <div className={styles.container}>
           <h1>Privacy Policy</h1>
-          <p className={styles.lastUpdated}>Last Updated: 16 May, 2025</p>
+          <p className={styles.lastUpdated}>Last Updated: 4 August, 2026</p>
 
           <p className={styles.intro}>Thank you for playing our games!</p>
 
@@ -25,34 +25,106 @@ export default function PrivacyPolicy() {
           <section>
             <h2>1. Information We Collect</h2>
             <p>
-              We collect information to provide and enhance our Service. The types of information we may collect
-              include:
+              We collect information to provide and enhance our Service. What is collected depends
+              on <em>which</em> game you play and <em>where</em> you play it, so this section is split
+              by platform. We do not sell your personal information.
             </p>
 
-            <h3>a. Device and Usage Information</h3>
+            <h3>a. Information you give us in-game</h3>
+            <p>
+              Some games let you choose a display name and a character. That is the only free-text
+              input our games accept. We do not ask for your real name, address, date of birth, or
+              phone number, and none of our games has an account or a password.
+            </p>
+
+            <h3>b. Games you install on a device (mobile and desktop)</h3>
+            <p>
+              Installed titles use third-party services to run, measure and fund themselves.
+              Depending on the title, these may include analytics and crash reporting (Google
+              Firebase), advertising (Google AdMob), player accounts and cloud saves (Microsoft Azure
+              PlayFab), multiplayer networking (Photon), attribution measurement, and the store
+              platform the game is distributed on (for example Apple App Store, Google Play, or
+              Steam). Through those services we may receive:
+            </p>
             <ul>
               <li>
-                Details about the device or platform you use to access our games (e.g., device type, operating system,
-                unique device identifiers, IP address).
+                Device and platform details — device type, operating system, language, region,
+                app version, unique advertising or device identifiers, and IP address.
               </li>
-              <li>Gameplay activity, session duration, in-game interactions, and other usage data.</li>
+              <li>Gameplay activity — session length, progress, purchases, and crash reports.</li>
             </ul>
-
-            <h3>b. Analytics Data</h3>
             <p>
-              We use analytics tools (e.g., Google Analytics, Google Analytics for Firebase, or similar services) to
-              collect data on Service usage, crash reports, and other user interactions.
+              Each of those providers processes data under its own privacy policy. Advertising
+              identifiers can be reset or limited in your device settings, and in the European Union,
+              United Kingdom and other regions with equivalent rules you are asked for consent before
+              any personalised advertising or optional analytics is enabled.
             </p>
 
-            <h3>c. Contact Information</h3>
+            <h3>c. Games you play in a web browser</h3>
             <p>
-              If you contact us via email or through any in-game feedback/contact forms, we may collect your name, email
-              address, and any additional information you choose to provide.
+              Our browser games — including <strong>Most Said</strong> — work differently, and
+              deliberately collect less:
+            </p>
+            <ul>
+              <li>
+                <strong>No third-party analytics or advertising code of our own.</strong> There is no
+                Google Analytics, no Firebase, and no advertising or tracking pixel inside the game.
+              </li>
+              <li>
+                <strong>Ads and analytics belong to the portal.</strong> Where a game is published on
+                a portal such as Poki, advertising and gameplay measurement are handled entirely by
+                that portal&rsquo;s own software development kit. The events we send it are game
+                milestones — a round started, a round finished — with no personal data attached. The
+                portal&rsquo;s own privacy policy governs its advertising, analytics and cookies,
+                including anything about personalised ads. For Poki, see{" "}
+                <a href="https://poki.com/en/c/privacy-policy" rel="noopener noreferrer" target="_blank">
+                  Poki&rsquo;s privacy policy
+                </a>
+                .
+              </li>
+              <li>
+                <strong>Settings stay in your browser.</strong> Your display name, character choice,
+                best score, whether you muted the sound, and which questions you have seen recently
+                are saved in your browser&rsquo;s local storage. That never leaves your device, and
+                clearing your browser data deletes it permanently. If your browser blocks local
+                storage — private or incognito mode does — the game still works, it just will not
+                remember anything between sessions.
+              </li>
+            </ul>
+
+            <h3>d. Multiplayer play</h3>
+            <p>
+              When a game offers online multiplayer, joining a room means exchanging a small amount
+              of information with our server so the other players can see you.
+            </p>
+            <p>
+              For <strong>Most Said</strong>, this happens <em>only</em> when you join a Private Room.
+              Solo play and Quick Match run entirely inside your browser against simulated opponents
+              and send nothing anywhere. The server is{" "}
+              <code>hive-mind-rooms.ludwik-bacmaga.workers.dev</code>, running on Cloudflare Workers
+              and Durable Objects, reached over an encrypted connection. While you are in a room it
+              relays your display name and character choice, your score and how many answers you have
+              found, how many questions you have finished, and the four-character room code.
+            </p>
+            <p>
+              <strong>It is a relay, not a database.</strong> Those details live on the open
+              connection and are discarded when it closes; the only thing stored is the room&rsquo;s
+              question set, so a player joining a moment late gets the same questions, and that
+              disappears with the room. Nothing survives you closing the tab — there is no account,
+              no history and no profile. Display names are filtered for offensive language on arrival,
+              because other players see them.
+            </p>
+
+            <h3>e. Contact information</h3>
+            <p>
+              If you contact us by email or through an in-game feedback form, we receive your email
+              address and whatever you choose to tell us, and we keep it only as long as needed to
+              answer you.
             </p>
 
             <div className={styles.note}>
-              Note: Our games do not collect or process any sensitive medical information. They are designed purely for
-              entertainment.
+              Note: Our games do not collect or process any sensitive medical information. They are
+              designed purely for entertainment.
             </div>
           </section>
 
@@ -89,9 +161,12 @@ export default function PrivacyPolicy() {
 
             <h3>a. Service Providers</h3>
             <p>
-              We may share information with third-party service providers who assist in tasks such as hosting,
-              analytics, and customer support. These providers are obligated to handle your data securely and only for
-              the purposes we specify.
+              We may share information with third-party service providers who assist with hosting,
+              analytics, advertising, multiplayer networking and customer support. Depending on the
+              game, these include Google (Firebase and AdMob), Microsoft (Azure PlayFab), Photon,
+              Cloudflare, the store or portal distributing the game, and our email provider. These
+              providers are obligated to handle your data securely and only for the purposes we
+              specify. A game&rsquo;s own in-game credits and section 1 above identify which apply.
             </p>
 
             <h3>b. Legal Compliance</h3>
@@ -121,6 +196,9 @@ export default function PrivacyPolicy() {
             <p>
               We retain your information only as long as necessary to fulfill the purposes outlined in this Privacy
               Policy, or as required by law. When information is no longer needed, we securely delete or anonymize it.
+              Multiplayer room data is the shortest-lived: it is discarded when the room closes, and
+              data kept only in your browser&rsquo;s local storage is deleted whenever you clear your
+              browser data.
             </p>
           </section>
 
