@@ -137,6 +137,57 @@
   max-width: 44ch;
 }
 
+/* --- outbound link, the same burn-across underline the contact address uses --- */
+.links {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 8px 20px;
+  margin-top: 22px;
+  font-family: var(--font-ui);
+  font-size: 0.82rem;
+}
+
+.link {
+  position: relative;
+  display: inline-block;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: var(--ink);
+  transition: color 0.22s ease;
+}
+
+.linkRule {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -0.22em;
+  height: 1px;
+  background-color: var(--rule);
+  overflow: hidden;
+}
+
+.linkRule::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-color: var(--spark);
+  transform: translateX(-101%);
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.link:hover {
+  color: var(--spark);
+}
+
+.link:hover .linkRule::after {
+  transform: translateX(0);
+}
+
+.note {
+  color: var(--ink-faint);
+}
+
 /* --- metadata, held to the right so the row reads across the full width --- */
 .meta {
   display: flex;
@@ -178,7 +229,9 @@
   .ruleBurn,
   .ruleEmber,
   .icon,
-  .iconBloom {
+  .iconBloom,
+  .link,
+  .linkRule::after {
     transition: none;
   }
 

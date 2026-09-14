@@ -11,8 +11,8 @@ const EASE = [0.16, 1, 0.3, 1] as const
 const facts = [
   { label: "Studio", value: "Independent, small by choice" },
   { label: "Based in", value: "Poland" },
-  { label: "Engines", value: "Unity · Phaser" },
-  { label: "Platforms", value: "Steam · Browser" },
+  { label: "Engine", value: "Unity" },
+  { label: "Platform", value: "Steam (PC)" },
 ]
 
 /* The facts read as a ruled list, so they arrive line by line rather than as a block. */
@@ -50,8 +50,8 @@ const Studio: React.FC = () => {
               </p>
               <p>
                 That means taking on a handful of things at a time and giving each one real
-                attention — whether it&rsquo;s a strategy game with genuine depth or a party game
-                you understand in a single round.
+                attention — systems that hold up when you look at the numbers behind them, and a
+                first session that teaches itself.
               </p>
               <p>
                 Everything we ship is built in-house, from first prototype to store page.

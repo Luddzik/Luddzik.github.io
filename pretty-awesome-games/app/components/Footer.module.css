@@ -41,9 +41,30 @@
   color: var(--spark);
 }
 
+/*
+  Copyright plus, once it is filled in, the registered-entity line. Stacked and
+  right-aligned so the footer stays a three-part row rather than growing a fourth
+  column; it drops to the left with everything else under 760px.
+*/
+.legal {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 5px;
+  text-align: right;
+}
+
 .copyright {
   font-size: 0.82rem;
   color: var(--ink-faint);
+}
+
+.entity {
+  font-size: 0.74rem;
+  line-height: 1.5;
+  color: var(--ink-faint);
+  opacity: 0.72;
+  max-width: 46ch;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -58,5 +79,10 @@
     flex-direction: column;
     align-items: flex-start;
     gap: 26px;
+  }
+
+  .legal {
+    align-items: flex-start;
+    text-align: left;
   }
 }

@@ -2,7 +2,7 @@
 
 **Status:** §4 site redesign is **implemented and building clean**. Brand/name work in §1
 is still outstanding — see the checklist there.
-**Last updated:** 2026-08-03
+**Last updated:** 2026-09-14
 
 ---
 
@@ -52,7 +52,27 @@ This is why the name is **Iskra Games** rather than Iskra Studio.
 
 ## 2. Project lineup — what goes on the site
 
-The two released mobile games are **no longer the story**. Both are being replaced.
+> **Updated 2026-09-14.** The lineup below replaces the 2026-08-03 one. **Most Said is
+> cancelled** and has come off the site entirely; **ECIO Reborn is now NEUROSHIFT** and is
+> the only confirmed release. Both mobile titles are **delisted** from the App Store and
+> Google Play, which is what let the privacy policy lose its ads/analytics/multiplayer
+> sections. The superseded table is kept below the current one so nobody re-adds a row
+> from it.
+
+The released mobile games are gone — delisted, not merely "no longer the story".
+
+| Project | What it is | Platform | Status | Show on site? |
+|---|---|---|---|---|
+| **NEUROSHIFT** | Turn-based squad-tactics roguelite. Offline single-player, Unity 6 + URP. Renamed from ECIO Reborn on 2026-09-14 (**ECIO** stays the internal code name); it was KILLFRAME for one day. | Steam (PC) — page not live yet; free demo on itch | In development | **Yes — the only entry** |
+| **Most Said** | Family Feud–style survey guessing game. Phaser 3. | — | **Cancelled** | **NO — removed 2026-09-14** |
+| **Echoes of Stone** | Cozy restoration sim, formerly "Cozy Ruins". Unity URP, Steam EA → PS5. | — | In development | **NO — hide entirely** |
+
+NEUROSHIFT's demo is live at <https://luddzik.itch.io/neuroshift> and is linked from its
+row. The Steam page is the next thing to land; when it does, the row gains the store link
+and the "Steam page coming soon" note comes off.
+
+<details>
+<summary>Superseded 2026-09-14 — the 2026-08-03 lineup</summary>
 
 | Project | What it is | Platform | Status | Show on site? |
 |---|---|---|---|---|
@@ -60,13 +80,15 @@ The two released mobile games are **no longer the story**. Both are being replac
 | **ECIO Reborn** | Strategy — "Build. Battle. Conquer." Being rebuilt from the mobile version. | Steam | In development (WIP) | **Yes** |
 | **Echoes of Stone** | Cozy restoration sim, formerly "Cozy Ruins". Unity URP, Steam EA → PS5. | — | In development | **NO — hide entirely** |
 
+</details>
+
 **Echoes of Stone must not appear anywhere on the site** — no name, no teaser, no
 placeholder card. Explicit instruction, 2026-08-03.
 
 ### Source locations
 
-- Most Said — `~/Documents/Personal/Dev/tt/web-game/`
-- ECIO — `~/Documents/Personal/Dev/ECIOGame/`
+- NEUROSHIFT — `~/Documents/Personal/Dev/ECIOGame/` (the folder keeps the ECIO code name)
+- Most Said — `~/Documents/Personal/Dev/tt/web-game/` (cancelled)
 - Echoes of Stone — `~/Documents/Personal/Dev/ruins-restoration/` (GDD: `EchoesOfStone_GDD.md`)
 
 ### Copy pulled from source

@@ -1,5 +1,7 @@
 import Header from "../components/Header"
 import Footer from "../components/Footer"
+import LegalEntity from "../components/LegalEntity"
+import { JURISDICTION, STUDIO_NAME } from "../lib/brand"
 import styles from "./terms.module.css"
 
 export default function Terms() {
@@ -9,13 +11,15 @@ export default function Terms() {
       <main className={styles.terms} id="top">
         <div className={styles.container}>
           <h1>Terms of Service</h1>
-          <p className={styles.lastUpdated}>Last Updated: 16 May, 2025</p>
+          <p className={styles.lastUpdated}>Last Updated: 14 September, 2026</p>
 
           <section>
             <h2>1. Acceptance of Terms</h2>
             <p>
-              By accessing or using the games, websites, stores, and related services provided by Iskra Games
-              (collectively, the &ldquo;Service&rdquo;), you agree to be bound by these Terms of Service (&ldquo;Terms&rdquo;). If you do not
+              By accessing or using the games, websites, stores, and related services provided by {STUDIO_NAME}
+              (collectively, the &ldquo;Service&rdquo;), you agree to be bound by these Terms of Service (&ldquo;Terms&rdquo;).
+              {STUDIO_NAME} is a trading name of a sole proprietorship established in Poland; the
+              registration details are in section 16. If you do not
               agree to these Terms, you must discontinue your use of the Service immediately. We reserve the right to
               modify these Terms at any time by posting updated Terms on our website or within the Service. Your
               continued use of the Service after the effective date of any changes constitutes your acceptance of those
@@ -42,7 +46,7 @@ export default function Terms() {
             <h2>3. License Grant</h2>
             <h3>3.1 Limited License</h3>
             <p>
-              Subject to your compliance with these Terms, Iskra Games grants you a non-exclusive,
+              Subject to your compliance with these Terms, {STUDIO_NAME} grants you a non-exclusive,
               non-transferable, revocable, limited license to access and use the Service solely for your personal,
               non-commercial entertainment purposes.
             </p>
@@ -67,13 +71,13 @@ export default function Terms() {
             <h3>4.1 Ownership</h3>
             <p>
               All content, features, and functionality of the Service—including but not limited to software, text,
-              graphics, logos, and trademarks—are owned by Iskra Games or its licensors and are protected by
+              graphics, logos, and trademarks—are owned by {STUDIO_NAME} or its licensors and are protected by
               intellectual property laws.
             </p>
             <h3>4.2 User-Generated Content</h3>
             <p>
               Any content you create, upload, or share through the Service (&ldquo;User Content&rdquo;) remains your property.
-              However, by providing User Content, you grant Iskra Games a worldwide, non-exclusive,
+              However, by providing User Content, you grant {STUDIO_NAME} a worldwide, non-exclusive,
               royalty-free, irrevocable, transferable, and sub-licensable license to use, display, reproduce, modify,
               distribute, and otherwise exploit your User Content in connection with the Service. You represent and
               warrant that you have all necessary rights to grant this license and that your User Content does not
@@ -139,7 +143,7 @@ export default function Terms() {
 
           <section>
             <h2>8. Termination</h2>
-            <h3>8.1 Termination by Iskra Games</h3>
+            <h3>8.1 Termination by {STUDIO_NAME}</h3>
             <p>
               We reserve the right to suspend or terminate your access to the Service at any time and for any reason,
               including but not limited to your violation of these Terms or any other policies.
@@ -156,7 +160,7 @@ export default function Terms() {
             <h3>9.1 &ldquo;As Is&rdquo; Basis</h3>
             <p>
               The Service is provided on an &ldquo;AS IS&rdquo; and &ldquo;AS AVAILABLE&rdquo; basis without warranties of any kind. To the
-              fullest extent permitted by law, Iskra Games disclaims all warranties, express or implied,
+              fullest extent permitted by law, {STUDIO_NAME} disclaims all warranties, express or implied,
               including but not limited to implied warranties of merchantability, fitness for a particular purpose, and
               non-infringement.
             </p>
@@ -170,10 +174,10 @@ export default function Terms() {
           <section>
             <h2>10. Limitation of Liability</h2>
             <p>
-              To the fullest extent permitted by law, Iskra Games shall not be liable for any indirect,
+              To the fullest extent permitted by law, {STUDIO_NAME} shall not be liable for any indirect,
               incidental, special, consequential, or punitive damages arising out of or related to your use of the
               Service, including but not limited to loss of revenue, loss of data, or loss of goodwill. In no event
-              shall Iskra Games&rsquo; total liability to you exceed the amounts paid by you (if any) for the
+              shall {STUDIO_NAME}&rsquo; total liability to you exceed the amounts paid by you (if any) for the
               Service in the six (6) months preceding the event giving rise to such liability.
             </p>
           </section>
@@ -181,7 +185,7 @@ export default function Terms() {
           <section>
             <h2>11. Indemnification</h2>
             <p>
-              You agree to indemnify, defend, and hold harmless Iskra Games and its affiliates, officers,
+              You agree to indemnify, defend, and hold harmless {STUDIO_NAME} and its affiliates, officers,
               employees, agents, and licensors from and against any claims, liabilities, damages, judgments, awards,
               losses, costs, or expenses (including reasonable attorneys&rsquo; fees) arising out of or relating to your
               violation of these Terms or your use of the Service.
@@ -192,21 +196,24 @@ export default function Terms() {
             <h2>12. Dispute Resolution</h2>
             <h3>12.1 Governing Law</h3>
             <p>
-              These Terms and any dispute arising hereunder shall be governed by and construed in accordance with the
-              laws of the jurisdiction in which Iskra Games is registered, without regard to its conflict of
-              law provisions.
+              These Terms and any dispute arising under them are governed by and construed in
+              accordance with the law of {JURISDICTION}, without regard to its conflict of law
+              provisions.
             </p>
-            <h3>12.2 Arbitration</h3>
+            <h3>12.2 Where Disputes Are Heard</h3>
             <p>
-              Any dispute, claim, or controversy arising out of or relating to these Terms or the breach, termination,
-              enforcement, or interpretation thereof shall be settled by binding arbitration, unless otherwise
-              prohibited by applicable law. The arbitration shall take place in a mutually agreed location or as
-              determined under applicable arbitration rules.
+              Disputes are subject to the jurisdiction of the Polish courts competent for our
+              registered seat. <strong>This does not take away your rights as a consumer.</strong>{" "}
+              If you are a consumer resident in the European Union, you keep the protection of the
+              mandatory rules of your own country of residence and you may bring proceedings
+              against us in the courts of that country, whatever this section says.
             </p>
-            <h3>12.3 Class Action Waiver</h3>
+            <h3>12.3 Talk To Us First</h3>
             <p>
-              To the extent permitted by law, you agree to resolve any disputes on an individual basis and waive any
-              right to bring or participate in a class or collective action.
+              We would much rather sort a problem out directly. Please write to us at the address
+              in section 16 before starting formal proceedings — most things are resolved that
+              way. Consumers in the European Union may also use the European Commission&rsquo;s
+              online dispute resolution platform.
             </p>
           </section>
 
@@ -223,8 +230,10 @@ export default function Terms() {
             <h3>13.2 EU Consumer Protections</h3>
             <ul>
               <li>
-                If you are a resident of an EU member state, you may have rights under EU consumer protection laws that
-                cannot be waived by contract (e.g., certain cancellation, refund, or withdrawal rights).
+                We are established in the European Union, so EU consumer law applies to us directly.
+                If you are a resident of an EU member state you have rights under it that cannot be
+                waived by contract (for example certain cancellation, refund, or withdrawal rights),
+                and nothing in these Terms limits them.
               </li>
               <li>
                 Additionally, if you access the Service from within the European Economic Area (EEA), Switzerland, or
@@ -278,7 +287,7 @@ export default function Terms() {
             <h3>15.4 Entire Agreement</h3>
             <p>
               These Terms and any additional policies or guidelines we provide regarding the Service constitute the
-              entire agreement between you and Iskra Games and supersede all prior agreements, whether written
+              entire agreement between you and {STUDIO_NAME} and supersede all prior agreements, whether written
               or oral, with respect to the Service.
             </p>
           </section>
@@ -286,15 +295,7 @@ export default function Terms() {
           <section>
             <h2>16. Contact Us</h2>
             <p>If you have any questions or concerns about these Terms, please contact us at:</p>
-            <div className={styles.note}>
-              <p>
-                <b>Iskra Games</b>
-                <br />
-                <b>Email:</b> <a href="mailto:contact@iskragames.com">contact@iskragames.com</a>
-                <br />
-                <b>Website:</b> <a href="https://iskragames.com">https://iskragames.com</a>
-              </p>
-            </div>
+            <LegalEntity className={styles.note} />
           </section>
         </div>
       </main>

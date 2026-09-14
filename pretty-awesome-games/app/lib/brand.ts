@@ -27,3 +27,66 @@ export const SITE_URL = `https://${SITE_HOST}`
 
 /** Mail lives on the apex, not on `www`. */
 export const CONTACT_EMAIL = `contact@${SITE_DOMAIN}`
+
+/**
+ * The legal entity behind the brand.
+ *
+ * "Iskra Games" is a **trading name, not a registered company**. The business is the
+ * founder's Polish sole proprietorship — a *jednoosobowa działalność gospodarcza*
+ * ("JDG"), registered in CEIDG under his own name. A JDG has no KRS number and no
+ * share capital; NIP and REGON are the identifiers that exist.
+ *
+ * Polish and EU rules want the *entity* identifiable wherever the brand trades, which
+ * is why the legal pages and the footer carry this block rather than only "Iskra Games".
+ *
+ * `HAS_LEGAL_ENTITY` below is false while any field is empty, and every component that
+ * renders the block checks it first — so an unfilled entry renders *nothing at all*
+ * rather than a placeholder that reads like a real registration number on a live legal
+ * page. The details were supplied from the CEIDG entry on 2026-09-14.
+ */
+interface LegalEntityDetails {
+  name: string
+  address: string[]
+  nip: string
+  regon: string
+}
+
+/**
+ * Typed rather than `as const` on purpose: `as const` narrows each field to its own
+ * string literal, at which point `HAS_LEGAL_ENTITY`'s emptiness checks stop compiling
+ * ("no overlap with \"\"") and the guard would have to be cast away. Keeping the fields
+ * plain `string` keeps that guard real, so blanking a field out again — during a change
+ * of address, say — hides the block instead of shipping a half-filled one.
+ */
+export const LEGAL_ENTITY: LegalEntityDetails = {
+  /**
+   * Exactly as CEIDG has it under *Firma przedsiębiorcy* — for a JDG that is simply the
+   * owner's name, with no trading name attached to the registration. Keep the `ć`: it is
+   * the registered spelling, and both webfonts load `latin-ext` for exactly this reason.
+   */
+  name: "Ludwik Baćmaga",
+  /** Registered business address, one array entry per line as it should print. */
+  address: ["ul. Andrzeja Struga 18", "26-610 Radom, Poland"],
+  /** Tax identifier (Numer Identyfikacji Podatkowej) — 10 digits. */
+  nip: "5214177201",
+  /** Statistical identifier (REGON) — 9 digits for a sole proprietorship. */
+  regon: "545534372",
+}
+
+/** True only once the registration details above are actually filled in. */
+export const HAS_LEGAL_ENTITY =
+  LEGAL_ENTITY.name !== "" &&
+  LEGAL_ENTITY.address.length > 0 &&
+  LEGAL_ENTITY.nip !== "" &&
+  LEGAL_ENTITY.regon !== ""
+
+/**
+ * One-line entity identifier for tight slots such as the site footer. Empty while
+ * the registration details are unfilled, so the caller can skip rendering entirely.
+ */
+export const LEGAL_ENTITY_LINE = HAS_LEGAL_ENTITY
+  ? `${LEGAL_ENTITY.name} · NIP ${LEGAL_ENTITY.nip} · ${LEGAL_ENTITY.address.join(", ")}`
+  : ""
+
+/** The country whose law governs the Terms, and where the business is registered. */
+export const JURISDICTION = "Poland"

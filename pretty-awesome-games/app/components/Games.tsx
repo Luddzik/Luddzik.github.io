@@ -29,35 +29,28 @@ interface Game {
   description: string
   /** Rendered as a ruled definition list under the description. */
   meta: { label: string; value: string }[]
+  /** Optional outbound link — omit until there is something real to click through to. */
+  link?: { label: string; href: string }
+  /** Optional line under the link for what exists but isn't linkable yet. */
+  note?: string
   art: React.ReactNode
 }
 
 const games: Game[] = [
   {
-    id: "ecio-reborn",
-    title: "ECIO Reborn",
-    tagline: "Build. Battle. Conquer.",
+    id: "neuroshift",
+    title: "Neuroshift",
+    tagline: "Build your squad from what you kill.",
     description:
-      "A strategy game rebuilt from the ground up. Claim territory, commit your forces, and read the board before your opponent does.",
+      "Take a crew down the lift, tear parts off the machines you destroy, bolt them onto your own units, and decide how deep you dare to go — nothing you carry is yours until you ride back up.",
     meta: [
-      { label: "Genre", value: "Strategy" },
+      { label: "Genre", value: "Tactics roguelite" },
       { label: "Status", value: "In development" },
-      { label: "Platform", value: "Steam" },
+      { label: "Platform", value: "Steam (PC)" },
     ],
-    art: <IconArt src="/ecio-icon.png" alt="ECIO Reborn app icon" />,
-  },
-  {
-    id: "most-said",
-    title: "Most Said",
-    tagline: "Guess what everyone else guessed.",
-    description:
-      "Name the answers everyone else gave. Five questions, forty-five seconds, three strikes.",
-    meta: [
-      { label: "Genre", value: "Party quiz" },
-      { label: "Status", value: "In development" },
-      { label: "Platform", value: "Browser" },
-    ],
-    art: <IconArt src="/most-said-icon.png" alt="Most Said app icon" />,
+    link: { label: "Play the free demo", href: "https://luddzik.itch.io/neuroshift" },
+    note: "Steam page coming soon.",
+    art: <IconArt src="/neuroshift-icon.png" alt="Neuroshift logo" />,
   },
 ]
 
@@ -71,13 +64,6 @@ const Games: React.FC = () => {
           What we&rsquo;re building
         </SectionHeading>
 
-        {/*
-          A ruled index, not a stack of boxes. Each entry is a full-width row
-          divided by a hairline that is already partly burnt through in ignition
-          orange — the header's fuse, applied to a list. Hovering a row burns the
-          rest of its rule across, so the separator is the interaction rather
-          than a card lifting off the page.
-        */}
         <div className={styles.list}>
           {games.map((game, i) => (
             <motion.article
@@ -100,6 +86,23 @@ const Games: React.FC = () => {
                   <h3 className={styles.title}>{game.title}</h3>
                   <p className={styles.tagline}>{game.tagline}</p>
                   <p className={styles.description}>{game.description}</p>
+
+                  {(game.link || game.note) && (
+                    <p className={styles.links}>
+                      {game.link && (
+                        <a
+                          className={styles.link}
+                          href={game.link.href}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          <span>{game.link.label}</span>
+                          <span className={styles.linkRule} aria-hidden="true" />
+                        </a>
+                      )}
+                      {game.note && <span className={styles.note}>{game.note}</span>}
+                    </p>
+                  )}
                 </div>
 
                 <dl className={styles.meta}>
@@ -114,7 +117,6 @@ const Games: React.FC = () => {
             </motion.article>
           ))}
 
-          {/* Closes the list, so the last entry sits inside the ruling too. */}
           <div className={styles.rule} aria-hidden="true">
             <span className={styles.ruleBurn} />
             <span className={styles.ruleEmber} />

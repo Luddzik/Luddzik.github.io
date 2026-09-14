@@ -31,7 +31,7 @@ const kaushan = Kaushan_Script({
 })
 
 const DESCRIPTION =
-  "Iskra Games is an independent game studio in Poland, building games for Steam and the browser."
+  "Iskra Games is an independent game studio in Poland, building games for PC."
 
 export const metadata: Metadata = {
   /*

@@ -1,5 +1,7 @@
 import Header from "../components/Header"
 import Footer from "../components/Footer"
+import LegalEntity from "../components/LegalEntity"
+import { CONTACT_EMAIL, SITE_HOST, STUDIO_NAME } from "../lib/brand"
 import styles from "./privacy-policy.module.css"
 
 export default function PrivacyPolicy() {
@@ -9,133 +11,105 @@ export default function PrivacyPolicy() {
       <main className={styles.privacyPolicy} id="top">
         <div className={styles.container}>
           <h1>Privacy Policy</h1>
-          <p className={styles.lastUpdated}>Last Updated: 4 August, 2026</p>
+          <p className={styles.lastUpdated}>Last Updated: 14 September, 2026</p>
 
           <p className={styles.intro}>Thank you for playing our games!</p>
 
           <p>
-            This Privacy Policy applies to all of Iskra Games, websites, stores, and related services
-            (collectively referred to as the &ldquo;Service&rdquo;). We may occasionally update this Privacy Policy by posting a
-            revised version on iskragames.com. If we make any significant changes, we will notify you in
-            accordance with applicable laws, which may include placing a notice within the Service before the update
-            becomes effective. Your continued use of the Service after the effective date signifies your agreement to
-            the updated Privacy Policy.
+            This Privacy Policy applies to all of {STUDIO_NAME}, our games, this website and
+            related services (collectively the &ldquo;Service&rdquo;). {STUDIO_NAME} is a
+            trading name of a sole proprietorship established in Poland; the registration
+            details are in section 12, and the data controller for the purposes of the GDPR is
+            that business. We may occasionally update this Privacy Policy by posting a revised
+            version on {SITE_HOST}. If we make any significant changes, we will notify you in
+            accordance with applicable laws, which may include placing a notice within the
+            Service before the update becomes effective. Your continued use of the Service after
+            the effective date signifies your agreement to the updated Privacy Policy.
           </p>
 
           <section>
             <h2>1. Information We Collect</h2>
             <p>
-              We collect information to provide and enhance our Service. What is collected depends
-              on <em>which</em> game you play and <em>where</em> you play it, so this section is split
-              by platform. We do not sell your personal information.
+              We collect very little, because there is very little to collect. Our games are
+              single-player and run offline; this website is a set of static pages. We do not
+              sell your personal information, and we have never done so.
             </p>
 
-            <h3>a. Information you give us in-game</h3>
+            <h3>a. Inside our games</h3>
             <p>
-              Some games let you choose a display name and a character. That is the only free-text
-              input our games accept. We do not ask for your real name, address, date of birth, or
-              phone number, and none of our games has an account or a password.
+              Our games have <strong>no account and no password</strong>, no advertising, and no
+              analytics, telemetry or crash-reporting software of our own. Nothing you do in a
+              game is sent to us.
+            </p>
+            <p>
+              Your progress is written to a save file on your own computer. It stays there,
+              deleting it deletes the data, and we never receive a copy.
             </p>
 
-            <h3>b. Games you install on a device (mobile and desktop)</h3>
+            <h3>b. The store you get the game from</h3>
             <p>
-              Installed titles use third-party services to run, measure and fund themselves.
-              Depending on the title, these may include analytics and crash reporting (Google
-              Firebase), advertising (Google AdMob), player accounts and cloud saves (Microsoft Azure
-              PlayFab), multiplayer networking (Photon), attribution measurement, and the store
-              platform the game is distributed on (for example Apple App Store, Google Play, or
-              Steam). Through those services we may receive:
-            </p>
-            <ul>
-              <li>
-                Device and platform details — device type, operating system, language, region,
-                app version, unique advertising or device identifiers, and IP address.
-              </li>
-              <li>Gameplay activity — session length, progress, purchases, and crash reports.</li>
-            </ul>
-            <p>
-              Each of those providers processes data under its own privacy policy. Advertising
-              identifiers can be reset or limited in your device settings, and in the European Union,
-              United Kingdom and other regions with equivalent rules you are asked for consent before
-              any personalised advertising or optional analytics is enabled.
+              Our games are distributed through storefronts such as Steam and itch.io. Those
+              platforms have their own accounts, their own payment handling and their own data
+              collection, all governed by their own privacy policies rather than this one — see{" "}
+              <a
+                href="https://store.steampowered.com/privacy_agreement/"
+                rel="noopener noreferrer"
+                target="_blank"
+              >
+                Valve&rsquo;s privacy policy
+              </a>{" "}
+              and{" "}
+              <a href="https://itch.io/docs/legal/privacy-policy" rel="noopener noreferrer" target="_blank">
+                itch.io&rsquo;s privacy policy
+              </a>
+              . What reaches us from them is aggregate reporting — how many copies sold,
+              wishlists, refunds, broad country and platform breakdowns — which does not
+              identify individual players.
             </p>
 
-            <h3>c. Games you play in a web browser</h3>
+            <h3>c. Feedback you choose to send us</h3>
             <p>
-              Our browser games — including <strong>Most Said</strong> — work differently, and
-              deliberately collect less:
+              Some builds offer a feedback button that opens an optional form hosted on Google
+              Forms. It requires no sign-in, and you decide what to write. If you include your
+              email address so we can follow up, we use it only to reply to you. Google processes
+              the form submission under its own privacy policy.
             </p>
-            <ul>
-              <li>
-                <strong>No third-party analytics or advertising code of our own.</strong> There is no
-                Google Analytics, no Firebase, and no advertising or tracking pixel inside the game.
-              </li>
-              <li>
-                <strong>Ads and analytics belong to the portal.</strong> Where a game is published on
-                a portal such as Poki, advertising and gameplay measurement are handled entirely by
-                that portal&rsquo;s own software development kit. The events we send it are game
-                milestones — a round started, a round finished — with no personal data attached. The
-                portal&rsquo;s own privacy policy governs its advertising, analytics and cookies,
-                including anything about personalised ads. For Poki, see{" "}
-                <a href="https://poki.com/en/c/privacy-policy" rel="noopener noreferrer" target="_blank">
-                  Poki&rsquo;s privacy policy
-                </a>
-                .
-              </li>
-              <li>
-                <strong>Settings stay in your browser.</strong> Your display name, character choice,
-                best score, whether you muted the sound, and which questions you have seen recently
-                are saved in your browser&rsquo;s local storage. That never leaves your device, and
-                clearing your browser data deletes it permanently. If your browser blocks local
-                storage — private or incognito mode does — the game still works, it just will not
-                remember anything between sessions.
-              </li>
-            </ul>
 
-            <h3>d. Multiplayer play</h3>
+            <h3>d. This website</h3>
             <p>
-              When a game offers online multiplayer, joining a room means exchanging a small amount
-              of information with our server so the other players can see you.
-            </p>
-            <p>
-              For <strong>Most Said</strong>, this happens <em>only</em> when you join a Private Room.
-              Solo play and Quick Match run entirely inside your browser against simulated opponents
-              and send nothing anywhere. The server is{" "}
-              <code>most-said-rooms.iskra-games.workers.dev</code>, running on Cloudflare Workers
-              and Durable Objects, reached over an encrypted connection. While you are in a room it
-              relays your display name and character choice, your score and how many answers you have
-              found, how many questions you have finished, and the four-character room code.
-            </p>
-            <p>
-              <strong>It is a relay, not a database.</strong> Those details live on the open
-              connection and are discarded when it closes; the only thing stored is the room&rsquo;s
-              question set, so a player joining a moment late gets the same questions, and that
-              disappears with the room. Nothing survives you closing the tab — there is no account,
-              no history and no profile. Display names are filtered for offensive language on arrival,
-              because other players see them.
+              This site is a set of static pages hosted on GitHub Pages. It sets{" "}
+              <strong>no cookies</strong> and carries no analytics, no advertising and no
+              tracking pixels. As the host, GitHub processes standard server request logs,
+              including your IP address, to deliver the pages and protect the service; see{" "}
+              <a
+                href="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement"
+                rel="noopener noreferrer"
+                target="_blank"
+              >
+                GitHub&rsquo;s privacy statement
+              </a>
+              .
             </p>
 
             <h3>e. Contact information</h3>
             <p>
-              If you contact us by email or through an in-game feedback form, we receive your email
-              address and whatever you choose to tell us, and we keep it only as long as needed to
-              answer you.
+              If you contact us by email, we receive your email address and whatever you choose
+              to tell us, and we keep it only as long as needed to answer you.
             </p>
 
             <div className={styles.note}>
-              Note: Our games do not collect or process any sensitive medical information. They are
-              designed purely for entertainment.
+              Note: Our games do not collect or process any sensitive medical information. They
+              are designed purely for entertainment.
             </div>
           </section>
 
           <section>
             <h2>2. How We Use Your Information</h2>
-            <p>We use the information we collect to:</p>
+            <p>We use the little information we receive to:</p>
             <ul>
               <li>Provide, maintain, and improve the functionality of our Service.</li>
-              <li>Monitor and analyze usage trends to enhance the user experience.</li>
+              <li>Understand what players think of a game so we can make it better.</li>
               <li>Respond to user inquiries and provide customer support.</li>
-              <li>Send updates and notifications about the Service, if applicable.</li>
               <li>Comply with legal obligations.</li>
             </ul>
           </section>
@@ -143,15 +117,19 @@ export default function PrivacyPolicy() {
           <section>
             <h2>3. Legal Basis for Processing Personal Data (For Users in the EU/UK)</h2>
             <p>
-              For individuals in the European Union or the United Kingdom, we process your data based on the following
-              legal grounds:
+              We are established in Poland, so the GDPR applies to our processing. The legal
+              grounds we rely on are:
             </p>
             <ul>
               <li>
-                Consent: When you provide explicit consent (e.g., for optional analytics or marketing communications).
+                Consent: when you choose to send us feedback or write to us, you decide what to
+                share, and you can withdraw it at any time by asking us to delete it.
               </li>
-              <li>Legitimate Interests: For operational purposes such as maintaining and improving the Service.</li>
-              <li>Legal Obligation: When required to comply with applicable laws.</li>
+              <li>
+                Legitimate Interests: for operational purposes such as delivering this website
+                securely and maintaining and improving the Service.
+              </li>
+              <li>Legal Obligation: when required to comply with applicable laws.</li>
             </ul>
           </section>
 
@@ -161,12 +139,10 @@ export default function PrivacyPolicy() {
 
             <h3>a. Service Providers</h3>
             <p>
-              We may share information with third-party service providers who assist with hosting,
-              analytics, advertising, multiplayer networking and customer support. Depending on the
-              game, these include Google (Firebase and AdMob), Microsoft (Azure PlayFab), Photon,
-              Cloudflare, the store or portal distributing the game, and our email provider. These
-              providers are obligated to handle your data securely and only for the purposes we
-              specify. A game&rsquo;s own in-game credits and section 1 above identify which apply.
+              We rely on a small number of third parties to run the Service: the storefront
+              distributing a game (such as Valve or itch.io), GitHub for hosting this website,
+              Google for the optional feedback form, and our email provider. Each processes data
+              under its own privacy policy and only for the purposes described in section 1.
             </p>
 
             <h3>b. Legal Compliance</h3>
@@ -177,28 +153,31 @@ export default function PrivacyPolicy() {
 
             <h3>c. Business Transfers</h3>
             <p>
-              If Iskra Games undergoes a merger, acquisition, or asset sale, your information may be
-              transferred as part of that transaction. You will be notified of any such change.
+              If the business behind {STUDIO_NAME} undergoes a merger, acquisition, or asset
+              sale, your information may be transferred as part of that transaction. You will be
+              notified of any such change.
             </p>
           </section>
 
           <section>
             <h2>5. International Data Transfers</h2>
             <p>
-              Your information may be processed and stored outside your country of residence, including in the United
-              States. We ensure that appropriate safeguards are in place to protect your data in accordance with
-              applicable laws, such as the EU/UK General Data Protection Regulation (GDPR).
+              Some of the providers listed in section 4 are established outside the European
+              Economic Area, including in the United States, so the limited information they
+              handle on our behalf may be processed there. Where that happens we rely on the
+              safeguards those providers put in place under the GDPR, such as the European
+              Commission&rsquo;s adequacy decisions or Standard Contractual Clauses.
             </p>
           </section>
 
           <section>
             <h2>6. Data Retention</h2>
             <p>
-              We retain your information only as long as necessary to fulfill the purposes outlined in this Privacy
-              Policy, or as required by law. When information is no longer needed, we securely delete or anonymize it.
-              Multiplayer room data is the shortest-lived: it is discarded when the room closes, and
-              data kept only in your browser&rsquo;s local storage is deleted whenever you clear your
-              browser data.
+              We retain your information only as long as necessary to fulfill the purposes
+              outlined in this Privacy Policy, or as required by law. In practice that means
+              correspondence and feedback are kept while they are still useful and then deleted.
+              Your game progress is not ours to retain at all — it lives in a save file on your
+              own computer, and clearing it removes it permanently.
             </p>
           </section>
 
@@ -216,8 +195,11 @@ export default function PrivacyPolicy() {
             </ul>
             <p>
               To exercise these rights, please contact us at{" "}
-              <a href="mailto:contact@iskragames.com">contact@iskragames.com</a>. We will respond in
-              accordance with applicable laws.
+              <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>. We will respond in
+              accordance with applicable laws. If you are in the European Union and believe we
+              have not handled your data properly, you may also complain to a supervisory
+              authority — in Poland that is the President of the Personal Data Protection Office
+              (Prezes Urzędu Ochrony Danych Osobowych, UODO).
             </p>
           </section>
 
@@ -227,7 +209,7 @@ export default function PrivacyPolicy() {
               Our Service is not intended for children under 13 years old (or the minimum age in your jurisdiction). We
               do not knowingly collect personal data from children. If you believe we have collected data from a child
               under this age, please contact us at{" "}
-              <a href="mailto:contact@iskragames.com">contact@iskragames.com</a>, and we will take steps
+              <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>, and we will take steps
               to delete it.
             </p>
           </section>
@@ -260,16 +242,8 @@ export default function PrivacyPolicy() {
           <section>
             <h2>12. Contact Us</h2>
             <p>If you have any questions, concerns, or requests regarding this Privacy Policy, you can reach us at:</p>
-            <div className={styles.note}>
-              <p>
-                <b>Iskra Games</b>
-                <br />
-                <b>Email:</b> <a href="mailto:contact@iskragames.com">contact@iskragames.com</a>
-                <br />
-                <b>Website:</b> <a href="https://iskragames.com">https://iskragames.com</a>
-              </p>
-            </div>
-            <p>Thank you for playing our games and trusting Iskra Games!</p>
+            <LegalEntity className={styles.note} />
+            <p>Thank you for playing our games and trusting {STUDIO_NAME}!</p>
           </section>
         </div>
       </main>
