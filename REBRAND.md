@@ -71,6 +71,31 @@ NEUROSHIFT's demo is live at <https://luddzik.itch.io/neuroshift> and is linked 
 row. The Steam page is the next thing to land; when it does, the row gains the store link
 and the "Steam page coming soon" note comes off.
 
+### NEUROSHIFT's row tile — provenance
+
+`public/neuroshift-icon.png` is **key art, not the logo mark**. The `NS` plate from
+`tools/generate-logo.py` went in first and was rejected on 2026-09-14: at the 168px the row
+renders, a logo mark tells a visitor nothing about what they'd be playing, and the row
+already prints the title next to it. **Don't put a logo back in this slot.**
+
+It is composed from the game's own main-menu art, the same sheet
+`tools/capture/make-cover.py` uses for the itch cover — so it is the front screen, not a
+mock-up:
+
+- Sheet: `ECIOGame/Assets/_ECIO/GAME/Sprite/Ecio UI Menu Updated.png` (2560², sprite rects
+  are bottom-left origin, per the `.meta`)
+- Hero group: rect `(18, 687, 725, 638)`
+- City backdrop: rect `(8, 1451, 1922, 1082)`, cover-fit square at 30% bias so the lit city
+  sits behind the squad, brightness ×0.48, vignette, saturation ×1.10
+
+Composed at 1024² and downsampled to 512² — then **quantised to a 256-colour palette**,
+which took it from 363 KB to 96 KB with no visible loss, because the art is flat cartoon
+fill. Don't ship the unquantised export; it is a quarter of a megabyte for a 168px slot.
+
+Variants tried and rejected: cropping to the single magenta lead (amputates the other two
+units, which overlap it), filling the frame with the squad (clips limbs at every edge), and
+dropping the city for a flat volt-lit ground (reads as a muddy olive wash).
+
 <details>
 <summary>Superseded 2026-09-14 — the 2026-08-03 lineup</summary>
 

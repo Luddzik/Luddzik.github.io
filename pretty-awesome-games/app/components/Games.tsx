@@ -7,13 +7,16 @@ import section from "./Section.module.css"
 import styles from "./Games.module.css"
 
 /**
- * Each entry leads with the game's own app icon, lit by a blurred copy of itself
- * so the game's palette bleeds onto the page — its colour, not the site's, and
- * no CSS gradient involved.
+ * Each entry leads with a square tile of the game's own art, lit by a blurred copy
+ * of itself so the game's palette bleeds onto the page — its colour, not the site's,
+ * and no CSS gradient involved.
  *
- * Icons rather than screenshots because key art varies wildly in shape from game
- * to game; icons are square, so the lineup reads as one system however many
- * titles end up here.
+ * Square tiles rather than screenshots because key art varies wildly in shape from
+ * game to game; squares mean the lineup reads as one system however many titles end
+ * up here. What goes *in* the square should show the game, not brand it — a logo
+ * mark tells a visitor nothing about what they would be playing. Neuroshift's tile is
+ * its front-screen squad over the alien-city backdrop; see REBRAND.md §2 for how it
+ * is generated and from which sprites.
  */
 const IconArt: React.FC<{ src: string; alt: string }> = ({ src, alt }) => (
   <div className={styles.iconStage}>
@@ -50,7 +53,7 @@ const games: Game[] = [
     ],
     link: { label: "Play the free demo", href: "https://luddzik.itch.io/neuroshift" },
     note: "Steam page coming soon.",
-    art: <IconArt src="/neuroshift-icon.png" alt="Neuroshift logo" />,
+    art: <IconArt src="/neuroshift-icon.png" alt="Neuroshift key art — a squad of three units" />,
   },
 ]
 
