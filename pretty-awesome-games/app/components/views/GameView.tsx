@@ -97,9 +97,9 @@ const GameView: React.FC<{ game: Game; active: boolean }> = ({ game, active }) =
           )}
 
           <div className={styles.links}>
-            {game.demo && (
-              <a href={game.demo.href} target="_blank" rel="noopener noreferrer">
-                {game.demo.label} <span aria-hidden="true">↗</span>
+            {game.store && (
+              <a href={game.store.href} target="_blank" rel="noopener noreferrer">
+                {game.store.label} <span aria-hidden="true">↗</span>
               </a>
             )}
             <a href="#press">

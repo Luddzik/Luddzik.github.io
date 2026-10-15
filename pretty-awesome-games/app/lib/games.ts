@@ -1,7 +1,7 @@
 /**
  * The lineup. This array is the only place the games are enumerated — the home
  * slashes, the Games index, each game's own page, the Press kit and the footer's
- * "play now" link are all derived from it. Never write copy elsewhere that counts
+ * store link are all derived from it. Never write copy elsewhere that counts
  * the games; it goes stale the day the next project starts.
  *
  * Echoes of Stone must not appear here, in any form (REBRAND.md §2).
@@ -35,7 +35,8 @@ export interface Game {
   meta: Fact[]
   /** Longer form of the same, for the press kit. */
   pressFacts: Fact[]
-  demo?: { label: string; href: string }
+  /** Where players can get or wishlist the game — its store page. */
+  store?: { label: string; href: string }
   /** What exists but isn't linkable yet. */
   note?: string
   art: {
@@ -75,10 +76,9 @@ export const games: Game[] = [
       { label: "Developer", value: "Iskra Games · Poland" },
       { label: "Genre", value: "Turn-based squad-tactics roguelite" },
       { label: "Platform / mode", value: "PC (Steam) · Offline single player" },
-      { label: "Availability", value: "In development · Free demo on itch.io" },
+      { label: "Availability", value: "In development · Wishlist on Steam" },
     ],
-    demo: { label: "Play the free demo", href: "https://luddzik.itch.io/neuroshift" },
-    note: "Steam page coming soon.",
+    store: { label: "Wishlist on Steam", href: "https://store.steampowered.com/app/5451690/NEUROSHIFT/" },
     art: {
       world: "/media/neuroshift/world.webp",
       characters: "/media/neuroshift/crew.webp",
@@ -112,7 +112,7 @@ export const FEATURED_LIMIT = 3
 
 export const featuredGames = games.slice(0, FEATURED_LIMIT)
 
-/** The footer's "play now" link goes to the first game with something playable. */
-export const playableGame = games.find((game) => game.demo)
+/** The footer's store link goes to the first game that has a store page. */
+export const storeGame = games.find((game) => game.store)
 
 export const findGame = (slug: string) => games.find((game) => game.slug === slug)

@@ -18,7 +18,7 @@ export const GamesIndexView: React.FC = () => (
     <div className={styles.masthead} data-tgroup="">
       <span className={ui.kicker}>Iskra / Games</span>
       <h1 className={styles.h1}>Games</h1>
-      <p className={styles.lede}>Explore our games, watch gameplay and play the available demos.</p>
+      <p className={styles.lede}>Explore our games, watch gameplay and wishlist them on Steam.</p>
     </div>
 
     <div className={styles.catalog} data-tgroup="">
@@ -119,9 +119,9 @@ const PressGame: React.FC<{ game: Game }> = ({ game }) => (
       ))}
     </dl>
     <div className={styles.actions}>
-      {game.demo && (
-        <a className={ui.action} href={game.demo.href} target="_blank" rel="noopener noreferrer">
-          Play the demo <span aria-hidden="true">↗</span>
+      {game.store && (
+        <a className={ui.action} href={game.store.href} target="_blank" rel="noopener noreferrer">
+          {game.store.label} <span aria-hidden="true">↗</span>
         </a>
       )}
       {game.factSheet && (
@@ -255,7 +255,7 @@ export const ContactView: React.FC = () => {
         <a href="#games">
           <span>Players</span>
           <h2>Play our games ↗</h2>
-          <p>Demos, gameplay and what we&rsquo;re working on now.</p>
+          <p>Gameplay, store pages and what we&rsquo;re working on now.</p>
         </a>
         <a href={`mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent("Publishing enquiry")}`}>
           <span>Publishers</span>

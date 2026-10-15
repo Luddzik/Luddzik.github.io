@@ -1,6 +1,6 @@
 import type React from "react"
 import Link from "next/link"
-import { playableGame } from "../lib/games"
+import { storeGame } from "../lib/games"
 import { LEGAL_ENTITY_LINE, STUDIO_NAME } from "../lib/brand"
 import styles from "./SiteFooter.module.css"
 
@@ -15,15 +15,15 @@ interface SiteFooterProps {
 
 const SiteFooter: React.FC<SiteFooterProps> = ({ variant = "page" }) => (
   <footer className={`${styles.footer} ${variant === "frame" ? styles.frame : styles.page}`}>
-    {playableGame?.demo && (
+    {storeGame?.store && (
       <a
         className={styles.news}
-        href={playableGame.demo.href}
+        href={storeGame.store.href}
         target="_blank"
         rel="noopener noreferrer"
       >
-        <span className={styles.tag}>Play now</span>
-        {playableGame.title} demo <span className={styles.arrow} aria-hidden="true">↗</span>
+        <span className={styles.tag}>Wishlist</span>
+        {storeGame.title} on Steam <span className={styles.arrow} aria-hidden="true">↗</span>
       </a>
     )}
 
