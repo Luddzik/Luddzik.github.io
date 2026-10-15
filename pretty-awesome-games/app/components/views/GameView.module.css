@@ -30,6 +30,11 @@
   animation: world-drift 38s ease-in-out infinite alternate;
 }
 
+/* Between world and characters in depth, so it moves between them too. */
+.smoke {
+  translate: calc(var(--mx) * -5px) calc(var(--my) * -3px);
+}
+
 .crew {
   position: absolute;
   right: -3%;

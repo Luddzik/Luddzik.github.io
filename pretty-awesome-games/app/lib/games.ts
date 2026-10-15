@@ -46,10 +46,10 @@ export interface Game {
     alt: string
   }
   /**
-   * Particle colours for the game page's ambient VFX, taken from the key art so
-   * the effect reads as part of the game's world rather than the studio's.
+   * Tints for the smoke drifting behind the characters — muted versions of the
+   * key art's colours, so the haze belongs to the game's world.
    */
-  palette: string[]
+  smoke: string[]
   screenshots: Screenshot[]
   footage?: { src: string; poster: string }
   /** Plain-text fact sheet for press. */
@@ -84,7 +84,7 @@ export const games: Game[] = [
       characters: "/media/neuroshift/crew.webp",
       alt: "The NeuroShift squad — three units over an alien city",
     },
-    palette: ["#3fd8ff", "#9dff4a", "#ff4fd8", "#ed874b"],
+    smoke: ["#a58ae8", "#6fb4cf", "#c98ac6"],
     screenshots: [
       {
         src: "/media/neuroshift/combat.webp",

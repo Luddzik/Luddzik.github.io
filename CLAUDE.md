@@ -33,7 +33,7 @@ The studio rebranded from "Pretty Awesome Games"; the directory is still named `
 **Layout — the 2026-10 redesign (design reference: `design/iskra-polish-r9/`, motion reference: FromSoftware's site).** The home page is one **stationary frame** — header and footer never move — with views dissolving inside it, like a game's front end. `app/page.tsx` renders `app/components/Shell.tsx`, which owns routing, transitions and the entrance. Routing is by **hash** (`app/lib/routes.ts`) so it works on static hosting and every view is a shareable link: `#games`, `#company`, `#press`, `#contact`, `#<slug>` (a game's page), `#<slug>/gameplay`, `#press-<anchor>`. All views are always in the DOM (good for SEO); only the active one (plus the leaving one, mid-dissolve) is unhidden. Legal pages (`/privacy-policy`, `/terms`, `/oauth2redirect`) are ordinary scrolling routes that reuse `SiteHeader base="/"` + `SiteFooter` and share `components/LegalPage.module.css`.
 
 - **Home** (`views/HomeView.tsx`) — each featured game is a skewed slash; the focused one opens wide and comes into colour. **The whole artwork links to the game's page**, not just the Discover button (touch: first tap focuses, second goes through).
-- **Game page** (`views/GameView.tsx`) — the game's world full-bleed behind compact facts, Back (×) on the right, Esc also goes back. Its background is alive: world drifting, pointer parallax between world and characters, and `AmbientSparks`. Characters do **not** bob — only the light on them breathes (r9 decision). "Pause background" is kept for accessibility.
+- **Game page** (`views/GameView.tsx`) — the game's world full-bleed behind compact facts, Back (×) on the right, Esc also goes back. Its background is alive: world drifting, `AmbientSmoke` rolling through it, pointer parallax between the layers. The scene stacks **world → smoke → characters → scrim → text** — effects stay *behind* the characters. Characters do **not** bob — only the light on them breathes (r9 decision). The home slash runs the same smoke behind its characters. "Pause background" is kept for accessibility.
 - **Games / Company / Press / Contact / Gameplay** — `views/ContentViews.tsx`, readable columns on the flat `--surface`.
 
 **Transitions** (in `Shell.tsx`): the old scene stays painted underneath while the new one dissolves in over 640ms; text groups (`data-tgroup`) move separately — old text out in 130ms, new text in after 170ms — so paragraphs never superimpose. Entering a game, its scene settles from scale 1.06. Rapid clicks settle on the latest route. **Entrance**: first visit per session only — wordmark drawn, a diagonal cut opens into the real home page, the mark flies into the header (2.4s). Skippable; absent on deep links and under reduced motion. An inline script in `layout.tsx` decides before first paint (`html[data-intro]` / `html[data-route-pending]`) so nothing flashes.
@@ -54,11 +54,13 @@ The studio rebranded from "Pretty Awesome Games"; the directory is still named `
 
 **Logo:** the **ISKRA** geometric wordmark, its I broken by the same diagonal as the home slashes. `app/components/Wordmark.tsx` draws it as inline paths (`currentColor`); `public/brand/wordmark.svg` / `wordmark-ink.svg` are the same geometry for press download — keep them in step. Favicons (`favicon.ico/.svg`, 16/32/48 PNG, apple-touch, 192/512 via `app/manifest.ts`) are the broken I alone. `public/og.png` is the share card. The Kaushan Script brush wordmark is retired.
 
-**Canvas performance rules** (`AmbientSparks.tsx`) — measured on this site, not guessed:
+**Background effects — smoke only, behind the characters (owner direction, 2026-10-15).** A foreground spark/particle field with a cursor glow and click bursts was built and rejected as looking cheap and sitting on top of everything. Don't reintroduce foreground particles, cursor glows or click effects.
+
+**Canvas performance rules** (`AmbientSmoke.tsx`) — measured on this site, not guessed:
 - **Never use `ctx.shadowBlur`**; glow comes from pre-rendered sprites blitted with `drawImage`.
 - **Never call `createRadialGradient` per frame.**
 - **No CSS `mask-image` on the canvas**; fold fades into particle alpha.
-- Backing store capped at 1.5× DPR; count scales with viewport area. The loop is **stopped** (not just hidden) when its view isn't active, the tab is hidden, or the viewer paused it; nothing renders under reduced motion.
+- Smoke is all low frequencies: the backing store runs at **half** CSS resolution, sprites are noise puffs built once, puff count scales with viewport area. The loop is **stopped** (not just hidden) when its view isn't active, the tab is hidden, or the viewer paused it; nothing renders under reduced motion.
 
 **Media:** game art lives in `public/media/<slug>/` — web-sized WebP for display, full PNGs only as press downloads. Don't ship multi-MB PNGs for display.
 

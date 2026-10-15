@@ -2,14 +2,11 @@
 
 import type React from "react"
 import { useState } from "react"
-import AmbientSparks from "../AmbientSparks"
+import AmbientSmoke from "../AmbientSmoke"
 import { featuredGames } from "../../lib/games"
 import { inert } from "../../lib/inert"
 import ui from "./Ui.module.css"
 import styles from "./HomeView.module.css"
-
-/* Every featured game's colours at once, so focusing another slash doesn't restart the field. */
-const HOME_PALETTE = Array.from(new Set(featuredGames.flatMap((game) => game.palette)))
 
 /**
  * The front page is the games. Each featured game is a slash; the focused one
@@ -53,6 +50,7 @@ const HomeView: React.FC<{ active: boolean }> = ({ active }) => {
                 }}
               >
                 <div className={styles.art} style={{ backgroundImage: `url(${game.art.world})` }} />
+                <AmbientSmoke tints={game.smoke} active={active && isFocused} />
                 <img className={styles.crew} src={game.art.characters} alt="" />
                 <div className={styles.shade} />
               </a>
@@ -91,11 +89,6 @@ const HomeView: React.FC<{ active: boolean }> = ({ active }) => {
         })}
       </div>
 
-      <AmbientSparks
-        palette={HOME_PALETTE}
-        active={active}
-        density={0.55}
-      />
 
       <div className={styles.edge} data-tgroup="">
         Independent spirit / Unexpected worlds
