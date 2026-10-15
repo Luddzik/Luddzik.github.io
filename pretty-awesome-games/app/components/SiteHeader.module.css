@@ -22,24 +22,35 @@
   width: 150px;
 }
 
-/* The cut in the I, echoed as a slash that strikes in on hover. */
-.brand::after {
-  content: "";
-  position: absolute;
-  left: 10px;
-  top: 4px;
-  width: 2px;
-  height: 24px;
-  background: var(--accent);
-  opacity: 0;
-  transform: rotate(20deg) scaleY(0);
-  transition: transform 0.35s var(--ease-settle), opacity 0.3s;
-  pointer-events: none;
+/*
+ * Hover sparks the cut in the I: the halves part along the vertical and the gap
+ * between them lights in the accent — the logo's own geometry, nothing added.
+ */
+.brand :global([data-part^="i-"]) {
+  transition:
+    transform 0.35s var(--ease-settle),
+    fill 0.25s,
+    opacity 0.25s;
 }
 
-.brand:hover::after {
-  opacity: 0.7;
-  transform: rotate(20deg) scaleY(1);
+.brand :global([data-part="i-gap"]) {
+  fill: var(--accent);
+  opacity: 0;
+}
+
+.brand:hover :global([data-part="i-top"]),
+.brand:focus-visible :global([data-part="i-top"]) {
+  transform: translateY(-2.5px);
+}
+
+.brand:hover :global([data-part="i-bottom"]),
+.brand:focus-visible :global([data-part="i-bottom"]) {
+  transform: translateY(2.5px);
+}
+
+.brand:hover :global([data-part="i-gap"]),
+.brand:focus-visible :global([data-part="i-gap"]) {
+  opacity: 1;
 }
 
 .games {
