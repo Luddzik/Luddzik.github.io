@@ -97,6 +97,8 @@
 
 .copy {
   position: absolute;
+  /* --copy-dx / --choose-dx are measured in HomeView.tsx to undo the skew's drift. */
+  margin-left: var(--copy-dx, 0px);
   bottom: 125px;
   left: 65px;
   right: 25px;
@@ -171,6 +173,7 @@
 
 .choose > * {
   transform: skewX(13deg);
+  translate: var(--choose-dx, 0px) 0;
 }
 
 .panel:first-child .choose {

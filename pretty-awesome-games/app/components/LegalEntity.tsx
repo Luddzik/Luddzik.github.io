@@ -40,10 +40,10 @@ const LegalEntity: React.FC<{ className?: string }> = ({ className }) => (
             <br />
           </Fragment>
         ))}
-        NIP {LEGAL_ENTITY.nip} · REGON {LEGAL_ENTITY.regon}
+        NIP {LEGAL_ENTITY.nip}
         <br />
-        Sole proprietorship entered in the Polish CEIDG register. {STUDIO_NAME} is a
-        trading name of that business, not a separate company.
+        {STUDIO_NAME} is a trading name of this sole proprietorship, not a separate
+        company.
       </p>
     )}
   </div>

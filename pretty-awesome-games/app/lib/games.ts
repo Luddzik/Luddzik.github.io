@@ -46,10 +46,10 @@ export interface Game {
     alt: string
   }
   /**
-   * Tints for the smoke drifting behind the characters — muted versions of the
-   * key art's colours, so the haze belongs to the game's world.
+   * Key of this game's own background animation in `components/ambience/`.
+   * Every game gets a unique one, drawn behind its characters.
    */
-  smoke: string[]
+  ambience: string
   screenshots: Screenshot[]
   footage?: { src: string; poster: string }
   /** Plain-text fact sheet for press. */
@@ -84,7 +84,7 @@ export const games: Game[] = [
       characters: "/media/neuroshift/crew.webp",
       alt: "The NeuroShift squad — three units over an alien city",
     },
-    smoke: ["#a58ae8", "#6fb4cf", "#c98ac6"],
+    ambience: "neuroshift",
     screenshots: [
       {
         src: "/media/neuroshift/combat.webp",

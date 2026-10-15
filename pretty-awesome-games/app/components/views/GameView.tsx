@@ -3,7 +3,7 @@
 import type React from "react"
 import { useEffect, useRef, useState } from "react"
 import { useReducedMotion } from "framer-motion"
-import AmbientSmoke from "../AmbientSmoke"
+import { AMBIENCE } from "../ambience"
 import type { Game } from "../../lib/games"
 import styles from "./GameView.module.css"
 
@@ -11,7 +11,7 @@ import styles from "./GameView.module.css"
  * A game's own page: its world full-bleed behind compact, readable facts.
  *
  * The background is alive in layers, back to front — the environment drifting
- * slowly, smoke rolling through it, then the characters in front of the smoke —
+ * slowly, the game's own ambience (components/ambience/) moving through it, then the characters in front of it —
  * and the world and characters shift against each other with the pointer, so
  * the scene has depth rather than sitting there as a flat picture. All of it stops
  * when the view isn't showing, and the viewer can pause it.
@@ -56,13 +56,14 @@ const GameView: React.FC<{ game: Game; active: boolean }> = ({ game, active }) =
     }
   }, [active, paused, reduceMotion])
 
+  const Ambience = AMBIENCE[game.ambience]
   const platform = game.meta.find((item) => item.label === "Platform")?.value
 
   return (
     <div className={`${styles.game} ${paused || !active ? styles.paused : ""}`}>
       <div ref={sceneRef} className={styles.scene} aria-hidden="true" data-scene="">
         <div className={styles.world} style={{ backgroundImage: `url(${game.art.world})` }} />
-        <AmbientSmoke className={styles.smoke} tints={game.smoke} active={active} paused={paused} />
+        {Ambience && <Ambience className={styles.smoke} active={active} paused={paused} />}
         <img className={styles.crew} src={game.art.characters} alt="" />
         <div className={styles.shade} />
       </div>

@@ -3,16 +3,16 @@
 import type React from "react"
 import { useEffect, useRef } from "react"
 import { useReducedMotion } from "framer-motion"
-import styles from "./AmbientSmoke.module.css"
+import type { AmbienceProps } from "./types"
+import styles from "./SmokeField.module.css"
 
-interface AmbientSmokeProps {
-  /** Smoke tints, as hex. Muted versions of the game's own colours. */
+interface SmokeFieldProps extends AmbienceProps {
+  /** Smoke tints, as hex — taken from the game's own art. */
   tints: string[]
-  /** Only the visible scene runs; everything else is stopped, not just hidden. */
-  active: boolean
-  /** The viewer's "Pause background" choice. Freezes the last frame in place. */
-  paused?: boolean
-  className?: string
+  /** Overall opacity multiplier. Tune per game against its art. */
+  strength?: number
+  /** Puff density multiplier. */
+  density?: number
 }
 
 interface Puff {
@@ -32,7 +32,7 @@ interface Puff {
 
 /** Puffs per million CSS px², capped — the look depends on overlap, not count. */
 const PUFFS_PER_MPX = 14
-const MAX_PUFFS = 18
+const MAX_PUFFS = 26
 const MIN_PUFFS = 6
 /**
  * Smoke is all low frequencies, so the backing store runs at half CSS
@@ -115,7 +115,8 @@ const tint = (mask: HTMLCanvasElement, color: string) => {
 }
 
 /**
- * Slow smoke rolling through the game's world. It lives *behind* the
+ * A reusable smoke engine — one of the building blocks a game's own ambience
+ * (see ./index.ts) can be made from. Slow smoke rolling through the world. It lives *behind* the
  * characters — the scene stacks world → smoke → characters → text — so it
  * reads as atmosphere in the place, not an effect laid over the page. It
  * doesn't react to the pointer or to clicks; it just drifts.
@@ -123,7 +124,14 @@ const tint = (mask: HTMLCanvasElement, color: string) => {
  * Stopped when its scene isn't showing, when the tab is hidden or the viewer
  * pauses it, and absent under prefers-reduced-motion.
  */
-const AmbientSmoke: React.FC<AmbientSmokeProps> = ({ tints, active, paused = false, className }) => {
+const SmokeField: React.FC<SmokeFieldProps> = ({
+  tints,
+  active,
+  paused = false,
+  strength = 1,
+  density = 1,
+  className,
+}) => {
   const canvasRef = useRef<HTMLCanvasElement>(null)
   const control = useRef<{ start: () => void; stop: () => void } | null>(null)
   const reduceMotion = useReducedMotion()
@@ -160,21 +168,21 @@ const AmbientSmoke: React.FC<AmbientSmokeProps> = ({ tints, active, paused = fal
         angle: random(-0.25, 0.25),
         spin: random(-0.015, 0.015),
         sprite: (Math.random() * sprites.length) | 0,
-        alpha: random(0.5, 0.85),
+        alpha: random(0.5, 0.85) * strength,
         life: fresh ? random(0.05, 0.9) : 0,
         lifeSpeed: random(0.025, 0.045),
       }
     }
 
     const resize = () => {
-      const rect = canvas.getBoundingClientRect()
-      if (rect.width === 0 || rect.height === 0) return
-      width = rect.width
-      height = rect.height
+      /* Layout size, not getBoundingClientRect — that includes the scene's zoom-in transform. */
+      if (canvas.clientWidth === 0 || canvas.clientHeight === 0) return
+      width = canvas.clientWidth
+      height = canvas.clientHeight
       canvas.width = Math.round(width * RESOLUTION)
       canvas.height = Math.round(height * RESOLUTION)
       ctx.setTransform(RESOLUTION, 0, 0, RESOLUTION, 0, 0)
-      const count = Math.round(((width * height) / 1e6) * PUFFS_PER_MPX)
+      const count = Math.round(((width * height) / 1e6) * PUFFS_PER_MPX * density)
       puffs = Array.from({ length: Math.max(MIN_PUFFS, Math.min(MAX_PUFFS, count)) }, () =>
         spawn(true),
       )
@@ -201,7 +209,7 @@ const AmbientSmoke: React.FC<AmbientSmokeProps> = ({ tints, active, paused = fal
         p.angle += p.spin * dt
 
         /* Sine envelope: eases in from nothing and dissolves out, no pop. */
-        const alpha = p.alpha * Math.sin(p.life * Math.PI)
+        const alpha = Math.min(1, p.alpha * Math.sin(p.life * Math.PI))
         if (alpha <= 0.005) continue
         const cos = Math.cos(p.angle) * RESOLUTION
         const sin = Math.sin(p.angle) * RESOLUTION
@@ -227,8 +235,7 @@ const AmbientSmoke: React.FC<AmbientSmokeProps> = ({ tints, active, paused = fal
     control.current = { start, stop }
 
     const observer = new ResizeObserver(() => {
-      const rect = canvas.getBoundingClientRect()
-      if (rect.width !== width || rect.height !== height) resize()
+      if (canvas.clientWidth !== width || canvas.clientHeight !== height) resize()
     })
     observer.observe(canvas)
 
@@ -237,7 +244,7 @@ const AmbientSmoke: React.FC<AmbientSmokeProps> = ({ tints, active, paused = fal
       control.current = null
       observer.disconnect()
     }
-  }, [tintKey, reduceMotion])
+  }, [tintKey, strength, density, reduceMotion])
 
   /* Start and stop without tearing down, so pausing leaves the smoke where it is. */
   useEffect(() => {
@@ -256,4 +263,4 @@ const AmbientSmoke: React.FC<AmbientSmokeProps> = ({ tints, active, paused = fal
   return <canvas ref={canvasRef} className={`${styles.canvas} ${className ?? ""}`} aria-hidden="true" />
 }
 
-export default AmbientSmoke
+export default SmokeField

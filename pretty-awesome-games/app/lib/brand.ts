@@ -34,10 +34,17 @@ export const CONTACT_EMAIL = `contact@${SITE_DOMAIN}`
  * "Iskra Games" is a **trading name, not a registered company**. The business is the
  * founder's Polish sole proprietorship — a *jednoosobowa działalność gospodarcza*
  * ("JDG"), registered in CEIDG under his own name. A JDG has no KRS number and no
- * share capital; NIP and REGON are the identifiers that exist.
+ * share capital.
  *
- * Polish and EU rules want the *entity* identifiable wherever the brand trades, which
- * is why the legal pages and the footer carry this block rather than only "Iskra Games".
+ * Only what the law requires is published (checked 2026-10-15):
+ *  - name (the *firma*) and address — UŚUDE (ustawa o świadczeniu usług drogą
+ *    elektroniczną) art. 5 ust. 2 pkt 2;
+ *  - an electronic contact address — UŚUDE art. 5 ust. 2 pkt 1;
+ *  - NIP — Prawo przedsiębiorców art. 20 ust. 3 (firma, NIP and address in any
+ *    offer made online), kept by UŚUDE art. 5 ust. 4.
+ * REGON and the CEIDG register entry are deliberately *not* published; neither is
+ * required. There is no separate VAT number: NIP is the Polish VAT identifier, and a
+ * "PL…" VAT-EU number only matters when invoicing EU businesses.
  *
  * `HAS_LEGAL_ENTITY` below is false while any field is empty, and every component that
  * renders the block checks it first — so an unfilled entry renders *nothing at all*
@@ -48,7 +55,6 @@ interface LegalEntityDetails {
   name: string
   address: string[]
   nip: string
-  regon: string
 }
 
 /**
@@ -69,16 +75,13 @@ export const LEGAL_ENTITY: LegalEntityDetails = {
   address: ["ul. Andrzeja Struga 18", "26-610 Radom, Poland"],
   /** Tax identifier (Numer Identyfikacji Podatkowej) — 10 digits. */
   nip: "5214177201",
-  /** Statistical identifier (REGON) — 9 digits for a sole proprietorship. */
-  regon: "545534372",
 }
 
 /** True only once the registration details above are actually filled in. */
 export const HAS_LEGAL_ENTITY =
   LEGAL_ENTITY.name !== "" &&
   LEGAL_ENTITY.address.length > 0 &&
-  LEGAL_ENTITY.nip !== "" &&
-  LEGAL_ENTITY.regon !== ""
+  LEGAL_ENTITY.nip !== ""
 
 /**
  * One-line entity identifier for tight slots such as the site footer. Empty while
