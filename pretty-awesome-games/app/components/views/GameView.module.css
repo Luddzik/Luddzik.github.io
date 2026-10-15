@@ -36,11 +36,19 @@
 }
 
 .crew {
+  --crew-right: -3%;
+  --crew-w: 76%;
   position: absolute;
-  right: -3%;
-  bottom: -14%;
-  width: 76%;
+  /*
+   * Never drawn larger than the file itself (725×638): enlarging it is what
+   * made it look soft. Where the cap bites, the art stays centred in its slot.
+   */
+  right: calc(var(--crew-right) + max(0px, (min(var(--crew-w), 100%) - 725px) / 2));
+  bottom: -5%;
+  width: var(--crew-w);
   height: 112%;
+  max-width: min(725px, 100%);
+  max-height: 638px;
   object-fit: contain;
   translate: calc(var(--mx) * 16px) calc(var(--my) * 8px);
   animation: crew-light 9s ease-in-out infinite alternate;
@@ -289,9 +297,10 @@
 }
 
 @media (max-width: 1000px) {
+  /* Far enough left that Back sits on an arm, not a face. */
   .crew {
-    right: -24%;
-    width: 110%;
+    --crew-right: -8%;
+    --crew-w: 110%;
     opacity: 0.85;
   }
   .shade {
@@ -371,5 +380,19 @@
   }
   .preview {
     width: 190px;
+  }
+}
+
+/* Phones held sideways: the tall Back would run into Pause at the bottom. */
+@media (max-height: 500px) and (min-width: 651px) {
+  .back {
+    top: 8px;
+    flex-direction: row;
+    gap: 8px;
+    min-height: 44px;
+    font-size: 13px;
+  }
+  .back > span {
+    font-size: 36px;
   }
 }
