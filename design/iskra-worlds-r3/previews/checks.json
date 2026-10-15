@@ -1,0 +1,135 @@
+[
+  {
+    "width": 1440,
+    "hero": {
+      "overflow": false,
+      "counts": {
+        "catalog": 3,
+        "chapters": 3,
+        "cards": 3
+      }
+    }
+  },
+  {
+    "width": 1440,
+    "scene": {
+      "overflow": false,
+      "contentInView": true,
+      "clip": "inset(0%)"
+    }
+  },
+  {
+    "width": 820,
+    "hero": {
+      "overflow": false,
+      "counts": {
+        "catalog": 3,
+        "chapters": 3,
+        "cards": 3
+      }
+    }
+  },
+  {
+    "width": 820,
+    "scene": {
+      "overflow": false,
+      "contentInView": true,
+      "clip": "inset(0%)"
+    }
+  },
+  {
+    "width": 390,
+    "hero": {
+      "overflow": false,
+      "counts": {
+        "catalog": 3,
+        "chapters": 3,
+        "cards": 3
+      }
+    }
+  },
+  {
+    "width": 390,
+    "scene": {
+      "overflow": false,
+      "contentInView": true,
+      "clip": "inset(0%)"
+    }
+  },
+  {
+    "width": 320,
+    "hero": {
+      "overflow": false,
+      "counts": {
+        "catalog": 3,
+        "chapters": 3,
+        "cards": 3
+      }
+    }
+  },
+  {
+    "width": 320,
+    "scene": {
+      "overflow": false,
+      "contentInView": true,
+      "clip": "inset(0%)"
+    }
+  },
+  {
+    "scrollChangesAperture": true,
+    "start": "inset(8% 5% round 24px)",
+    "end": "inset(0%)"
+  },
+  {
+    "gameplay": {
+      "visible": true,
+      "loaded": true,
+      "playing": true
+    }
+  },
+  {
+    "catalogMode": 1,
+    "catalog": 1,
+    "chapters": 1,
+    "cards": 1
+  },
+  {
+    "catalogMode": 3,
+    "catalog": 3,
+    "chapters": 3,
+    "cards": 3
+  },
+  {
+    "catalogMode": 8,
+    "catalog": 8,
+    "chapters": 3,
+    "cards": 8
+  },
+  {
+    "catalogMode": 24,
+    "catalog": 24,
+    "chapters": 3,
+    "cards": 8
+  },
+  {
+    "all24Visible": true
+  },
+  {
+    "realFilter": true
+  },
+  {
+    "search": true
+  },
+  {
+    "emptySearch": true
+  },
+  {
+    "trailerOpen": true
+  },
+  {
+    "escapeCloses": true
+  },
+  {
+    "reducedMotion": true
+  }
+]

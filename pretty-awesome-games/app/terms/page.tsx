@@ -1,14 +1,14 @@
-import Header from "../components/Header"
-import Footer from "../components/Footer"
+import SiteHeader from "../components/SiteHeader"
+import SiteFooter from "../components/SiteFooter"
 import LegalEntity from "../components/LegalEntity"
 import { JURISDICTION, STUDIO_NAME } from "../lib/brand"
-import styles from "./terms.module.css"
+import styles from "../components/LegalPage.module.css"
 
 export default function Terms() {
   return (
     <>
-      <Header showNavLinks={false} />
-      <main className={styles.terms} id="top">
+      <SiteHeader base="/" />
+      <main className={styles.page} id="top">
         <div className={styles.container}>
           <h1>Terms of Service</h1>
           <p className={styles.lastUpdated}>Last Updated: 14 September, 2026</p>
@@ -16,8 +16,8 @@ export default function Terms() {
           <section>
             <h2>1. Acceptance of Terms</h2>
             <p>
-              By accessing or using the games, websites, stores, and related services provided by {STUDIO_NAME}
-              (collectively, the &ldquo;Service&rdquo;), you agree to be bound by these Terms of Service (&ldquo;Terms&rdquo;).
+              By accessing or using the games, websites, stores, and related services provided by {STUDIO_NAME}{" "}
+              (collectively, the &ldquo;Service&rdquo;), you agree to be bound by these Terms of Service (&ldquo;Terms&rdquo;).{" "}
               {STUDIO_NAME} is a trading name of a sole proprietorship established in Poland; the
               registration details are in section 16. If you do not
               agree to these Terms, you must discontinue your use of the Service immediately. We reserve the right to
@@ -299,7 +299,7 @@ export default function Terms() {
           </section>
         </div>
       </main>
-      <Footer />
+      <SiteFooter />
     </>
   )
 }

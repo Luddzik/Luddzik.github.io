@@ -1,0 +1,59 @@
+/* Small tracked caps above a heading: "ISKRA / PRESS", "IN DEVELOPMENT / PC". */
+.kicker {
+  display: block;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  line-height: 1.8;
+  text-transform: uppercase;
+  color: var(--accent-ink);
+}
+
+/* The orange call to action, cut on the same diagonal as the slashes. */
+.action {
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 30px;
+  padding: 16px 22px;
+  background: var(--accent);
+  color: #17110e;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.025em;
+  clip-path: polygon(8px 0, 100% 0, calc(100% - 8px) 100%, 0 100%);
+  transition: background 0.25s, color 0.25s;
+}
+
+.action:hover {
+  background: var(--accent-hover);
+}
+
+.action > span {
+  transition: transform 0.35s var(--ease-settle);
+}
+
+.action:hover > span {
+  transform: translate(3px, -1px);
+}
+
+.textLink {
+  font-size: 15px;
+  text-decoration: underline;
+  text-decoration-color: #ffffff60;
+  text-underline-offset: 5px;
+  transition: color 0.25s, text-decoration-color 0.25s;
+}
+
+.textLink:hover {
+  color: var(--accent-hover);
+  text-decoration-color: var(--accent);
+}
+
+@media (max-width: 650px) {
+  .action {
+    font-size: 13px;
+    padding: 14px 18px;
+    gap: 18px;
+  }
+}

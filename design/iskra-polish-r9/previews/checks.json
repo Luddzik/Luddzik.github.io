@@ -1,0 +1,245 @@
+[
+  {
+    "introFinished": true
+  },
+  {
+    "duringTransition": [
+      {
+        "id": "home",
+        "inert": true
+      },
+      {
+        "id": "neuroshift",
+        "inert": false
+      }
+    ]
+  },
+  {
+    "game": {
+      "viewport": false,
+      "view": [
+        {
+          "id": "neuroshift",
+          "overflow": false
+        }
+      ]
+    },
+    "gameFont": "15px"
+  },
+  {
+    "page": "company",
+    "viewport": false,
+    "view": [
+      {
+        "id": "company",
+        "overflow": false
+      }
+    ]
+  },
+  {
+    "page": "press",
+    "viewport": false,
+    "view": [
+      {
+        "id": "press",
+        "overflow": false
+      }
+    ]
+  },
+  {
+    "page": "contact",
+    "viewport": false,
+    "view": [
+      {
+        "id": "contact",
+        "overflow": false
+      }
+    ]
+  },
+  {
+    "page": "gameplay",
+    "viewport": false,
+    "view": [
+      {
+        "id": "gameplay",
+        "overflow": false
+      }
+    ]
+  },
+  {
+    "rapidNavigation": [
+      "contact"
+    ]
+  },
+  {
+    "width": 820,
+    "page": "home",
+    "viewport": false,
+    "view": [
+      {
+        "id": "home",
+        "overflow": true
+      }
+    ]
+  },
+  {
+    "width": 820,
+    "page": "neuroshift",
+    "viewport": false,
+    "view": [
+      {
+        "id": "neuroshift",
+        "overflow": false
+      }
+    ]
+  },
+  {
+    "width": 820,
+    "page": "company",
+    "viewport": false,
+    "view": [
+      {
+        "id": "company",
+        "overflow": false
+      }
+    ]
+  },
+  {
+    "width": 820,
+    "page": "press",
+    "viewport": false,
+    "view": [
+      {
+        "id": "press",
+        "overflow": false
+      }
+    ]
+  },
+  {
+    "width": 820,
+    "page": "contact",
+    "viewport": false,
+    "view": [
+      {
+        "id": "contact",
+        "overflow": false
+      }
+    ]
+  },
+  {
+    "width": 390,
+    "page": "home",
+    "viewport": false,
+    "view": [
+      {
+        "id": "home",
+        "overflow": true
+      }
+    ]
+  },
+  {
+    "width": 390,
+    "page": "neuroshift",
+    "viewport": false,
+    "view": [
+      {
+        "id": "neuroshift",
+        "overflow": false
+      }
+    ]
+  },
+  {
+    "width": 390,
+    "page": "company",
+    "viewport": false,
+    "view": [
+      {
+        "id": "company",
+        "overflow": false
+      }
+    ]
+  },
+  {
+    "width": 390,
+    "page": "press",
+    "viewport": false,
+    "view": [
+      {
+        "id": "press",
+        "overflow": false
+      }
+    ]
+  },
+  {
+    "width": 390,
+    "page": "contact",
+    "viewport": false,
+    "view": [
+      {
+        "id": "contact",
+        "overflow": false
+      }
+    ]
+  },
+  {
+    "width": 320,
+    "page": "home",
+    "viewport": false,
+    "view": [
+      {
+        "id": "home",
+        "overflow": true
+      }
+    ]
+  },
+  {
+    "width": 320,
+    "page": "neuroshift",
+    "viewport": false,
+    "view": [
+      {
+        "id": "neuroshift",
+        "overflow": false
+      }
+    ]
+  },
+  {
+    "width": 320,
+    "page": "company",
+    "viewport": false,
+    "view": [
+      {
+        "id": "company",
+        "overflow": false
+      }
+    ]
+  },
+  {
+    "width": 320,
+    "page": "press",
+    "viewport": false,
+    "view": [
+      {
+        "id": "press",
+        "overflow": false
+      }
+    ]
+  },
+  {
+    "width": 320,
+    "page": "contact",
+    "viewport": false,
+    "view": [
+      {
+        "id": "contact",
+        "overflow": false
+      }
+    ]
+  },
+  {
+    "reducedMotion": true
+  },
+  {
+    "runtimeErrors": []
+  }
+]

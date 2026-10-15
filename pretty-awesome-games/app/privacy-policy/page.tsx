@@ -1,14 +1,14 @@
-import Header from "../components/Header"
-import Footer from "../components/Footer"
+import SiteHeader from "../components/SiteHeader"
+import SiteFooter from "../components/SiteFooter"
 import LegalEntity from "../components/LegalEntity"
 import { CONTACT_EMAIL, SITE_HOST, STUDIO_NAME } from "../lib/brand"
-import styles from "./privacy-policy.module.css"
+import styles from "../components/LegalPage.module.css"
 
 export default function PrivacyPolicy() {
   return (
     <>
-      <Header showNavLinks={false} />
-      <main className={styles.privacyPolicy} id="top">
+      <SiteHeader base="/" />
+      <main className={styles.page} id="top">
         <div className={styles.container}>
           <h1>Privacy Policy</h1>
           <p className={styles.lastUpdated}>Last Updated: 14 September, 2026</p>
@@ -247,7 +247,7 @@ export default function PrivacyPolicy() {
           </section>
         </div>
       </main>
-      <Footer />
+      <SiteFooter />
     </>
   )
 }

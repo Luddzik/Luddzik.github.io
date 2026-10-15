@@ -1,0 +1,331 @@
+/*
+ * The slashes overhang both edges so the outer cuts land off-screen; the
+ * orange behind them shows through the 3px gaps as the dividing strokes.
+ */
+.slashes {
+  display: flex;
+  gap: 3px;
+  width: calc(100% + 260px);
+  height: 100%;
+  margin-left: -130px;
+  background: var(--accent);
+}
+
+.solo {
+  width: calc(100% + 180px);
+  border-right: 5px solid var(--accent);
+}
+
+.panel {
+  position: relative;
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  background: #15191c;
+  transform: skewX(-13deg);
+  transition: flex 900ms var(--ease-settle);
+}
+
+.panel.active {
+  flex: 2.8;
+}
+
+/* Counter-skewed so the art inside stands upright. The whole of it is a link. */
+.unskew {
+  position: absolute;
+  inset: 0 -150px;
+  overflow: hidden;
+  transform: skewX(13deg);
+}
+
+.active .unskew {
+  cursor: pointer;
+}
+
+.art {
+  position: absolute;
+  inset: -2%;
+  background-position: center;
+  background-size: cover;
+  filter: grayscale(1) brightness(0.45);
+  transform: scale(1.07);
+  transition:
+    filter 900ms var(--ease-settle),
+    transform 1500ms var(--ease-settle);
+}
+
+/* The focused world never quite holds still — a slow drift, like a menu backdrop. */
+.active .art {
+  filter: grayscale(0.1) brightness(0.9);
+  transform: scale(1);
+  animation: drift 26s ease-in-out infinite alternate;
+}
+
+.crew {
+  position: absolute;
+  left: 10%;
+  bottom: -10%;
+  width: 95%;
+  height: 98%;
+  object-fit: contain;
+  filter: grayscale(1) brightness(0.4);
+  transform: scale(0.9);
+  transition:
+    filter 900ms var(--ease-settle),
+    transform 1400ms var(--ease-settle);
+}
+
+.active .crew {
+  filter: none;
+  transform: scale(1);
+}
+
+.active .unskew:hover .crew {
+  transform: scale(1.025);
+}
+
+.solo .crew {
+  left: 20%;
+  width: 75%;
+}
+
+.shade {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(0deg, #080a0fee, transparent 80%);
+}
+
+.copy {
+  position: absolute;
+  bottom: 125px;
+  left: 65px;
+  right: 25px;
+  opacity: 0;
+  pointer-events: none;
+  transform: skewX(13deg) translateY(18px);
+  transition:
+    opacity 240ms ease-out,
+    transform 600ms var(--ease-settle);
+}
+
+/* The copy sits over live art, so it carries its own soft shadow for contrast. */
+.copy span,
+.lines {
+  text-shadow: 0 1px 12px #000c, 0 0 2px #000a;
+}
+
+.active .copy {
+  opacity: 1;
+  pointer-events: auto;
+  transform: skewX(13deg) translateY(0);
+  transition-delay: 240ms;
+}
+
+.panel:first-child .copy {
+  left: 235px;
+}
+
+.panel:last-child .copy {
+  right: 160px;
+}
+
+.solo .copy {
+  bottom: 140px;
+}
+
+.title {
+  margin: 22px 0 16px;
+  font-family: var(--font-display);
+  font-size: clamp(48px, 6vw, 88px);
+  font-weight: 700;
+  letter-spacing: 0.035em;
+  line-height: 1;
+  text-transform: uppercase;
+  white-space: nowrap;
+  text-shadow: 0 2px 24px #0008;
+}
+
+.lines {
+  max-width: 340px;
+  margin-bottom: 30px;
+  font-size: 16px;
+  line-height: 1.6;
+  color: #dde2e5;
+}
+
+.choose {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  width: 100%;
+  padding: 28px 35px;
+  text-align: left;
+  white-space: nowrap;
+  background: #0a0d1177;
+  border-top: 1px solid #ffffff36;
+  transition: background 0.4s, border-color 0.4s;
+}
+
+.choose > * {
+  transform: skewX(13deg);
+}
+
+.panel:first-child .choose {
+  padding-left: 270px;
+}
+
+.choose span {
+  font-size: 11px;
+  color: #cbd2d5;
+  font-variant-numeric: tabular-nums;
+}
+
+.choose b {
+  font-family: var(--font-display);
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.choose em {
+  margin-left: 10px;
+  font-size: 24px;
+  font-style: normal;
+  color: var(--accent);
+}
+
+.active .choose {
+  background: #171512b3;
+  border-top-color: var(--accent);
+}
+
+.edge {
+  position: absolute;
+  top: 27px;
+  left: 5%;
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #c5cbd1;
+  pointer-events: none;
+}
+
+@keyframes drift {
+  from {
+    translate: -0.8% 0.4%;
+  }
+  to {
+    translate: 0.8% -0.8%;
+  }
+}
+
+@media (max-width: 1000px) {
+  .panel.active {
+    flex: 3.5;
+  }
+  .choose b {
+    display: none;
+  }
+  .active .choose b {
+    display: block;
+  }
+  .title {
+    font-size: 48px;
+  }
+}
+
+@media (max-width: 650px) {
+  .slashes {
+    gap: 2px;
+    width: calc(100% + 100px);
+    margin-left: -50px;
+  }
+  .solo {
+    width: calc(100% + 70px);
+  }
+  .panel {
+    transform: skewX(-8deg);
+  }
+  .panel.active {
+    flex: 7;
+  }
+  .unskew {
+    inset: 0 -90px;
+    transform: skewX(8deg);
+  }
+  .shade {
+    background: linear-gradient(0deg, #080a0ff7 0%, #080a0fd0 32%, transparent 70%);
+  }
+  .crew,
+  .solo .crew {
+    left: -12%;
+    bottom: 10%;
+    width: 125%;
+    height: 85%;
+  }
+  .copy,
+  .panel:first-child .copy {
+    left: 27px;
+    right: 20px;
+    bottom: 95px;
+    transform: skewX(8deg) translateY(18px);
+  }
+  .panel:first-child .copy {
+    left: 110px;
+  }
+  .panel:last-child .copy {
+    right: 45px;
+  }
+  .active .copy {
+    transform: skewX(8deg) translateY(0);
+  }
+  .solo .copy {
+    bottom: 100px;
+  }
+  .title {
+    margin: 14px 0 12px;
+    font-size: 38px;
+    letter-spacing: 0.01em;
+  }
+  .lines {
+    max-width: 230px;
+    margin-bottom: 22px;
+    font-size: 14px;
+  }
+  .choose {
+    gap: 10px;
+    min-height: 65px;
+    padding: 20px 12px;
+  }
+  .choose > * {
+    transform: skewX(8deg);
+  }
+  .panel:first-child .choose {
+    padding-left: 135px;
+  }
+  .choose b,
+  .active .choose b {
+    display: none;
+  }
+  .choose em {
+    margin: 0;
+    font-size: 18px;
+  }
+  .edge {
+    top: 20px;
+    left: 6%;
+    max-width: 210px;
+    font-size: 9px;
+    line-height: 1.8;
+  }
+}
+
+@media (max-height: 650px) {
+  .edge {
+    display: none;
+  }
+}

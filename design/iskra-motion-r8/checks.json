@@ -1,0 +1,15 @@
+{
+  "syntax": "pass",
+  "localAssets": 20,
+  "missing": [],
+  "controllerTests": [
+    "Both canvases remain painted during dissolve",
+    "Only destination is interactive during transition",
+    "Outgoing canvas removed after dissolve",
+    "Rapid navigation settles on newest destination",
+    "Reduced motion switches immediately",
+    "Entrance starts for new session",
+    "Skip restores navigation"
+  ],
+  "visualVerification": "Recording reviewed via timestamped frames; local browser rendering unavailable."
+}

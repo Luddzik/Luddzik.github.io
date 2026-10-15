@@ -24,62 +24,45 @@ This is a **Next.js 14 static site** for **Iskra Games** — a game development 
 
 The studio rebranded from "Pretty Awesome Games"; the directory is still named `pretty-awesome-games/`. `REBRAND.md` at the repo root records the brand decisions and what is still outstanding — read it before touching branding, copy, or `CNAME`.
 
-**Two Next configs exist and only one is loaded.** `next.config.js` wins; `next.config.mjs` is **never read**. `output: "export"` lives in the `.js` one, which is why builds produce `/out`. The `typescript.ignoreBuildErrors` and `eslint.ignoreDuringBuilds` in the `.mjs` one are inert, so **type and lint errors do fail the build** — the opposite of what the `.mjs` file suggests. Merge them before relying on either.
+**One Next config:** `next.config.mjs` (static `output: "export"` → `/out`). Type and lint errors **fail the build** on purpose.
 
 **Key architectural decisions:**
 - Static export mode: images are unoptimized, no server-side rendering
 - App Router (Next.js 13+) with client components (`"use client"`) for animations
-- Build errors and TypeScript errors are ignored during CI (`next.config.mjs` sets `ignoreBuildErrors: true`) — don't rely on CI catching type errors
 
-**Layout:** Single-page with smooth scrolling. The main page (`app/page.tsx`) composes sections: Header → Hero → Games → Studio → Contact → Footer.
+**Layout — the 2026-10 redesign (design reference: `design/iskra-polish-r9/`, motion reference: FromSoftware's site).** The home page is one **stationary frame** — header and footer never move — with views dissolving inside it, like a game's front end. `app/page.tsx` renders `app/components/Shell.tsx`, which owns routing, transitions and the entrance. Routing is by **hash** (`app/lib/routes.ts`) so it works on static hosting and every view is a shareable link: `#games`, `#company`, `#press`, `#contact`, `#<slug>` (a game's page), `#<slug>/gameplay`, `#press-<anchor>`. All views are always in the DOM (good for SEO); only the active one (plus the leaving one, mid-dissolve) is unhidden. Legal pages (`/privacy-policy`, `/terms`, `/oauth2redirect`) are ordinary scrolling routes that reuse `SiteHeader base="/"` + `SiteFooter` and share `components/LegalPage.module.css`.
+
+- **Home** (`views/HomeView.tsx`) — each featured game is a skewed slash; the focused one opens wide and comes into colour. **The whole artwork links to the game's page**, not just the Discover button (touch: first tap focuses, second goes through).
+- **Game page** (`views/GameView.tsx`) — the game's world full-bleed behind compact facts, Back (×) on the right, Esc also goes back. Its background is alive: world drifting, pointer parallax between world and characters, and `AmbientSparks`. Characters do **not** bob — only the light on them breathes (r9 decision). "Pause background" is kept for accessibility.
+- **Games / Company / Press / Contact / Gameplay** — `views/ContentViews.tsx`, readable columns on the flat `--surface`.
+
+**Transitions** (in `Shell.tsx`): the old scene stays painted underneath while the new one dissolves in over 640ms; text groups (`data-tgroup`) move separately — old text out in 130ms, new text in after 170ms — so paragraphs never superimpose. Entering a game, its scene settles from scale 1.06. Rapid clicks settle on the latest route. **Entrance**: first visit per session only — wordmark drawn, a diagonal cut opens into the real home page, the mark flies into the header (2.4s). Skippable; absent on deep links and under reduced motion. An inline script in `layout.tsx` decides before first paint (`html[data-intro]` / `html[data-route-pending]`) so nothing flashes.
 
 **Copy rules.**
-- **Never hard-code how many games there are.** No "two games", no "Two, made properly", no "one for Steam, one for the browser". The studio intends to ship more, and copy that counts the slate goes stale the day a third project starts. Write copy that holds at two titles or ten. The `Game[]` array in `Games.tsx` and the `meta` list on each entry are the only places the lineup is enumerated.
-- **The wordmark is the hero's largest element.** Nothing beneath it competes for size — the tagline under the mark is body-sized on purpose (2026-08-04 direction). Don't reintroduce a large display claim in the hero.
-- Register is plain and professional: say what a thing is, don't sell it. Each game card carries Genre / Status / Platform so press can scan it.
+- **Never hard-code how many games there are.** No "two games", no "our current project is X". Write copy that holds at one title or ten. `app/lib/games.ts` is the only place the lineup is enumerated — home slashes (first 3), Games index, game pages, Press kit and the footer's Play-now link all derive from it. **Echoes of Stone never appears.**
+- Register is plain and professional: say what a thing is, don't sell it. Each game carries Genre / Status / Platform so press can scan it.
 
-**Styling:** Tailwind CSS + CSS Modules. Component-level styles use `.module.css` files alongside their component. Global CSS variables in `app/globals.css` define the palette — flat near-black surfaces (`#0e0e12` / `#16161b` / `#0a0a0d`), warm off-white ink (`#f2ede6`), and a single flat ignition orange (`--spark: #ff5a1f`). **There are no gradients in this design** — an earlier version used them everywhere and they were deliberately removed; don't reintroduce one. Shadcn/UI components live in `components/ui/` and use `cn()` from `lib/utils.ts` for class merging.
+**Styling:** CSS Modules per component (Tailwind is only kept for preflight). Tokens in `app/globals.css`: frame `#0b0c0e`, page `#0c0d0f`, surface `#131619`, ink `#f0f1ef` / body `#c3cbd0` / dim `#a9b3ba`, one accent `--accent: #ed874b`. Shared button/kicker/link styles: `views/Ui.module.css`. The only gradients are **scrims over game art** for legibility — don't add decorative ones.
 
-**Type:** three faces, each with one job.
-- **Kaushan Script** — logo only, never running text.
-- **Syne** (`--font-display`) — headings, game titles, the contact address. Its squared geometric forms sit in deliberate opposition to the brush wordmark.
-- **Archivo** (`--font-ui`) — all running text and UI. Quiet by design.
+**Type:** **Barlow Condensed** (`--font-display`) for titles, nav and labels; **Barlow** (`--font-ui`) for everything you read. Both load `latin-ext` for Polish diacritics.
 
-Never set body copy in Syne; never set a heading in Archivo. Both load `latin-ext` for Polish diacritics.
-
-**The font variables must stay on `<html>` in `app/layout.tsx`, not `<body>`.** `globals.css` composes `--font-display` / `--font-ui` from them inside `:root`, and `:root` *is* `<html>`. With the variables on `<body>`, those compositions resolve against an undefined value, become invalid at computed-value time, and **the entire site silently falls back to the system font stack** — no error, no warning, it just quietly stops using the webfonts. This bug shipped once; don't reintroduce it.
-
-Rejected along the way: **Fraunces + Karla** (2026-08-04) — the high-contrast serif read editorial/literary rather than like a game studio; don't reintroduce a serif. **Archivo Expanded** as the display face — competent but neutral and cool where the brand is warm; Syne was chosen over it, and over Bricolage Grotesque, Anybody and Unbounded, from a rendered five-way comparison.
-
-Case is deliberate: the hero claim and card titles are uppercase (short enough to stay readable), section headings are sentence case (they run too long for caps), eyebrows and metadata labels are small tracked caps.
+**The font variables must stay on `<html>` in `app/layout.tsx`, not `<body>`.** `globals.css` composes `--font-display` / `--font-ui` from them inside `:root`, and `:root` *is* `<html>`. With the variables on `<body>` the whole site silently falls back to the system font stack. This bug shipped once; don't reintroduce it.
 
 **Brand strings:** studio name, domain, and contact address live in `app/lib/brand.ts` — import from there rather than hardcoding, so the legal pages stay in sync.
 
-**The studio name is a trading name, not a company.** The business is the founder's Polish sole proprietorship (*jednoosobowa działalność gospodarcza*), registered in CEIDG under his own name — so there is no KRS number and no share capital, only NIP and REGON. Those details live in `LEGAL_ENTITY` in `app/lib/brand.ts` and render through `app/components/LegalEntity.tsx` (both legal pages) and the footer. **Every field is blank until the registration details are filled in, and `HAS_LEGAL_ENTITY` gates every render** — an unfilled entry shows nothing rather than a placeholder that reads like a real NIP on a live legal page. Fill `LEGAL_ENTITY` and both appear on their own. The Terms name Polish law and carry no arbitration clause: EU consumers can sue in their own country regardless, so the clause was unenforceable where it mattered.
+**The studio name is a trading name, not a company.** The business is the founder's Polish sole proprietorship (*jednoosobowa działalność gospodarcza*), registered in CEIDG under his own name — so there is no KRS number and no share capital, only NIP and REGON. Those details live in `LEGAL_ENTITY` in `app/lib/brand.ts` and render through `app/components/LegalEntity.tsx` (both legal pages), the page footer, and the Contact view (the fixed home-frame footer has no room for it). **Every field is blank until the registration details are filled in, and `HAS_LEGAL_ENTITY` gates every render** — an unfilled entry shows nothing rather than a placeholder that reads like a real NIP on a live legal page. Fill `LEGAL_ENTITY` and both appear on their own. The Terms name Polish law and carry no arbitration clause: EU consumers can sue in their own country regardless, so the clause was unenforceable where it mattered.
 
-**Logo:** a typographic wordmark, not an icon — lowercase "iskra" in Kaushan Script with the tittle on the i burning as an ember (the name means "spark"). `app/components/Wordmark.tsx` does this by stacking a second copy of the word, painting it via `background-clip: text`, and clipping it to the tittle — so the glowing dot is the font's own dot and stays registered at any size. Don't replace it with a circle positioned on top; that was tried and drifts. `public/favicon.svg` is the same "i" as hand-drawn SVG paths.
+**Logo:** the **ISKRA** geometric wordmark, its I broken by the same diagonal as the home slashes. `app/components/Wordmark.tsx` draws it as inline paths (`currentColor`); `public/brand/wordmark.svg` / `wordmark-ink.svg` are the same geometry for press download — keep them in step. Favicons (`favicon.ico/.svg`, 16/32/48 PNG, apple-touch, 192/512 via `app/manifest.ts`) are the broken I alone. `public/og.png` is the share card. The Kaushan Script brush wordmark is retired.
 
-**Signature element:** `app/components/SparkDot.tsx` reuses that ember as punctuation — before every section eyebrow, as the full stop after every section heading. It's what carries the brand past the header.
+**Canvas performance rules** (`AmbientSparks.tsx`) — measured on this site, not guessed:
+- **Never use `ctx.shadowBlur`**; glow comes from pre-rendered sprites blitted with `drawImage`.
+- **Never call `createRadialGradient` per frame.**
+- **No CSS `mask-image` on the canvas**; fold fades into particle alpha.
+- Backing store capped at 1.5× DPR; count scales with viewport area. The loop is **stopped** (not just hidden) when its view isn't active, the tab is hidden, or the viewer paused it; nothing renders under reduced motion.
 
-**Games section** is a **ruled index, not cards.** No boxes, borders or panel backgrounds — full-width rows (icon · copy · metadata) divided by hairlines that are already partly burnt through in ignition orange, with an ember sitting on the burn. Hovering a row burns the rest of its rule across, so the separator *is* the interaction. This is the header's fuse applied to a list; keep it that way rather than reintroducing card chrome.
+**Media:** game art lives in `public/media/<slug>/` — web-sized WebP for display, full PNGs only as press downloads. Don't ship multi-MB PNGs for display.
 
-**Canvas performance rules** (`Embers.tsx`) — all measured, not guessed. Breaking any of these took the page from a locked 120fps to dropping 20% of frames during scroll:
-- **Never use `ctx.shadowBlur`.** It runs a full gaussian per draw call. Glow comes from pre-rendered sprites blitted with `drawImage`.
-- **Never call `createRadialGradient` per frame.** The heat pool is a sprite too.
-- **No CSS `mask-image` on the canvas.** Masking a full-viewport layer costs a compositing pass every frame; fold fades into particle alpha instead.
-- Backing store is capped at 1.5× DPR, and particle count scales with viewport area.
-
-**Section headings:** `app/components/SectionHeading.tsx` renders eyebrow + heading + ember full stop for Games, Studio and Contact. Reveal timing lives there, not in the sections — change it once and every section stays in rhythm.
-
-**Motion.** Framer Motion for anything scroll- or state-driven; plain CSS keyframes for anything that only needs to run on mount (they need no client boundary and cost no JS). Every animation has a `prefers-reduced-motion: reduce` escape.
-
-The motion is all one idea — *the ember is alive, and everything else is still ink*:
-- **Ignition** (hero only) — the wordmark is laid down as a single **Asian brush stroke**, then the tittle is struck last, the way the dot is tapped in after the stroke is finished. Pure CSS in `Wordmark.module.css`, gated behind the `ignite` prop so the header and footer marks stay still and the effect keeps its weight. The reveal is an oversized angled `mask-image` whose `mask-position` animates — a soft feathered edge, not a hard wipe — plus a `filter: blur()` resolving soft to sharp, which is wet ink bleeding into paper then drying. Don't go back to a `clip-path` wipe; that was the first version and read as a CSS effect rather than as ink.
-- **The fuse** — the header's bottom rule burns orange with scroll progress, the ember riding its leading edge (`ScrollFuse` inside `Header.tsx`). It's the mark continuing down the page, not a progress widget.
-- **Breathing ember** — the wordmark's glow pulses slowly, everywhere the mark appears. The `SparkDot` punctuation deliberately does *not* — one living thing, not a dozen.
-- **The cursor is a heat source** — `app/components/Embers.tsx`, canvas, hero only. Embers drift up (the studio is named after a spark, so the ambient background *is* the thing the name means), and the pointer carries a warm light through them: embers nearby flare and ride the draught, and clicking strikes a burst of sparks. A passive particle field is a genre default; a dark room you carry a light through reads as a game. Ambient count 38, burst capped at 90. Motion uses layered-sine pseudo-turbulence, not a single sway — one sine wave reads mechanical. The light is `(pointer: fine)` only, since touch has no hover. Paused off-screen and on hidden tabs; absent under reduced motion. Canvas, not DOM nodes — animating this many elements' positions each frame would thrash layout.
-
-Don't add a fifth idea without removing one.
+**Motion:** every animation has a `prefers-reduced-motion: reduce` escape (global rule in `globals.css`, plus JS checks for WAAPI and canvas).
 
 **Path alias:** `@/*` resolves to the project root (`pretty-awesome-games/`).
 

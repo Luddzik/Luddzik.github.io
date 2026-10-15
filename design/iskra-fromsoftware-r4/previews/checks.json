@@ -1,0 +1,51 @@
+[
+  {
+    "width": 1440,
+    "overflow": false,
+    "images": true
+  },
+  {
+    "width": 820,
+    "overflow": false,
+    "images": true
+  },
+  {
+    "width": 390,
+    "overflow": false,
+    "images": true
+  },
+  {
+    "mobileMenu": true
+  },
+  {
+    "width": 320,
+    "overflow": false,
+    "images": true
+  },
+  {
+    "gameplay": true
+  },
+  {
+    "catalog": 3,
+    "cards": 3
+  },
+  {
+    "catalog": 8,
+    "cards": 8
+  },
+  {
+    "dialog": true
+  },
+  {
+    "escapeCloses": true
+  },
+  {
+    "reducedMotionVideoPaused": true
+  },
+  {
+    "panelSwitch": true
+  },
+  {
+    "galleryMobileOverflow": false
+  }
+]

@@ -1,0 +1,44 @@
+[
+  {
+    "width": 1440,
+    "overflow": false,
+    "brokenImages": [],
+    "heroOverlap": false
+  },
+  {
+    "width": 820,
+    "overflow": false,
+    "brokenImages": [],
+    "heroOverlap": false
+  },
+  {
+    "width": 390,
+    "overflow": false,
+    "brokenImages": [],
+    "heroOverlap": false
+  },
+  {
+    "width": 320,
+    "overflow": false,
+    "brokenImages": [],
+    "heroOverlap": false
+  },
+  {
+    "pause": true
+  },
+  {
+    "resume": true
+  },
+  {
+    "dialogOpen": true
+  },
+  {
+    "nextImage": true
+  },
+  {
+    "escapeCloses": true
+  },
+  {
+    "reducedMotion": true
+  }
+]

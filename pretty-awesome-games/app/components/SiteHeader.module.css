@@ -1,0 +1,161 @@
+.header {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: var(--header-h);
+  padding: 0 5%;
+  background: var(--frame);
+  border-bottom: 1px solid var(--rule-soft);
+}
+
+.brand {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  color: #f5f5f2;
+}
+
+.mark {
+  width: 150px;
+}
+
+/* The cut in the I, echoed as a slash that strikes in on hover. */
+.brand::after {
+  content: "";
+  position: absolute;
+  left: 10px;
+  top: 4px;
+  width: 2px;
+  height: 24px;
+  background: var(--accent);
+  opacity: 0;
+  transform: rotate(20deg) scaleY(0);
+  transition: transform 0.35s var(--ease-settle), opacity 0.3s;
+  pointer-events: none;
+}
+
+.brand:hover::after {
+  opacity: 0.7;
+  transform: rotate(20deg) scaleY(1);
+}
+
+.games {
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--accent-ink);
+  border-left: 1px solid #e8885077;
+  padding-left: 18px;
+}
+
+.nav {
+  display: flex;
+  gap: 36px;
+}
+
+.nav a {
+  position: relative;
+  padding: 35px 0;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #c5cbd0;
+  transition: color 0.25s;
+}
+
+.nav a:hover,
+.nav a.current {
+  color: #fff;
+}
+
+/* Hover draws a hairline; the current item keeps a short skewed bar. */
+.nav a::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 22px;
+  height: 1px;
+  background: var(--accent);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.35s var(--ease-settle);
+}
+
+.nav a:hover::before {
+  transform: scaleX(1);
+}
+
+.nav a.current::after {
+  content: "";
+  position: absolute;
+  bottom: 22px;
+  left: 0;
+  width: 22px;
+  height: 2px;
+  background: var(--accent);
+  transform: skew(-25deg);
+}
+
+.menu {
+  display: none;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  min-height: 44px;
+  padding: 0 4px;
+}
+
+.menu span {
+  color: var(--accent);
+}
+
+@media (max-width: 1000px) {
+  .mark {
+    width: 125px;
+  }
+  .games {
+    display: none;
+  }
+  .nav {
+    gap: 25px;
+  }
+}
+
+@media (max-width: 650px) {
+  .header {
+    padding: 0 6%;
+  }
+  .menu {
+    display: block;
+  }
+  .nav {
+    display: none;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: var(--header-h);
+    flex-direction: column;
+    gap: 0;
+    padding: 18px 6% 25px;
+    background: #111416;
+    border-bottom: 1px solid var(--rule);
+  }
+  .nav.open {
+    display: flex;
+  }
+  .nav a {
+    padding: 17px 0;
+    font-size: 15px;
+  }
+  .nav a::before,
+  .nav a.current::after {
+    bottom: 8px;
+  }
+}

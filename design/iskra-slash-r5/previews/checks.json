@@ -1,0 +1,30 @@
+[
+  {
+    "width": 1440,
+    "overflow": false
+  },
+  {
+    "width": 820,
+    "overflow": false
+  },
+  {
+    "width": 390,
+    "overflow": false
+  },
+  {
+    "width": 320,
+    "overflow": false
+  },
+  {
+    "dialog": true
+  },
+  {
+    "escape": true
+  },
+  {
+    "catalog8": true
+  },
+  {
+    "reducedMotion": true
+  }
+]

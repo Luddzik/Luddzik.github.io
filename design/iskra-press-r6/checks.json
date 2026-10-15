@@ -1,0 +1,7 @@
+{
+  "javascriptSyntax": "pass",
+  "localAssetsChecked": 16,
+  "missing": [],
+  "duplicateIds": [],
+  "browserQA": "Unavailable: no browser surfaces; in-app browser reported unavailable. Responsive layout and runtime interactions need browser review."
+}

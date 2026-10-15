@@ -1,0 +1,495 @@
+.h1 {
+  margin: 18px 0 20px;
+  font-size: clamp(46px, 5vw, 68px);
+  font-weight: 500;
+  letter-spacing: 0.005em;
+  line-height: 1.05;
+}
+
+.h1Small {
+  margin: 8px 0;
+  font-size: 42px;
+}
+
+.lede {
+  max-width: 640px;
+  font-size: 17px;
+  line-height: 1.75;
+  color: var(--ink-body);
+}
+
+.small {
+  margin-top: 18px;
+  font-size: 13px;
+  color: var(--ink-dim);
+}
+
+.masthead {
+  margin-bottom: 38px;
+}
+
+.ruled {
+  padding-bottom: 28px;
+  margin-bottom: 32px;
+  border-bottom: 1px solid var(--rule);
+}
+
+/* ---------- Games index ---------- */
+
+.catalog {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 40px 32px;
+}
+
+.card {
+  display: block;
+  min-width: 0;
+}
+
+.cardArt {
+  position: relative;
+  aspect-ratio: 1.6;
+  overflow: hidden;
+  background-position: center;
+  background-size: cover;
+  clip-path: polygon(6% 0, 100% 0, 94% 100%, 0 100%);
+}
+
+.cardArt img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  transition: transform 0.7s var(--ease-settle);
+}
+
+.card:hover .cardArt img {
+  transform: scale(1.08);
+}
+
+.card h2 {
+  margin: 18px 0 6px;
+  font-size: 26px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.card h2 span {
+  float: right;
+  color: var(--accent);
+  transition: transform 0.35s var(--ease-settle);
+}
+
+.card:hover h2 span {
+  transform: translate(3px, -3px);
+}
+
+.cardTagline {
+  font-size: 15px;
+  color: var(--ink-body);
+}
+
+.cardMeta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 18px;
+  margin-top: 12px;
+  font-size: 12px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.cardMeta div {
+  display: flex;
+  gap: 6px;
+}
+
+.cardMeta dt {
+  color: var(--ink-dim);
+}
+
+/* ---------- Company ---------- */
+
+.company {
+  display: grid;
+  grid-template-columns: 0.85fr 1.15fr;
+  gap: 7%;
+  align-items: start;
+}
+
+.largeSlash {
+  margin-top: 30px;
+  font-family: var(--font-display);
+  font-size: 220px;
+  line-height: 0.9;
+  color: var(--accent);
+}
+
+.prose {
+  max-width: 560px;
+  padding-top: 40px;
+}
+
+.prose h2 {
+  margin-bottom: 18px;
+  font-size: 31px;
+}
+
+.prose p {
+  margin-bottom: 16px;
+  font-size: 17px;
+  line-height: 1.8;
+  color: var(--ink-body);
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 26px;
+  margin-top: 26px;
+}
+
+/* ---------- Shared ruled fact list ---------- */
+
+.facts {
+  margin: 24px 0;
+}
+
+.facts > div {
+  display: grid;
+  grid-template-columns: 145px minmax(0, 1fr);
+  gap: 20px;
+  padding: 13px 0;
+  border-bottom: 1px solid #ffffff14;
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+.facts dt {
+  color: var(--ink-dim);
+}
+
+/* ---------- Press ---------- */
+
+.pressLayout {
+  display: grid;
+  grid-template-columns: 190px minmax(0, 1fr);
+  gap: 55px;
+  max-width: 1300px;
+}
+
+.index {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  align-self: start;
+  padding-top: 12px;
+  background: var(--surface);
+  font-size: 14px;
+  color: #b9c1c7;
+}
+
+.index a {
+  padding: 5px 0;
+  transition: color 0.25s;
+}
+
+.index a:hover {
+  color: var(--accent-hover);
+}
+
+.pressBody > section {
+  margin-bottom: 52px;
+  scroll-margin-top: 24px;
+}
+
+.pressGame + .pressGame {
+  margin-top: 44px;
+}
+
+.sectionLabel {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding-bottom: 17px;
+  border-bottom: 1px solid var(--rule);
+}
+
+.sectionLabel > span:first-child {
+  font-size: 12px;
+  color: var(--accent);
+  font-variant-numeric: tabular-nums;
+}
+
+.sectionLabel h2,
+.sectionLabel h3 {
+  font-size: 32px;
+}
+
+.status {
+  margin-left: auto;
+  font-size: 11px;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  color: #d3a488;
+}
+
+.summary {
+  max-width: 680px;
+  margin: 22px 0 10px;
+  font-size: 17px;
+  line-height: 1.75;
+  color: var(--ink-body);
+}
+
+.assets {
+  margin-top: 24px;
+}
+
+.assetsTitle {
+  margin-bottom: 12px;
+  font-size: 22px;
+}
+
+.assetGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 22px;
+}
+
+.assetGrid img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: contain;
+  background: #08090a;
+  border: 1px solid #ffffff14;
+  transition: border-color 0.3s;
+}
+
+.assetGrid a:hover img {
+  border-color: var(--accent);
+}
+
+.assetGrid a > span {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 14px 0;
+  font-size: 14px;
+}
+
+.assetGrid b,
+.downloads span {
+  font-size: 12px;
+  font-weight: 500;
+  color: #d0ad94;
+  white-space: nowrap;
+}
+
+.downloads a {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 16px 0;
+  border-bottom: 1px solid var(--rule);
+  font-size: 15px;
+  transition: color 0.25s;
+}
+
+.downloads a:hover {
+  color: var(--accent-hover);
+}
+
+/* ---------- Contact ---------- */
+
+.emailRow {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  gap: 18px 32px;
+  margin-top: 22px;
+}
+
+.email {
+  display: inline-block;
+  padding: 24px 0;
+  border-bottom: 1px solid #8e6d55;
+  font-size: clamp(20px, 3vw, 40px);
+  transition: border-color 0.3s;
+}
+
+.email span {
+  color: var(--accent);
+}
+
+.email:hover {
+  border-color: var(--accent);
+}
+
+.copy {
+  min-height: 44px;
+  padding: 0 4px;
+  font-size: 13px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-dim);
+  border-bottom: 1px solid #ffffff35;
+  transition: color 0.25s, border-color 0.25s;
+}
+
+.copy:hover {
+  color: #fff;
+  border-color: var(--accent);
+}
+
+.audiences {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 30px;
+  margin-top: 48px;
+}
+
+.audiences > a {
+  padding-top: 23px;
+  border-top: 1px solid #ffffff30;
+  transition: border-color 0.3s;
+}
+
+.audiences > a:hover {
+  border-color: var(--accent);
+}
+
+.audiences span {
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.audiences h2 {
+  margin: 12px 0 8px;
+  font-size: 25px;
+}
+
+.audiences p {
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--ink-body);
+}
+
+.details {
+  margin-top: 56px;
+}
+
+.details p {
+  margin-top: 6px;
+  font-size: 13px;
+  color: var(--ink-dim);
+}
+
+/* ---------- Gameplay ---------- */
+
+.footageHeading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 25px;
+  margin-bottom: 24px;
+}
+
+.video {
+  display: block;
+  width: 100%;
+  max-height: calc(100svh - var(--header-h) - var(--footer-h) - 220px);
+  background: #000;
+}
+
+@media (max-width: 1000px) {
+  .catalog {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .pressLayout {
+    grid-template-columns: 145px minmax(0, 1fr);
+    gap: 30px;
+  }
+  .audiences {
+    gap: 20px;
+  }
+}
+
+@media (max-width: 650px) {
+  .h1 {
+    font-size: 44px;
+  }
+  .lede,
+  .prose p,
+  .summary {
+    font-size: 16px;
+  }
+  .catalog,
+  .company,
+  .audiences {
+    grid-template-columns: 1fr;
+  }
+  .company {
+    gap: 0;
+  }
+  .largeSlash {
+    display: none;
+  }
+  .prose {
+    padding-top: 0;
+  }
+  .prose h2 {
+    font-size: 28px;
+  }
+  .pressLayout {
+    display: block;
+  }
+  .index {
+    position: static;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 6px 20px;
+    padding: 0 0 22px;
+    font-size: 13px;
+  }
+  .sectionLabel {
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  .sectionLabel h2,
+  .sectionLabel h3 {
+    font-size: 28px;
+  }
+  .facts > div {
+    grid-template-columns: 100px minmax(0, 1fr);
+    gap: 12px;
+    font-size: 14px;
+  }
+  .assetGrid {
+    grid-template-columns: 1fr;
+  }
+  .email {
+    max-width: 100%;
+    overflow-wrap: anywhere;
+    font-size: clamp(18px, 5.5vw, 24px);
+  }
+  .footageHeading {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+  .h1Small {
+    font-size: 36px;
+  }
+  .video {
+    max-height: 60svh;
+  }
+}

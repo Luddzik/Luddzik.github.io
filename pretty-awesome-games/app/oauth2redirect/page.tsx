@@ -1,8 +1,8 @@
 import Link from "next/link"
 import type { Metadata } from "next"
-import Header from "../components/Header"
-import Footer from "../components/Footer"
-import styles from "./oauth2redirect.module.css"
+import SiteHeader from "../components/SiteHeader"
+import SiteFooter from "../components/SiteFooter"
+import styles from "../components/LegalPage.module.css"
 
 /**
  * A leftover OAuth redirect target from the retired mobile titles, which used to
@@ -22,8 +22,8 @@ export const metadata: Metadata = {
 export default function Oauth2Redirect() {
   return (
     <>
-      <Header showNavLinks={false} />
-      <main className={styles.privacyPolicy} id="top">
+      <SiteHeader base="/" />
+      <main className={styles.page} id="top">
         <div className={styles.container}>
           <h1>Privacy Policy</h1>
 
@@ -38,7 +38,7 @@ export default function Oauth2Redirect() {
           </p>
         </div>
       </main>
-      <Footer />
+      <SiteFooter />
     </>
   )
 }

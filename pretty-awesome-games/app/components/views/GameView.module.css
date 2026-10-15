@@ -1,0 +1,370 @@
+.game {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  isolation: isolate;
+  background: #090f17;
+}
+
+/*
+ * --mx / --my run -1…1 with the pointer (set in GameView). The world moves
+ * against it and the characters with it, so the two separate in depth.
+ */
+.scene {
+  --mx: 0;
+  --my: 0;
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.world {
+  position: absolute;
+  inset: -6%;
+  background-position: center;
+  background-size: cover;
+  opacity: 0.85;
+  translate: calc(var(--mx) * -14px) calc(var(--my) * -9px);
+  animation: world-drift 38s ease-in-out infinite alternate;
+}
+
+.crew {
+  position: absolute;
+  right: -3%;
+  bottom: -14%;
+  width: 76%;
+  height: 112%;
+  object-fit: contain;
+  translate: calc(var(--mx) * 16px) calc(var(--my) * 8px);
+  animation: crew-light 9s ease-in-out infinite alternate;
+}
+
+/* The scrim that keeps the facts legible. It is functional, not decoration. */
+.shade {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(90deg, #070d15f5 0%, #070d15e6 24%, #070d1580 45%, #070d1500 68%),
+    linear-gradient(0deg, #070d1580, transparent 45%);
+}
+
+.paused .scene * {
+  animation-play-state: paused !important;
+}
+
+.scroll {
+  position: absolute;
+  inset: 0;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding: clamp(40px, 6vh, 72px) 8% 72px;
+  scrollbar-width: thin;
+  scrollbar-color: #626971 transparent;
+}
+
+.info {
+  max-width: 410px;
+}
+
+.platform {
+  display: inline-block;
+  padding: 3px 14px;
+  background: #e6e8e9;
+  color: #15191c;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.title {
+  margin: 16px 0 14px;
+  font-size: clamp(38px, 3.7vw, 54px);
+  font-weight: 600;
+  letter-spacing: 0.075em;
+  line-height: 1.1;
+  text-transform: uppercase;
+}
+
+.tagline {
+  font-size: 17px;
+  font-weight: 500;
+  color: #fff;
+}
+
+.description {
+  margin: 8px 0 24px;
+  font-size: 15px;
+  line-height: 1.65;
+  color: #d3d9dd;
+}
+
+.meta {
+  display: grid;
+  gap: 10px;
+  margin-bottom: 26px;
+  font-size: 15px;
+  line-height: 1.5;
+}
+
+.meta > div {
+  display: grid;
+  grid-template-columns: 76px minmax(0, 1fr);
+  gap: 20px;
+}
+
+.meta dt {
+  color: #bac5ce;
+}
+
+.meta dd {
+  color: #f0f2f4;
+}
+
+.preview {
+  position: relative;
+  display: block;
+  width: 230px;
+  overflow: hidden;
+  border: 1px solid #ffffff88;
+  transition: border-color 0.3s;
+}
+
+.preview:hover {
+  border-color: var(--accent);
+}
+
+.preview img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  filter: brightness(0.6);
+  transition:
+    filter 0.4s,
+    transform 0.7s var(--ease-settle);
+}
+
+.preview:hover img {
+  filter: brightness(0.9);
+  transform: scale(1.035);
+}
+
+.play {
+  position: absolute;
+  left: 50%;
+  top: 43%;
+  display: grid;
+  place-items: center;
+  width: 46px;
+  height: 46px;
+  padding-left: 3px;
+  border: 1px solid #ffffffaa;
+  border-radius: 50%;
+  font-size: 15px;
+  transform: translate(-50%, -50%);
+}
+
+.preview b {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 10px;
+  text-align: center;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.links {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
+  margin-top: 22px;
+}
+
+.links a {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 35px;
+  min-width: 230px;
+  min-height: 44px;
+  padding: 10px 15px;
+  border: 1px solid #ffffff55;
+  background: #070d1566;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  transition:
+    background 0.3s,
+    border-color 0.3s;
+}
+
+.links a:hover {
+  background: #ffffff13;
+  border-color: var(--accent);
+}
+
+.note {
+  margin-top: 14px;
+  font-size: 13px;
+  color: #bac5ce;
+}
+
+.back {
+  position: absolute;
+  top: 44%;
+  right: 3%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  min-width: 44px;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  transition: color 0.25s;
+}
+
+.back > span {
+  font-family: Arial, sans-serif;
+  font-size: 50px;
+  font-weight: 100;
+  line-height: 1;
+  transition: transform 0.35s var(--ease-settle);
+}
+
+.back:hover {
+  color: var(--accent);
+}
+
+.back:hover > span {
+  transform: rotate(90deg);
+}
+
+.motion {
+  position: absolute;
+  right: 3%;
+  bottom: 18px;
+  min-height: 44px;
+  padding: 10px 0;
+  font-size: 12px;
+  color: #c8d0d6;
+  transition: color 0.25s;
+}
+
+.motion:hover {
+  color: #fff;
+}
+
+@keyframes world-drift {
+  from {
+    transform: scale(1.02) translate3d(-0.6%, 0, 0);
+  }
+  to {
+    transform: scale(1.08) translate3d(0.6%, -1%, 0);
+  }
+}
+
+/* Not a bob — the characters stay put; only the light on them breathes. */
+@keyframes crew-light {
+  from {
+    filter: brightness(0.96) saturate(1);
+  }
+  to {
+    filter: brightness(1.06) saturate(1.08);
+  }
+}
+
+@media (max-width: 1000px) {
+  .crew {
+    right: -24%;
+    width: 110%;
+    opacity: 0.85;
+  }
+  .shade {
+    background: linear-gradient(90deg, #070d15f5, #070d15d0 38%, #070d1522 85%);
+  }
+  .info {
+    max-width: 360px;
+  }
+}
+
+@media (max-width: 650px) {
+  .scroll {
+    padding: 56px 7% 40px;
+  }
+  .crew {
+    right: -72%;
+    bottom: -2%;
+    width: 160%;
+    height: 92%;
+    opacity: 0.55;
+  }
+  .shade {
+    background:
+      linear-gradient(90deg, #070d15f2, #070d15c9 55%, #070d1566),
+      linear-gradient(0deg, #070d15cc, transparent 60%);
+  }
+  .info {
+    max-width: 100%;
+  }
+  .title {
+    font-size: 36px;
+    letter-spacing: 0.055em;
+  }
+  .meta {
+    font-size: 14px;
+  }
+  .meta > div {
+    grid-template-columns: 67px 1fr;
+    gap: 15px;
+  }
+  .back {
+    top: 8px;
+    right: 6%;
+    flex-direction: row;
+    gap: 6px;
+    min-height: 40px;
+    font-size: 11px;
+  }
+  .back > span {
+    font-size: 28px;
+  }
+  /* Top-left, opposite Back, so it never sits on top of the links below. */
+  .motion {
+    top: 8px;
+    left: 7%;
+    right: auto;
+    bottom: auto;
+    min-height: 40px;
+    font-size: 11px;
+  }
+}
+
+@media (max-height: 760px) and (min-width: 651px) {
+  .scroll {
+    padding-top: 28px;
+  }
+  .title {
+    margin: 10px 0 10px;
+    font-size: 38px;
+  }
+  .description {
+    margin-bottom: 18px;
+  }
+  .meta {
+    gap: 6px;
+    margin-bottom: 18px;
+  }
+  .preview {
+    width: 190px;
+  }
+}

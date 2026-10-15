@@ -1,0 +1,18 @@
+{
+  "javascriptSyntax": "pass",
+  "localAssetsChecked": 20,
+  "missingAssets": [],
+  "runtimeControllerChecks": [
+    "Initial home route",
+    "Game opens as routed page",
+    "Game keeps Games navigation active",
+    "Background pause control",
+    "Rapid navigation resolves to latest page",
+    "Reduced-motion route and control",
+    "Navigation pauses footage",
+    "Unknown route recovers to home",
+    "Entrance blocks underlying controls briefly",
+    "Skipping entrance restores navigation"
+  ],
+  "browserQA": "Unavailable: no browser surfaces; no visual or browser-runtime verification claimed."
+}

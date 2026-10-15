@@ -1,0 +1,11 @@
+{
+  "javascriptSyntax": "pass",
+  "localAssetReferences": 20,
+  "missing": [],
+  "duplicateIds": [],
+  "mobileMenu": "Opens; Press navigation closes menu and selects press page",
+  "shortViewport": "1440x700 visually inspected",
+  "entrance": "Exact timestamps visually inspected",
+  "motionPreview": "197 frames at 24 fps",
+  "productionChanged": false
+}

@@ -1,0 +1,98 @@
+/* Shared by the Privacy Policy, Terms and the retired OAuth page. */
+.page {
+  padding: 64px 1.25rem 80px;
+  background: var(--surface);
+  min-height: calc(100svh - var(--header-h) - var(--footer-h));
+}
+
+.container {
+  max-width: 760px;
+  margin: 0 auto;
+}
+
+.page h1 {
+  margin-bottom: 12px;
+  font-size: clamp(42px, 5vw, 60px);
+}
+
+.page h2 {
+  margin: 48px 0 16px;
+  padding-top: 18px;
+  border-top: 1px solid var(--rule);
+  font-size: 28px;
+}
+
+.page h3 {
+  margin: 28px 0 10px;
+  font-size: 21px;
+}
+
+.page p,
+.page li {
+  font-size: 16px;
+  line-height: 1.75;
+  color: var(--ink-body);
+}
+
+.page p {
+  margin-bottom: 18px;
+}
+
+.page ul {
+  margin-bottom: 18px;
+  padding-left: 1.4rem;
+}
+
+.page li {
+  margin-bottom: 6px;
+}
+
+.page b,
+.page strong {
+  color: var(--ink);
+  font-weight: 600;
+}
+
+.page a {
+  color: var(--ink);
+  text-decoration: underline;
+  text-decoration-color: var(--accent);
+  text-underline-offset: 4px;
+}
+
+.page a:hover {
+  color: var(--accent-hover);
+}
+
+.lastUpdated {
+  font-size: 13px !important;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--accent-ink) !important;
+}
+
+.intro {
+  margin-top: 26px;
+  font-size: 19px !important;
+  color: var(--ink) !important;
+}
+
+.note {
+  margin: 28px 0;
+  padding: 20px 22px;
+  border-left: 2px solid var(--accent);
+  background: #ffffff08;
+}
+
+.note p:last-child {
+  margin-bottom: 0;
+}
+
+@media (max-width: 650px) {
+  .page {
+    padding-top: 40px;
+  }
+  .page h2 {
+    font-size: 24px;
+  }
+}

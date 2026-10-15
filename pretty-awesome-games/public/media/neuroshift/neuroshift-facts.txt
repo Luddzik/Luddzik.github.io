@@ -1,0 +1,18 @@
+NEUROSHIFT
+
+Developer: Iskra Games
+Based in: Poland
+Genre: Turn-based squad-tactics roguelite
+Platform: PC (Steam — store page coming soon)
+Mode: Offline single player
+Status: In development
+Demo: https://luddzik.itch.io/neuroshift
+Contact: contact@iskragames.com
+
+Build your squad from what you kill.
+
+Take a crew down the lift, tear parts off the machines you destroy, bolt them onto
+your own units, and decide how deep you dare to go — nothing you carry is yours until
+you ride back up.
+
+Screenshots and gameplay footage show a game in development.
