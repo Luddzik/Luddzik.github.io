@@ -23,7 +23,8 @@
 .world {
   position: absolute;
   inset: -6%;
-  background-position: center;
+  /* Raised with the characters, so they still stand in front of the planet. */
+  background-position: center 70%;
   background-size: cover;
   opacity: 0.85;
   translate: calc(var(--mx) * -14px) calc(var(--my) * -9px);
@@ -38,15 +39,18 @@
 .crew {
   --crew-right: -3%;
   --crew-w: 76%;
+  --crew-bottom: -6%;
+  --crew-h: 112%;
   position: absolute;
   /*
    * Never drawn larger than the file itself (725×638): enlarging it is what
-   * made it look soft. Where the cap bites, the art stays centred in its slot.
+   * made it look soft. Where the cap bites, the art stays centred in its slot,
+   * which sits at the scene's mid-height.
    */
   right: calc(var(--crew-right) + max(0px, (min(var(--crew-w), 100%) - 725px) / 2));
-  bottom: -5%;
+  bottom: calc(var(--crew-bottom) + max(0px, (var(--crew-h) - 638px) / 2));
   width: var(--crew-w);
-  height: 112%;
+  height: var(--crew-h);
   max-width: min(725px, 100%);
   max-height: 638px;
   object-fit: contain;

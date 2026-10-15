@@ -45,7 +45,7 @@
 .art {
   position: absolute;
   inset: -2%;
-  background-position: center;
+  background-position: center 70%;
   background-size: cover;
   filter: grayscale(1) brightness(0.45);
   transform: scale(1.07);
@@ -64,12 +64,15 @@
 .crew {
   --crew-left: 10%;
   --crew-w: 95%;
+  /* The space above the "01 / NAME" bar (95px tall). */
+  --crew-bottom: 95px;
+  --crew-h: calc(100% - 95px);
   position: absolute;
-  /* Capped at the file's own size (725×638) so it is never enlarged; centred in its slot. */
+  /* Capped at the file's own size (725×638) so it is never enlarged; centred in its slot both ways. */
   left: calc(var(--crew-left) + max(0px, (min(var(--crew-w), 100%) - 725px) / 2));
-  bottom: -6%;
+  bottom: calc(var(--crew-bottom) + max(0px, (var(--crew-h) - 638px) / 2));
   width: var(--crew-w);
-  height: 98%;
+  height: var(--crew-h);
   max-width: min(725px, 100%);
   max-height: 638px;
   object-fit: contain;
@@ -272,8 +275,8 @@
   .solo .crew {
     --crew-left: -12%;
     --crew-w: 125%;
-    bottom: 10%;
-    height: 85%;
+    --crew-bottom: 10%;
+    --crew-h: 85%;
   }
   .copy,
   .panel:first-child .copy {
