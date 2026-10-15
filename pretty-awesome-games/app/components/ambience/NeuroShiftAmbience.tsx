@@ -5,12 +5,18 @@ import SmokeField from "./SmokeField"
 import type { AmbienceProps } from "./types"
 
 /**
- * NeuroShift: neon-lit smoke rolling through the alien city — lavender, teal
- * and magenta pulled from the key art's sky and the squad's lights. Drawn
- * behind the characters, never over them.
+ * NeuroShift: thin neon-lit fog drifting left to right through the alien city —
+ * lavender, teal and magenta from the key art. Light enough that the city stays
+ * visible. Drawn behind the characters, never over them.
  */
 const NeuroShiftAmbience: React.FC<AmbienceProps> = (props) => (
-  <SmokeField {...props} tints={["#c2acff", "#8fd6ee", "#e6a6e0"]} strength={1.5} density={1.3} />
+  <SmokeField
+    {...props}
+    tints={["#c2acff", "#8fd6ee", "#e6a6e0"]}
+    strength={0.45}
+    density={1.6}
+    wind={22}
+  />
 )
 
 export default NeuroShiftAmbience

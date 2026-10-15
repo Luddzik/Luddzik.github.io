@@ -13,6 +13,11 @@ interface SmokeFieldProps extends AmbienceProps {
   strength?: number
   /** Puff density multiplier. */
   density?: number
+  /**
+   * Horizontal drift in CSS px/s; positive is left → right. Each bank moves at
+   * 0.6–1.4× this, so nearer and farther layers slide past each other.
+   */
+  wind?: number
 }
 
 interface Puff {
@@ -21,19 +26,19 @@ interface Puff {
   vx: number
   vy: number
   size: number
-  growth: number
   angle: number
   spin: number
   sprite: number
   alpha: number
-  life: number
-  lifeSpeed: number
+  /** Slow thickening and thinning, so the bank never looks like a fixed texture. */
+  phase: number
+  phaseSpeed: number
 }
 
 /** Puffs per million CSS px², capped — the look depends on overlap, not count. */
-const PUFFS_PER_MPX = 14
-const MAX_PUFFS = 26
-const MIN_PUFFS = 6
+const PUFFS_PER_MPX = 20
+const MAX_PUFFS = 40
+const MIN_PUFFS = 8
 /**
  * Smoke is all low frequencies, so the backing store runs at half CSS
  * resolution and the browser's upscale is invisible. That's what keeps a
@@ -115,8 +120,9 @@ const tint = (mask: HTMLCanvasElement, color: string) => {
 }
 
 /**
- * A reusable smoke engine — one of the building blocks a game's own ambience
- * (see ./index.ts) can be made from. Slow smoke rolling through the world. It lives *behind* the
+ * A reusable fog engine — one of the building blocks a game's own ambience
+ * (see ./index.ts) can be made from. Thin banks of fog drift steadily across
+ * the world from one side to the other, never thick enough to hide it. It lives *behind* the
  * characters — the scene stacks world → smoke → characters → text — so it
  * reads as atmosphere in the place, not an effect laid over the page. It
  * doesn't react to the pointer or to clicks; it just drifts.
@@ -130,6 +136,7 @@ const SmokeField: React.FC<SmokeFieldProps> = ({
   paused = false,
   strength = 1,
   density = 1,
+  wind = 18,
   className,
 }) => {
   const canvasRef = useRef<HTMLCanvasElement>(null)
@@ -155,22 +162,29 @@ const SmokeField: React.FC<SmokeFieldProps> = ({
     let running = false
     let last = 0
 
-    /* Weighted to the lower part of the frame — ground haze that rises and thins. */
-    const spawn = (fresh: boolean): Puff => {
+    /*
+     * Fog banks enter off one edge, drift across and leave by the other, then
+     * re-enter — a constant procession rather than puffs appearing and fading
+     * in place. Weighted toward the lower part of the frame, like ground fog.
+     */
+    const spawn = (anywhere: boolean): Puff => {
       const base = Math.max(width, height)
+      const size = random(0.3, 0.6) * base
+      const halfWide = size * 0.8
+      const direction = Math.sign(wind) || 1
+      const offscreen = direction > 0 ? -halfWide - random(0, 0.25) * width : width + halfWide + random(0, 0.25) * width
       return {
-        x: random(-0.1, 1.1) * width,
-        y: fresh ? random(0.25, 1.05) * height : height + random(0.1, 0.3) * base,
-        vx: random(4, 14) * (Math.random() < 0.7 ? 1 : -1),
-        vy: -random(5, 14),
-        size: random(0.35, 0.7) * base,
-        growth: random(0.012, 0.03) * base,
-        angle: random(-0.25, 0.25),
-        spin: random(-0.015, 0.015),
+        x: anywhere ? random(-halfWide, width + halfWide) : offscreen,
+        y: Math.pow(Math.random(), 0.7) * height * 1.05,
+        vx: wind * random(0.6, 1.4),
+        vy: random(-2.5, 1.5),
+        size,
+        angle: random(-0.12, 0.12),
+        spin: random(-0.006, 0.006),
         sprite: (Math.random() * sprites.length) | 0,
-        alpha: random(0.5, 0.85) * strength,
-        life: fresh ? random(0.05, 0.9) : 0,
-        lifeSpeed: random(0.025, 0.045),
+        alpha: random(0.6, 1) * strength,
+        phase: random(0, Math.PI * 2),
+        phaseSpeed: random(0.08, 0.2),
       }
     }
 
@@ -198,18 +212,19 @@ const SmokeField: React.FC<SmokeFieldProps> = ({
       ctx.clearRect(0, 0, width, height)
 
       for (const p of puffs) {
-        p.life += p.lifeSpeed * dt
-        if (p.life >= 1) {
+        p.x += p.vx * dt
+        p.y += p.vy * dt
+        p.angle += p.spin * dt
+        p.phase += p.phaseSpeed * dt
+
+        /* Fully past the far edge: send it round again from the near one. */
+        const halfWide = p.size * 0.8
+        if ((p.vx >= 0 && p.x - halfWide > width) || (p.vx < 0 && p.x + halfWide < 0)) {
           Object.assign(p, spawn(false))
           continue
         }
-        p.x += p.vx * dt
-        p.y += p.vy * dt
-        p.size += p.growth * dt
-        p.angle += p.spin * dt
 
-        /* Sine envelope: eases in from nothing and dissolves out, no pop. */
-        const alpha = Math.min(1, p.alpha * Math.sin(p.life * Math.PI))
+        const alpha = Math.min(1, p.alpha * (0.6 + 0.4 * Math.sin(p.phase)))
         if (alpha <= 0.005) continue
         const cos = Math.cos(p.angle) * RESOLUTION
         const sin = Math.sin(p.angle) * RESOLUTION
@@ -244,7 +259,7 @@ const SmokeField: React.FC<SmokeFieldProps> = ({
       control.current = null
       observer.disconnect()
     }
-  }, [tintKey, strength, density, reduceMotion])
+  }, [tintKey, strength, density, wind, reduceMotion])
 
   /* Start and stop without tearing down, so pausing leaves the smoke where it is. */
   useEffect(() => {
