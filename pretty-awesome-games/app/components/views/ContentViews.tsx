@@ -171,15 +171,15 @@ export const PressView: React.FC = () => (
                   <a key={shot.src} href={shot.download} download>
                     <img src={shot.src} alt={shot.alt} loading="lazy" />
                     <span>
-                      {shot.label} <b>PNG ↓</b>
+                      {shot.label} <b>{shot.download.split(".").pop()?.toUpperCase()} ↓</b>
                     </span>
                   </a>
                 ))}
               </div>
               {game.footage && (
                 <div className={styles.downloads}>
-                  <a href={game.footage.src} download={`${game.slug}-gameplay.mp4`}>
-                    {game.title} gameplay footage <span>MP4 ↓</span>
+                  <a href={youtubeUrl(game.footage.youtubeId)} target="_blank" rel="noopener noreferrer">
+                    {game.title} gameplay trailer <span>YouTube ↗</span>
                   </a>
                 </div>
               )}
@@ -277,31 +277,64 @@ export const ContactView: React.FC = () => {
   )
 }
 
-export const GameplayView: React.FC<{ game: Game }> = ({ game }) => (
-  <>
-    <div className={styles.footageHeading} data-tgroup="">
-      <div>
-        <span className={ui.kicker}>
-          {game.title} / {game.meta.find((item) => item.label === "Status")?.value}
-        </span>
-        <h1 className={styles.h1Small}>Gameplay</h1>
+/**
+ * The trailer stays a poster until the viewer presses play: nothing is fetched
+ * from YouTube before that, and leaving the view unloads the player so it
+ * stops playing behind the next one.
+ */
+export const GameplayView: React.FC<{ game: Game; active: boolean }> = ({ game, active }) => {
+  const [playing, setPlaying] = useState(false)
+
+  useEffect(() => {
+    if (!active) setPlaying(false)
+  }, [active])
+
+  return (
+    <>
+      <div className={styles.footageHeading} data-tgroup="">
+        <div>
+          <span className={ui.kicker}>
+            {game.title} / {game.meta.find((item) => item.label === "Status")?.value}
+          </span>
+          <h1 className={styles.h1Small}>Gameplay trailer</h1>
+        </div>
+        <a className={ui.textLink} href={`#${game.slug}`}>
+          Back to {game.title} ↗
+        </a>
       </div>
-      <a className={ui.textLink} href={`#${game.slug}`}>
-        Back to {game.title} ↗
-      </a>
-    </div>
-    {game.footage && (
-      <video
-        className={styles.video}
-        controls
-        playsInline
-        preload="none"
-        poster={game.footage.poster}
-        src={game.footage.src}
-        aria-label={`${game.title} gameplay footage`}
-        data-tgroup=""
-      />
-    )}
-    <p className={styles.small}>Footage shows a game in development.</p>
-  </>
-)
+      {game.footage && (
+        <div className={styles.video} data-tgroup="">
+          {playing ? (
+            <iframe
+              src={`https://www.youtube-nocookie.com/embed/${game.footage.youtubeId}?autoplay=1&rel=0`}
+              title={`${game.title} gameplay trailer`}
+              allow="autoplay; encrypted-media; picture-in-picture; fullscreen"
+              allowFullScreen
+              referrerPolicy="strict-origin-when-cross-origin"
+            />
+          ) : (
+            <button
+              type="button"
+              className={styles.videoPoster}
+              onClick={() => setPlaying(true)}
+              aria-label={`Play the ${game.title} gameplay trailer`}
+            >
+              <img src={game.footage.poster} alt="" loading="lazy" />
+              <span aria-hidden="true">▶</span>
+            </button>
+          )}
+        </div>
+      )}
+      <p className={styles.small}>
+        Footage shows a game in development. Plays from YouTube.{" "}
+        {game.footage && (
+          <a className={ui.textLink} href={youtubeUrl(game.footage.youtubeId)} target="_blank" rel="noopener noreferrer">
+            Open on YouTube ↗
+          </a>
+        )}
+      </p>
+    </>
+  )
+}
+
+const youtubeUrl = (id: string) => `https://youtu.be/${id}`

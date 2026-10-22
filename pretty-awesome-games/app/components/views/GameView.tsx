@@ -92,7 +92,7 @@ const GameView: React.FC<{ game: Game; active: boolean }> = ({ game, active }) =
               <span className={styles.play} aria-hidden="true">
                 ▶
               </span>
-              <b>Watch gameplay</b>
+              <b>Watch trailer</b>
             </a>
           )}
 

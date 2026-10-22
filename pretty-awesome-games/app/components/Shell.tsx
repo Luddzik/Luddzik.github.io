@@ -44,7 +44,7 @@ const VIEWS: ViewDef[] = [
       key: `gameplay:${game.slug}`,
       label: `${game.title} gameplay`,
       kind: "content",
-      render: () => <GameplayView game={game} />,
+      render: (a) => <GameplayView game={game} active={a} />,
     })),
 ]
 

@@ -52,7 +52,8 @@ export interface Game {
    */
   ambience: string
   screenshots: Screenshot[]
-  footage?: { src: string; poster: string }
+  /** The trailer on YouTube — embedded on the game's gameplay page, loaded only on play. */
+  footage?: { youtubeId: string; poster: string }
   /** Plain-text fact sheet for press. */
   factSheet?: string
 }
@@ -87,21 +88,63 @@ export const games: Game[] = [
     ambience: "neuroshift",
     screenshots: [
       {
-        src: "/media/neuroshift/combat.webp",
-        download: "/media/neuroshift/neuroshift-combat.png",
-        label: "Gameplay screenshot",
-        alt: "NeuroShift combat screenshot",
+        src: "/media/neuroshift/auto-battle.webp",
+        download: "/media/neuroshift/neuroshift-auto-battle.jpg",
+        label: "Combat, auto battle",
+        alt: "NeuroShift combat on auto battle",
+      },
+      {
+        src: "/media/neuroshift/command-deck.webp",
+        download: "/media/neuroshift/neuroshift-command-deck.jpg",
+        label: "Combat, command deck",
+        alt: "NeuroShift combat with the command deck open",
+      },
+      {
+        src: "/media/neuroshift/loadout.webp",
+        download: "/media/neuroshift/neuroshift-loadout.jpg",
+        label: "Swapping a weapon part",
+        alt: "NeuroShift weapon swap comparing part stats",
+      },
+      {
+        src: "/media/neuroshift/survey.webp",
+        download: "/media/neuroshift/neuroshift-survey.jpg",
+        label: "The Survey",
+        alt: "NeuroShift survey map choosing the next contact",
+      },
+      {
+        src: "/media/neuroshift/strike.webp",
+        download: "/media/neuroshift/neuroshift-strike.jpg",
+        label: "Combat, a strike lands",
+        alt: "NeuroShift combat with a strike landing",
       },
       {
         src: "/media/neuroshift/assembly.webp",
-        download: "/media/neuroshift/neuroshift-assembly.png",
+        download: "/media/neuroshift/neuroshift-assembly.jpg",
         label: "Squad assembly",
-        alt: "NeuroShift squad assembly screenshot",
+        alt: "NeuroShift squad assembly with fitted parts",
+      },
+      {
+        src: "/media/neuroshift/base.webp",
+        download: "/media/neuroshift/neuroshift-base.jpg",
+        label: "The base",
+        alt: "NeuroShift base interior",
+      },
+      {
+        src: "/media/neuroshift/preparation.webp",
+        download: "/media/neuroshift/neuroshift-preparation.jpg",
+        label: "Preparation",
+        alt: "NeuroShift squad preparation before a descent",
+      },
+      {
+        src: "/media/neuroshift/extract.webp",
+        download: "/media/neuroshift/neuroshift-extract.jpg",
+        label: "Extract or go deeper",
+        alt: "NeuroShift survey choosing to extract or go deeper",
       },
     ],
     footage: {
-      src: "/media/neuroshift/neuroshift-gameplay.mp4",
-      poster: "/media/neuroshift/combat.webp",
+      youtubeId: "crmBUCCD96g",
+      poster: "/media/neuroshift/trailer.webp",
     },
     factSheet: "/media/neuroshift/neuroshift-facts.txt",
   },

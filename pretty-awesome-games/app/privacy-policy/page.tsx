@@ -88,6 +88,11 @@ export default function PrivacyPolicy() {
               >
                 GitHub&rsquo;s privacy statement
               </a>
+              . Game trailers are hosted on YouTube and load only when you press play; from then
+              on Google processes your request under{" "}
+              <a href="https://policies.google.com/privacy" rel="noopener noreferrer" target="_blank">
+                its own privacy policy
+              </a>
               .
             </p>
 
